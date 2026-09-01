@@ -2,8 +2,10 @@
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
-  z-index: 2;
-  position: fixed;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid rgb(0 0 0 / 20%);
 }
 
 header nav {
@@ -15,9 +17,9 @@ header nav {
   align-items: center;
   gap: 0 24px;
   margin: auto;
-  max-width: 1248px;
+  max-width: var(--content-max-width);
   height: var(--nav-height);
-  padding: 0 24px;
+  padding: 0 var(--content-gutter);
   font-family: var(--body-font-family);
 }
 
@@ -32,15 +34,15 @@ header nav[aria-expanded='true'] {
 
 @media (width >= 900px) {
   header .nav-wrapper {
-    position: relative;
+    position: sticky;
   }
 
   header nav {
     display: flex;
     justify-content: space-between;
     gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    max-width: var(--content-max-width);
+    padding: 0 var(--content-gutter);
   }
 
   header nav[aria-expanded='true'] {
@@ -149,8 +151,8 @@ header .nav-brand {
 }
 
 header nav .nav-brand img {
-  width: 128px;
-  height: auto;
+  width: auto;
+  max-height: 28px;
 }
 
 /* sections */
@@ -174,7 +176,10 @@ header nav .nav-sections ul {
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 500;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--dark-color);
 }
 
 header nav .nav-sections ul > li > ul {
@@ -183,6 +188,8 @@ header nav .nav-sections ul > li > ul {
 
 header nav .nav-sections ul > li > ul > li {
   font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 @media (width >= 900px) {
@@ -269,4 +276,40 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* search */
+header nav .nav-search-toggle {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%235bc2e7" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>')
+    center / contain no-repeat;
+  cursor: pointer;
+}
+
+header nav .nav-search-panel {
+  grid-area: search;
+  width: 100%;
+  padding: 12px 0;
+}
+
+header nav .nav-search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+header nav .nav-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid var(--dark-color);
+  border-radius: 2px;
+  font-size: var(--body-font-size-s);
 }

@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-08-30",
+  "sources": [
+    "https://github.com/adobe/aem-block-collection (blocks/)",
+    "https://github.com/aemsites/da-block-collection (blocks/)",
+    "https://github.com/adobe-rnd/aem-boilerplate-xwalk (blocks/)",
+    "https://www.aem.live/developer/block-collection"
+  ],
+  "blocks": [
+    { "name": "accordion", "description": "Togglable descriptive content panels." },
+    { "name": "cards", "description": "List of cards with or without images and links." },
+    { "name": "carousel", "description": "Image transition display with optional text." },
+    { "name": "columns", "description": "Responsive multi-column layout, equal widths." },
+    { "name": "embed", "description": "Social/third-party media embed." },
+    { "name": "footer", "description": "Simple extensible footer block." },
+    { "name": "form", "description": "Input control grouping. Deprecated." },
+    { "name": "fragment", "description": "Cross-page content sharing." },
+    { "name": "header", "description": "Flexible header and navigation." },
+    { "name": "hero", "description": "Hero treatment at the top of a page." },
+    { "name": "modal", "description": "Popup overlay." },
+    { "name": "quote", "description": "Highlighted quotation or passage." },
+    { "name": "search", "description": "Site content search." },
+    { "name": "table", "description": "Tabular data." },
+    { "name": "tabs", "description": "Multi-panel information segmentation." },
+    { "name": "video", "description": "Direct video playback." }
+  ],
+  "absent_types_checked": {
+    "note": "Searched both Adobe collections for these; no block exists for any of them. This is the evidence behind the three 'new' verdicts.",
+    "missing": ["stats", "statistics", "counter", "metrics", "key figures", "feature / media-and-text", "callout", "disclaimer", "fine print", "teaser"]
+  }
+}

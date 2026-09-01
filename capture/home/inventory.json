@@ -1,0 +1,190 @@
+[
+  {
+    "id": "cmp-001",
+    "type_guess": "nav",
+    "confidence": 0.95,
+    "needs_review": false,
+    "label": "Global header \u2014 logo, 4 top-level links each with a second-level dropdown, search toggle, mobile hamburger drawer",
+    "source_selector": "#cmp-desktop-mobile-ppm-header-container",
+    "semantic_signal": "<header class=\"cmp-header\"> + <nav class=\"cmp-nav\"> with nested <ul class=\"cmp-nav-sec__list\">",
+    "notes": "Two-level nav. Desktop = hover/click dropdowns; mobile = separate #ppm-nav-mobile-* UL tree with accordion behaviour. Search opens an inline panel (#search-container). Sourced from an AEM Experience Fragment, so in EDS this belongs in /nav document, not the page.",
+    "bounding_rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 106
+    },
+    "screenshot_crop": "capture/home/crops/cmp-001.png",
+    "html_snippet": "capture/home/crops/cmp-001.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ]
+  },
+  {
+    "id": "cmp-002",
+    "type_guess": "hero",
+    "confidence": 0.93,
+    "needs_review": false,
+    "label": "Hero \u2014 full-bleed image with overlaid white title card, H1 + sky-blue underline rule",
+    "source_selector": "#hero-737b2538cb",
+    "semantic_signal": "class=\"cmp-hero\" with __content (h1) + __image children; first section under <main>, single non-repeating slide",
+    "notes": "No body copy or CTA in this instance \u2014 title only. White card is left-offset and vertically centred over the image; on mobile the card stacks below the image. Accent rule uses #5BC2E7.",
+    "bounding_rect": {
+      "x": 0,
+      "y": 106,
+      "w": 1440,
+      "h": 414
+    },
+    "screenshot_crop": "capture/home/crops/cmp-002.png",
+    "html_snippet": "capture/home/crops/cmp-002.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ]
+  },
+  {
+    "id": "cmp-003",
+    "type_guess": "columns",
+    "confidence": 1.0,
+    "needs_review": false,
+    "label": "Intro statement \u2014 33/66 two-column text: bold left heading, right paragraph",
+    "source_selector": "#container-e310b06185",
+    "semantic_signal": "class fragment cmp-container-columns-33-66; two .cmp-text children, no repetition, no interactivity",
+    "notes": "AMBIGUOUS. Content-wise this is one heading + one paragraph, which the taxonomy says is NOT a component. But the 33/66 side-by-side layout can't be expressed in EDS default content flow, so it needs the columns block. Recommend keeping it as a columns entry; drop it only if you'd rather stack heading-over-paragraph and lose the split layout. Stacks to single column below 900px.",
+    "bounding_rect": {
+      "x": 15,
+      "y": 565,
+      "w": 1410,
+      "h": 205
+    },
+    "screenshot_crop": "capture/home/crops/cmp-003.png",
+    "html_snippet": "capture/home/crops/cmp-003.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "resolution": "CONFIRMED (default applied, not explicitly answered): keep as columns block to preserve the 33/66 split. Reuses boilerplate columns block."
+  },
+  {
+    "id": "cmp-004",
+    "type_guess": "stats",
+    "confidence": 1.0,
+    "needs_review": false,
+    "label": "Firm statistics band \u2014 teal panel; row of 4 big stats, horizontal rule, then a labelled row of 4 more stats",
+    "source_selector": "#container-46bf4be5ed",
+    "semantic_signal": "8 repeated .cmp-numbertext siblings (prestat icon + number + poststat icon + stat label) in two cmp-container-columns-4-equal groups, split by .cmp-separator",
+    "notes": "No taxonomy type fits \u2014 it is a stat/metric band, not a card-grid (no images, no links) and not a cta-banner (no button). Proposing a NEW 'stats' block. Two internal variants: (a) plain 4-up row, (b) row preceded by a left-hand label 'OUR INVESTMENT PROFESSIONALS:' at 33/66. Numbers support a prefix ($) and suffix (%) glyph and a footnote <sup>. Teal #004F59, serif CenturyStd numerals at 112px desktop. Full-width bleed. Stacks 1-up on mobile.",
+    "bounding_rect": {
+      "x": 0,
+      "y": 815,
+      "w": 1440,
+      "h": 493
+    },
+    "screenshot_crop": "capture/home/crops/cmp-004.png",
+    "html_snippet": "capture/home/crops/cmp-004.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "resolution": "CONFIRMED by user: build a NEW \"stats\" block. Must support number + label rows, $ prefix / % suffix glyphs, footnote <sup>, an optional left-hand row label, a divider between groups, and the full-bleed teal theme."
+  },
+  {
+    "id": "cmp-005",
+    "type_guess": "card-grid",
+    "confidence": 0.9,
+    "needs_review": false,
+    "label": "Our Insights \u2014 section title + 3-up grid of linked cards (image, eyebrow, title)",
+    "source_selector": "#container-02d97cc02a",
+    "semantic_signal": "3 similarly-shaped .staticcard/.cmp-card siblings in cmp-container-columns-3-equal, each an <a> wrapping image + pretitle + title",
+    "notes": "Whole card is a single link. Card body = eyebrow ('CIO Letter' / 'Quarterly Insights') + bold uppercase title. No description or explicit CTA on this instance. Section heading 'Our Insights' is serif. 3-up desktop, 1-up mobile.",
+    "bounding_rect": {
+      "x": 15,
+      "y": 1309,
+      "w": 1410,
+      "h": 750
+    },
+    "screenshot_crop": "capture/home/crops/cmp-005.png",
+    "html_snippet": "capture/home/crops/cmp-005.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ]
+  },
+  {
+    "id": "cmp-006",
+    "type_guess": "feature",
+    "confidence": 1.0,
+    "needs_review": false,
+    "label": "Our Advantage \u2014 gray band, image left / heading + bullet list + green CTA button right",
+    "source_selector": "#container-f6c1af7532",
+    "semantic_signal": "single .cmp-card with modifier .cmp-card--left; __image + __content-wrapper (pre-title, description, action-container with one button)",
+    "notes": "Sits between cta-banner and a media-and-text 'feature' block. It has one prominent action ('OUR STORY', #008578) which argues cta-banner, but also a 50/50 image split and a bulleted body, which a plain cta-banner block usually will not carry. Confirm whether to treat this as a cta-banner variant or its own feature/media block. Image is flush to the left page edge (breaks the container gutter). Stacks image-over-text on mobile.",
+    "bounding_rect": {
+      "x": 15,
+      "y": 2058,
+      "w": 1410,
+      "h": 483
+    },
+    "screenshot_crop": "capture/home/crops/cmp-006.png",
+    "html_snippet": "capture/home/crops/cmp-006.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "resolution": "CONFIRMED by user: build a NEW \"feature\" media+text block. Image one side / rich text (heading, bullet list, CTA button) the other; left-right side option; gray or white theme; image flush to page edge."
+  },
+  {
+    "id": "cmp-007",
+    "type_guess": "disclaimer",
+    "confidence": 1.0,
+    "needs_review": false,
+    "label": "Legal disclaimer \u2014 two fine-print paragraphs on a gray band",
+    "source_selector": "#experiencefragment-4e37b06b88",
+    "semantic_signal": "two .cmp-text paragraphs, no repetition, no interactivity",
+    "notes": "Proposed as NOT a component per taxonomy ('a single heading + paragraph ... stays as plain content'). In EDS this is default content in a section with a style like 'disclaimer' (small type, gray background) applied via Section Metadata. Listed here only so you can veto the exclusion.",
+    "bounding_rect": {
+      "x": 15,
+      "y": 2586,
+      "w": 1410,
+      "h": 108
+    },
+    "screenshot_crop": "capture/home/crops/cmp-007.png",
+    "html_snippet": "capture/home/crops/cmp-007.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "resolution": "CONFIRMED by user, OVERRIDING the proposed exclusion: build a NEW small \"disclaimer\" block so the fine-print styling is enforced by the block rather than a section style."
+  },
+  {
+    "id": "cmp-008",
+    "type_guess": "footer",
+    "confidence": 0.95,
+    "needs_review": false,
+    "label": "Global footer \u2014 logo, address list, LinkedIn icon; second row with copyright and policy links",
+    "source_selector": "#experiencefragment-09d99c7816",
+    "semantic_signal": "class=\"cmp-footer\" with __logo / __address / __social / __copyright / __policy regions",
+    "notes": "Two rows. Address is a <ul> rendered inline (street, suite, city, phone). Policy links: Contact Us, Privacy Policy, Terms and Conditions, Social. Sourced from an Experience Fragment, so in EDS this belongs in the /footer document.",
+    "bounding_rect": {
+      "x": 15,
+      "y": 2694,
+      "w": 1410,
+      "h": 160
+    },
+    "screenshot_crop": "capture/home/crops/cmp-008.png",
+    "html_snippet": "capture/home/crops/cmp-008.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ]
+  }
+]

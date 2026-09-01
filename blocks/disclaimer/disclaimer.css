@@ -1,0 +1,41 @@
+.disclaimer {
+  background-color: var(--light-color);
+  padding: 45px var(--content-gutter);
+}
+
+/* the band bleeds the full viewport width while its content stays in the grid */
+main .section > .disclaimer-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.disclaimer .disclaimer-note {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+}
+
+.disclaimer .disclaimer-note + .disclaimer-note {
+  margin-top: 20px;
+}
+
+.disclaimer .disclaimer-note p {
+  margin: 0 0 20px;
+  font-size: var(--body-font-size-xs);
+  line-height: 1.33;
+  color: var(--fine-print-color);
+}
+
+.disclaimer .disclaimer-note p:last-child {
+  margin-bottom: 0;
+}
+
+.disclaimer .disclaimer-note sup {
+  font-size: 0.8em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.disclaimer .disclaimer-note a:any-link {
+  color: var(--fine-print-color);
+  text-decoration: underline;
+}

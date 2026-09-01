@@ -25,3 +25,76 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/*
+ * insights variant — borderless, fixed 3-up grid, square imagery, whole tile
+ * is the click target, and the first paragraph of the body reads as an eyebrow.
+ */
+.cards.insights > ul {
+  grid-template-columns: 1fr;
+  gap: 40px 30px;
+}
+
+.cards.insights > ul > li {
+  border: none;
+  background-color: transparent;
+}
+
+.cards.insights > ul > li img {
+  aspect-ratio: 1 / 1;
+}
+
+.cards.insights .cards-card-link:any-link {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.cards.insights .cards-card-link:hover {
+  text-decoration: none;
+}
+
+.cards.insights .cards-card-body {
+  margin: 30px 0 0;
+}
+
+.cards.insights .cards-card-body > * {
+  margin: 0;
+}
+
+/* eyebrow */
+.cards.insights .cards-card-body > *:first-child {
+  margin-bottom: 10px;
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-m);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* card title */
+.cards.insights .cards-card-body > *:nth-child(2) {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cards.insights .cards-card-link:hover .cards-card-body > *:not(:first-child) {
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  .cards.insights > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards.insights > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

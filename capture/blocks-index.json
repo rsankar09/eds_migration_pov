@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-08-30",
+  "repo": "/Users/a10359614/apps/source/eds/eds_migration_pov",
+  "blocks": [
+    {
+      "name": "cards",
+      "description": "List of cards with optional image and body text.",
+      "decorate_shape": "Converts block rows to <ul>/<li>. Per row, each child div is classed cards-card-image (if it holds only a picture) or cards-card-body. Rewrites images through createOptimizedPicture at 750px.",
+      "example_markup": "| Cards |\n| --- |\n| <picture> | <h3>Title</h3><p>Body</p> |\n| <picture> | <h3>Title</h3><p>Body</p> |",
+      "css_notes": "grid auto-fill minmax(257px,1fr), gap 24px, 1px #dadada border per card, img aspect-ratio 4/3 object-fit cover.",
+      "has_model": true
+    },
+    {
+      "name": "columns",
+      "description": "Responsive multi-column layout.",
+      "decorate_shape": "Adds columns-N-cols class from first row's child count. Tags picture-only columns as columns-img-col so they order first on mobile.",
+      "example_markup": "| Columns |\n| --- |\n| col one content | col two content |",
+      "css_notes": "Flex column on mobile; at >=900px flex row with flex:1 on every column (EQUAL widths only) and gap 24px.",
+      "has_model": true
+    },
+    {
+      "name": "hero",
+      "description": "Hero treatment at the top of a page.",
+      "decorate_shape": "NO JS AT ALL — hero.js is an empty file. Purely CSS over the default content flow (a picture plus an h1).",
+      "example_markup": "| Hero |\n| --- |\n| <picture> |\n| # Heading |",
+      "css_notes": "position:relative, min-height 300px, padding 40/24. picture is absolutely positioned at inset:0 with z-index:-1 so it sits behind. h1 is max-width 1200px centred and coloured var(--background-color) (i.e. white-on-image).",
+      "has_model": true
+    },
+    {
+      "name": "header",
+      "description": "Flexible header and navigation.",
+      "decorate_shape": "Loads the /nav fragment. Splits it into nav-brand / nav-sections / nav-tools. Builds a hamburger button below 900px, toggles aria-expanded on drop-down sections, closes on Escape and focus loss.",
+      "example_markup": "Authored in a separate /nav document: a 3-section document (brand, sections, tools).",
+      "css_notes": "Fixed-height nav, hamburger below 900px, hover/click dropdowns above 900px.",
+      "has_model": false
+    },
+    {
+      "name": "footer",
+      "description": "Simple extensible footer.",
+      "decorate_shape": "Loads the /footer fragment and appends its children into a single wrapper div. No structural decoration beyond that.",
+      "example_markup": "Authored in a separate /footer document.",
+      "css_notes": "Minimal — inherits default content flow styling.",
+      "has_model": false
+    },
+    {
+      "name": "fragment",
+      "description": "Include another document's content inline.",
+      "decorate_shape": "Fetches <path>.plain.html, decorates it as a main, rebases media URLs, returns the root. Utility block used by header/footer.",
+      "example_markup": "| Fragment |\n| --- |\n| /path/to/fragment |",
+      "has_model": true
+    }
+  ]
+}

@@ -1,36 +1,68 @@
 /* stylelint-disable max-line-length */
+
+/*
+ * PPM America uses two licensed families:
+ *   - Azo Sans (Light 300 / Regular 400 / Medium 500 / Bold 700) for UI and body copy
+ *   - Century Std Book for display headings and statistic numerals
+ *
+ * The woff2 files are NOT in this repo — they are licensed webfonts and cannot be
+ * redistributed here. Drop the licensed files into /fonts and uncomment the matching
+ * @font-face blocks below. Until then the fallback faces at the bottom of this file
+ * render the site in Helvetica/Arial and Georgia, which are metrically adjusted to
+ * keep line lengths close to the original.
+ */
+
+/*
 @font-face {
-  font-family: roboto-condensed;
+  font-family: azo-sans;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 300;
   font-display: swap;
-  src: url('../fonts/roboto-condensed-bold.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('../fonts/azo-sans-light.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: roboto;
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('../fonts/roboto-bold.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../fonts/roboto-medium.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: roboto;
+  font-family: azo-sans;
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/roboto-regular.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('../fonts/azo-sans-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: azo-sans;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/azo-sans-medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: azo-sans;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/azo-sans-bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: century-std;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/century-std-book.woff2') format('woff2');
+}
+*/
+
+/* metric-adjusted fallbacks, active until the licensed files land in /fonts */
+@font-face {
+  font-family: azo-sans-fallback;
+  size-adjust: 97.5%;
+  src: local('Helvetica'), local('Arial');
+}
+
+@font-face {
+  font-family: century-std-fallback;
+  size-adjust: 95%;
+  src: local('Georgia'), local('Times New Roman');
 }

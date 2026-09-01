@@ -5,16 +5,76 @@ footer {
 
 footer .footer > div {
   margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  max-width: var(--content-max-width);
+  padding: 30px var(--content-gutter);
 }
 
 footer .footer p {
   margin: 0;
 }
 
+/*
+ * Two authored sections: the first carries the logo, address and social link,
+ * the second the copyright line and the policy links. Each becomes a row.
+ */
+footer .footer .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: none;
+  padding: 0;
+}
+
+footer .footer > div > div + div {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgb(0 0 0 / 10%);
+}
+
+footer .footer img {
+  width: auto;
+  max-height: 24px;
+}
+
+/* address renders as an inline run of lines rather than a bulleted list */
+footer .footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer a:any-link {
+  color: var(--text-color);
+}
+
+footer .footer a:hover {
+  color: var(--brand-green);
+}
+
 @media (width >= 900px) {
   footer .footer > div {
-    padding: 40px 32px 24px;
+    padding: 30px var(--content-gutter);
+  }
+
+  footer .footer .default-content-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  /* the address run sits next to the logo and takes the free space */
+  footer .footer .default-content-wrapper > ul {
+    flex: 1;
+    justify-content: center;
+  }
+
+  footer .footer > div > div + div {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 12px;
   }
 }

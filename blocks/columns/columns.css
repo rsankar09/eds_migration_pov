@@ -3,6 +3,19 @@
   flex-direction: column;
 }
 
+/* the thirds variant's lead-in heading reads as a section label, whatever its level */
+.columns.thirds h1,
+.columns.thirds h2,
+.columns.thirds h3 {
+  margin: 0 0 20px;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .columns img {
   width: 100%;
 }
@@ -29,5 +42,20 @@
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+
+  /* thirds variant — first column takes a third, the rest share the remainder */
+  .columns.thirds > div {
+    align-items: start;
+    gap: 30px;
+  }
+
+  .columns.thirds > div > div:first-child {
+    flex: 0 0 calc(33.333% - 20px);
+  }
+
+  /* hold the prose to a readable measure rather than the full column */
+  .columns.thirds > div > div:last-child {
+    max-width: 620px;
   }
 }

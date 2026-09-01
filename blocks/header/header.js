@@ -109,6 +109,47 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 /**
+ * Adds the search affordance to the nav tools: a toggle button and a collapsed
+ * panel holding the query field. The panel is inert until opened.
+ * @param {Element} nav The nav element
+ */
+function buildSearch(nav) {
+  let navTools = nav.querySelector('.nav-tools');
+  if (!navTools) {
+    navTools = document.createElement('div');
+    navTools.className = 'nav-tools';
+    nav.append(navTools);
+  }
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'nav-search-toggle';
+  toggle.setAttribute('aria-label', 'Open search');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'nav-search');
+
+  const panel = document.createElement('div');
+  panel.className = 'nav-search-panel';
+  panel.id = 'nav-search';
+  panel.hidden = true;
+  panel.innerHTML = `<form class="nav-search-form" action="/search" role="search">
+      <label class="nav-search-label" for="nav-search-input">Search</label>
+      <input id="nav-search-input" class="nav-search-input" type="search" name="q" placeholder="Search" />
+    </form>`;
+
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+    toggle.setAttribute('aria-label', expanded ? 'Open search' : 'Close search');
+    panel.hidden = expanded;
+    if (!expanded) panel.querySelector('input').focus();
+  });
+
+  navTools.append(toggle);
+  nav.append(panel);
+}
+
+/**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
@@ -150,6 +191,8 @@ export default async function decorate(block) {
       });
     });
   }
+
+  buildSearch(nav);
 
   // hamburger for mobile
   const hamburger = document.createElement('div');

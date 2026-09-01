@@ -38,5 +38,17 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "disclaimer",
+    "components": [
+      "disclaimer-note"
+    ]
+  },
+  {
+    "id": "stats",
+    "components": [
+      "stat"
+    ]
   }
 ]

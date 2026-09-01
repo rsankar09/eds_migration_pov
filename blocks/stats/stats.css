@@ -1,0 +1,129 @@
+.stats {
+  background-color: var(--brand-teal);
+  color: var(--lighter-color);
+  padding: 45px var(--content-gutter);
+}
+
+/* the band bleeds the full viewport width while its content stays in the grid */
+main .section > .stats-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.stats .stats-group + .stats-group {
+  margin-top: 40px;
+  border-top: 2px solid var(--brand-rule);
+  padding-top: 40px;
+}
+
+.stats .stats-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+}
+
+.stats .stats-item {
+  text-align: center;
+}
+
+.stats .stats-value {
+  margin: 0;
+  font-family: var(--display-font-family);
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--lighter-color);
+}
+
+.stats .stats-affix {
+  font-size: 0.62em;
+  vertical-align: 0.35em;
+}
+
+.stats .stats-label {
+  margin: 6px 0 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--lighter-color);
+}
+
+.stats .stats-label sup {
+  font-size: 0.6em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.stats .stats-group-label {
+  margin: 0 0 24px;
+  font-family: var(--body-font-family);
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--lighter-color);
+  text-align: center;
+}
+
+/* a labelled group sets its numerals smaller than the headline group */
+.stats .stats-group-labelled .stats-value {
+  font-size: 48px;
+}
+
+@media (width >= 600px) {
+  .stats .stats-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats .stats-value {
+    font-size: 96px;
+  }
+
+  .stats .stats-group-labelled .stats-value {
+    font-size: 60px;
+  }
+}
+
+@media (width >= 900px) {
+  .stats {
+    padding: 45px var(--content-gutter);
+  }
+
+  .stats .stats-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stats .stats-value {
+    font-size: 112px;
+  }
+
+  .stats .stats-group-labelled {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 30px;
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+  }
+
+  .stats .stats-group-labelled .stats-group-label {
+    margin: 0;
+    text-align: left;
+  }
+
+  .stats .stats-group-labelled .stats-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stats .stats-group-labelled .stats-value {
+    font-size: 70px;
+  }
+}

@@ -1,0 +1,203 @@
+[
+  {
+    "component_id": "cmp-001",
+    "component_label": "Global header / two-level nav",
+    "verdict": "extend",
+    "target_block": "header",
+    "candidates": [
+      {
+        "block_name": "header",
+        "source": "internal",
+        "score": 0.74,
+        "rationale": "Same job and same architecture: loads a /nav fragment, splits it into brand/sections/tools, builds a hamburger below 900px and toggles aria-expanded dropdowns above it. PPM's two-level link tree maps directly onto nav-sections.",
+        "gaps": [
+          "Search: PPM has a magnifier that opens an inline search panel. Boilerplate has a nav-tools slot but no search UI in it.",
+          "Sticky header: PPM's header container carries .header-sticky and stays pinned on scroll.",
+          "Second-level dropdown styling: PPM uses a full-width panel of secondary links; boilerplate renders a plain nested list.",
+          "Brand mark and type scale: PPM wordmark plus letter-spaced uppercase AzoSans links."
+        ]
+      },
+      { "block_name": "header", "source": "public", "score": 0.74, "rationale": "adobe/aem-block-collection header is the same file the repo already vendors — no additional capability to gain by switching." },
+      { "block_name": "search", "source": "public", "score": 0.30, "rationale": "Could supply the search panel behaviour to fill the gap above, but it is a page-level search block, not a nav component. Consider borrowing its query logic only." }
+    ],
+    "authoring_target": "/nav document (Experience Fragment in the source, so it must not live on the homepage)"
+  },
+  {
+    "component_id": "cmp-002",
+    "component_label": "Hero with overlaid white title card",
+    "verdict": "extend",
+    "target_block": "hero",
+    "candidates": [
+      {
+        "block_name": "hero",
+        "source": "internal",
+        "score": 0.62,
+        "rationale": "Right semantic slot — first section, one image plus one h1, no repetition. But the existing implementation is CSS-only (hero.js is an empty file) and assumes white text sitting directly on the image.",
+        "gaps": [
+          "Overlay card: PPM puts the h1 inside an opaque white panel offset from the left edge and vertically centred, not text directly on the photo.",
+          "Accent rule: a #5BC2E7 horizontal rule sits under the h1 inside the card.",
+          "Text colour: boilerplate forces var(--background-color) (white); PPM's card text is dark #25282A on white.",
+          "Mobile behaviour: PPM stacks the card below the image at 375px instead of overlaying it.",
+          "Serif display type: h1 is CenturyStd-Book, not the body sans."
+        ]
+      },
+      { "block_name": "hero", "source": "public", "score": 0.62, "rationale": "Identical to the vendored copy." },
+      { "block_name": "columns", "source": "internal", "score": 0.28, "rationale": "Could fake an image/text split, but loses the overlay and the full-bleed treatment." }
+    ],
+    "authoring_target": "homepage, first section"
+  },
+  {
+    "component_id": "cmp-003",
+    "component_label": "Intro statement, 33/66 heading + paragraph",
+    "verdict": "extend",
+    "target_block": "columns",
+    "candidates": [
+      {
+        "block_name": "columns",
+        "source": "internal",
+        "score": 0.85,
+        "rationale": "Structurally exact: one row, two text cells, stacks on mobile and splits on desktop. The only mismatch is width distribution.",
+        "gaps": [
+          "Unequal ratio: columns.css hard-codes flex:1 on every column, giving 50/50. PPM needs 33/66. Needs a `columns-33-66` variant (or a generic ratio variant)."
+        ]
+      },
+      { "block_name": "columns", "source": "public", "score": 0.85, "rationale": "Same as vendored copy; the equal-width limitation is present upstream too." },
+      { "block_name": "table", "source": "public", "score": 0.15, "rationale": "Wrong semantics — this is layout, not tabular data." }
+    ],
+    "authoring_target": "homepage",
+    "note": "Verdict follows the recommended default; this entry was not explicitly ruled on. If you would rather it stack as plain content, drop this entry and the extend disappears."
+  },
+  {
+    "component_id": "cmp-004",
+    "component_label": "Teal firm-statistics band",
+    "verdict": "new",
+    "target_block": "stats",
+    "human_decision": "CONFIRMED by user — build a new `stats` block.",
+    "candidates": [
+      { "block_name": "cards", "source": "internal", "score": 0.34, "rationale": "Shares the repeated-siblings-in-a-grid shape, but cards assumes an image plus prose body per item and paints a bordered white card. A stat is a numeral plus a caption with no image and no link — reusing cards would mean overriding essentially all of its CSS." },
+      { "block_name": "columns", "source": "internal", "score": 0.30, "rationale": "Could lay out 4-up, but gives authors no number/label semantics, no affix handling, and no divider row." },
+      { "block_name": "table", "source": "public", "score": 0.22, "rationale": "Data-shaped but renders as an actual data table; wrong presentation entirely." }
+    ],
+    "new_block_contract": {
+      "name": "stats",
+      "rows": "one row per stat: cell 1 = the number (may include a leading $ or trailing %), cell 2 = the label (may include a footnote marker)",
+      "variants": [
+        "stats (default): full-bleed teal #004F59 band, N-up row of numerals",
+        "a group may be preceded by a left-hand label cell (e.g. 'OUR INVESTMENT PROFESSIONALS:') rendered at 33/66",
+        "consecutive groups separated by a hairline rule"
+      ],
+      "style_tokens": {
+        "background": "#004F59",
+        "numeral_font": "CenturyStd-Book, serif",
+        "numeral_size_desktop": "112px (70px for the secondary group)",
+        "label": "AzoSans-Bold, uppercase, white, letter-spaced",
+        "affixes": "$ prefix and % suffix rendered smaller and baseline-aligned to the numeral top",
+        "footnote": "<sup> after the label"
+      },
+      "responsive": "4-up at >=900px, 2-up at 600-899px, 1-up below 600px"
+    },
+    "authoring_target": "homepage"
+  },
+  {
+    "component_id": "cmp-005",
+    "component_label": "Our Insights — 3-up linked card grid",
+    "verdict": "extend",
+    "target_block": "cards",
+    "candidates": [
+      {
+        "block_name": "cards",
+        "source": "internal",
+        "score": 0.72,
+        "rationale": "Correct block family — repeated image + text items in a responsive grid, and the existing decorate() already sorts image cells from body cells and runs createOptimizedPicture. PPM's cards are a visual variant of the same thing.",
+        "gaps": [
+          "Whole-card link: PPM wraps the entire card in a single <a>. Boilerplate leaves links inline in the body.",
+          "Eyebrow line: a pretitle ('CIO Letter', 'Quarterly Insights') above the title, small uppercase, needs its own styling hook.",
+          "Borderless treatment: PPM cards have no 1px #dadada border and no card background.",
+          "Fixed 3-up grid: boilerplate uses auto-fill minmax(257px,1fr); PPM is exactly 3 across on desktop, 1 on mobile.",
+          "Image ratio: PPM images are not 4/3."
+        ]
+      },
+      { "block_name": "cards", "source": "public", "score": 0.72, "rationale": "Same as vendored copy." },
+      { "block_name": "carousel", "source": "public", "score": 0.20, "rationale": "PPM shows all three at once with no slider affordance; carousel would add unused interaction." }
+    ],
+    "authoring_target": "homepage. The section heading 'Our Insights' stays as default content above the block."
+  },
+  {
+    "component_id": "cmp-006",
+    "component_label": "Our Advantage — image left, bullets + CTA right",
+    "verdict": "new",
+    "target_block": "feature",
+    "human_decision": "CONFIRMED by user — build a new `feature` media+text block.",
+    "candidates": [
+      { "block_name": "columns", "source": "internal", "score": 0.55, "rationale": "Closest existing shape (image cell beside a text cell) and it already promotes picture-only cells. But it cannot bleed the image to the page edge, has no theme band, and gives the CTA no button treatment beyond the global link styling." },
+      { "block_name": "cards", "source": "internal", "score": 0.26, "rationale": "A single card, not a grid; the whole grid apparatus is dead weight." },
+      { "block_name": "hero", "source": "internal", "score": 0.20, "rationale": "Wrong altitude — this is a mid-page feature, not a page-opening hero." }
+    ],
+    "new_block_contract": {
+      "name": "feature",
+      "rows": "single row, two cells: one media cell (picture), one content cell (heading + rich text/list + optional CTA link)",
+      "variants": [
+        "feature (default): media left, content right",
+        "feature (reversed): media right, content left",
+        "feature (gray): #F4F4F4 band background"
+      ],
+      "style_tokens": {
+        "band_background": "#F4F4F4",
+        "heading": "AzoSans, uppercase, letter-spaced, #25282A",
+        "cta_button": "background #008578, white uppercase AzoSans-Bold, square corners",
+        "media": "flush to the page edge on the media side, breaking the container gutter"
+      },
+      "responsive": "side-by-side at >=900px, media stacked above content below that"
+    },
+    "authoring_target": "homepage"
+  },
+  {
+    "component_id": "cmp-007",
+    "component_label": "Legal disclaimer fine print",
+    "verdict": "new",
+    "target_block": "disclaimer",
+    "human_decision": "CONFIRMED by user, OVERRIDING the proposed exclusion — build a small `disclaimer` block so the fine-print styling is enforced by the block rather than by a section style.",
+    "candidates": [
+      { "block_name": "quote", "source": "public", "score": 0.18, "rationale": "Also a text-only presentational block, but carries quotation semantics and attribution that are wrong here." },
+      { "block_name": "columns", "source": "internal", "score": 0.12, "rationale": "No layout split needed; would add structure for nothing." },
+      { "block_name": "(default content + section style)", "source": "n/a", "score": 0.60, "rationale": "The alternative that was considered and rejected: plain paragraphs in a section with a `disclaimer` Section Metadata style. Zero new code, but styling is enforced by convention rather than by the block." }
+    ],
+    "new_block_contract": {
+      "name": "disclaimer",
+      "rows": "one row per paragraph of fine print (or a single rich-text cell with multiple paragraphs)",
+      "variants": ["disclaimer (default): gray band"],
+      "style_tokens": {
+        "background": "#F4F4F4",
+        "font_size": "12px",
+        "color": "#6A737B",
+        "line_height": "1.5",
+        "supports": "<sup> footnote markers that pair with the stats block"
+      },
+      "responsive": "single column at every breakpoint; padding tightens below 600px"
+    },
+    "authoring_target": "homepage"
+  },
+  {
+    "component_id": "cmp-008",
+    "component_label": "Global footer",
+    "verdict": "extend",
+    "target_block": "footer",
+    "candidates": [
+      {
+        "block_name": "footer",
+        "source": "internal",
+        "score": 0.68,
+        "rationale": "Same architecture — content authored in a /footer document and loaded as a fragment. The boilerplate block does no structural decoration, so all of PPM's layout has to come from CSS over the authored content.",
+        "gaps": [
+          "Two-row layout: row 1 = logo / address / social, row 2 = copyright / policy links. Boilerplate dumps everything into one wrapper.",
+          "Inline address list: PPM renders a <ul> of address lines horizontally on desktop, stacked on mobile.",
+          "Social icon: LinkedIn mark right-aligned in row 1.",
+          "Policy link row: right-aligned inline list (Contact Us, Privacy Policy, Terms and Conditions, Social)."
+        ]
+      },
+      { "block_name": "footer", "source": "public", "score": 0.68, "rationale": "Same as vendored copy." },
+      { "block_name": "columns", "source": "internal", "score": 0.25, "rationale": "Could be nested inside the footer document to get the row layout, but adds an authoring layer for something footer CSS should own." }
+    ],
+    "authoring_target": "/footer document (Experience Fragment in the source, so it must not live on the homepage)"
+  }
+]
