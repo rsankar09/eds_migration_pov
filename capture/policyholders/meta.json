@@ -1,0 +1,16 @@
+{
+  "url": "https://commonwealth.globalatlantic.com/policyholders",
+  "final_url": "https://commonwealth.globalatlantic.com/policyholders",
+  "http_status": 200,
+  "crawled_at": "2026-09-05T00:48:16.876Z",
+  "breakpoints": [
+    375,
+    768,
+    1440
+  ],
+  "page_title": "Policyholders | commonwealth",
+  "consent_banner_dismissed": true,
+  "js_errors": [],
+  "body_text_length": 1271,
+  "truncated": false
+}
