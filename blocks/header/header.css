@@ -9,23 +9,25 @@ header .nav-wrapper {
 header nav {
   box-sizing: border-box;
   display: grid;
+
+  /* logo leads, hamburger sits right; `tools` is kept so nothing auto-places */
   grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
+    'brand tools hamburger' auto
+    'sections sections sections' 1fr / 1fr auto auto;
   align-items: center;
-  gap: 0 24px;
+  gap: 0;
   margin: auto;
-  max-width: 1248px;
+  max-width: var(--content-max-width);
   height: var(--nav-height);
-  padding: 0 24px;
+  padding: 0 var(--content-gutter);
   font-family: var(--body-font-family);
 }
 
 header nav[aria-expanded='true'] {
   grid-template:
-    'hamburger brand' var(--nav-height)
+    'brand hamburger' var(--nav-height)
     'sections sections' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
+    'tools tools' var(--nav-height) / 1fr auto;
   overflow-y: auto;
   min-height: 100dvh;
 }
@@ -36,11 +38,24 @@ header nav[aria-expanded='true'] {
   }
 
   header nav {
+    /*
+     * Logo row on top, navy menu bar beneath. Flex rather than grid: the
+     * boilerplate still assigns grid-area: hamburger/tools to elements this
+     * template has no areas for, and auto-placement pushed the brand row
+     * out of the header box.
+     */
     display: flex;
-    justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 36px;
+    max-width: var(--content-max-width);
+    padding: 14px var(--content-gutter) 0;
+  }
+
+  header nav .nav-brand,
+  header nav .nav-sections {
+    flex: 0 0 auto;
   }
 
   header nav[aria-expanded='true'] {
@@ -149,8 +164,17 @@ header .nav-brand {
 }
 
 header nav .nav-brand img {
-  width: 128px;
-  height: auto;
+  width: auto;
+
+  /* below 900px the logo shares its row with the hamburger, so cap it */
+  max-width: 245px;
+  max-height: 90px;
+}
+
+@media (width >= 900px) {
+  header nav .nav-brand img {
+    max-width: 100%;
+  }
 }
 
 /* sections */
@@ -170,11 +194,12 @@ header nav[aria-expanded='true'] .nav-sections {
 header nav .nav-sections ul {
   list-style: none;
   padding-left: 0;
-  font-size: var(--body-font-size-s);
+  margin: 0;
+  font-size: var(--body-font-size-m);
 }
 
 header nav .nav-sections ul > li {
-  font-weight: 500;
+  font-weight: 700;
 }
 
 header nav .nav-sections ul > li > ul {
@@ -269,4 +294,43 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* navy menu bar */
+@media (width >= 900px) {
+  header nav .nav-sections {
+    background-color: var(--brand-navy);
+
+    /*
+     * The boilerplate sets flex: 1 1 auto later in this file, which stretched
+     * the bar to fill the header. Keep it at its natural height.
+     */
+    flex: 0 0 auto;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    flex: 1;
+    text-align: center;
+    padding: 7px 0;
+    line-height: 12px;
+  }
+
+  /* hairline separators between items, matching the source's divider rules */
+  header nav .nav-sections .default-content-wrapper > ul > li + li {
+    border-left: 1px solid rgb(255 255 255 / 45%);
+  }
+
+  header nav .nav-sections a:any-link {
+    color: var(--background-color);
+  }
+
+  header nav .nav-sections a:hover {
+    color: var(--background-color);
+    text-decoration: underline;
+  }
 }

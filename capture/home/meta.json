@@ -1,0 +1,16 @@
+{
+  "url": "https://commonwealth.globalatlantic.com/",
+  "final_url": "https://commonwealth.globalatlantic.com/",
+  "http_status": 200,
+  "crawled_at": "2026-09-04T20:13:20.192Z",
+  "breakpoints": [
+    375,
+    768,
+    1440
+  ],
+  "page_title": "Commonwealth Annuity and Life Insurance Company | commonwealth",
+  "consent_banner_dismissed": true,
+  "js_errors": [],
+  "body_text_length": 451,
+  "truncated": false
+}

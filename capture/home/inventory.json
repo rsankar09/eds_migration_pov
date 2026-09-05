@@ -1,0 +1,120 @@
+[
+  {
+    "id": "cmp-001",
+    "type_guess": "nav",
+    "confidence": 0.92,
+    "needs_review": false,
+    "label": "Global header \u2014 logo above a full-width navy menu bar with 6 items; hamburger below 900px",
+    "source_selector": "header .region-header",
+    "semantic_signal": "<header> containing a branding block (a.site-logo > img) and #block-mainnavigation with ul.menu; div.menu-icon is the mobile toggle",
+    "notes": "Single-level on this page. Two items (Policyholders, Agents/Brokers) carry Drupal's menu-item--collapsed class, meaning they have children elsewhere in the site, but no submenu markup is rendered here \u2014 so sub-navigation cannot be modelled from the homepage alone. Nav bar background #00457C, links white Helvetica 12px bold, padding 0 40px. Logo 345x90.",
+    "bounding_rect": {
+      "x": 252,
+      "y": 14,
+      "w": 937,
+      "h": 170
+    },
+    "screenshot_crop": "capture/home/crops/cmp-001.png",
+    "html_snippet": "capture/home/crops/cmp-001.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ]
+  },
+  {
+    "id": "cmp-002",
+    "type_guess": "hero",
+    "confidence": 1.0,
+    "needs_review": false,
+    "label": "Banner \u2014 gray login panel (heading + 2 stacked CTA buttons) at 25%, banner image at 75%",
+    "source_selector": ".content-banner-section",
+    "semantic_signal": "Top-of-page section, one row, two cells: .content-top-right (col-md-3, the panel) and .cw-banner-image (col-md-9, the image). No repetition, no interactivity beyond the two links.",
+    "notes": "AMBIGUOUS between hero and a media+CTA feature. It sits at the top of the page like a hero, but the copy is a login prompt rather than a headline, there is no h1 anywhere on the page, and the image is decorative (alt=\"home banner\"). Panel background #B2B2B2, heading 13px bold white, buttons Georgia 16px white on #00457C, 142x37, stacked. Image 709x215. On mobile the panel stacks above the image. Note the source class is `content-top-right` but it renders on the LEFT.",
+    "bounding_rect": {
+      "x": 238,
+      "y": 184,
+      "w": 965,
+      "h": 233
+    },
+    "screenshot_crop": "capture/home/crops/cmp-002.png",
+    "html_snippet": "capture/home/crops/cmp-002.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "resolution": "RESOLVED (agent default, user declined to arbitrate): extend the boilerplate hero with a \"panel\" variant carrying an aside of CTA links beside the image. Keeps it in the hero slot and leaves room for a headline."
+  },
+  {
+    "id": "cmp-003",
+    "type_guess": null,
+    "confidence": 1.0,
+    "needs_review": false,
+    "label": "Brand colour bar \u2014 four 4px segments in blue / mauve / gold / lime directly under the banner",
+    "source_selector": ".content-banner-color",
+    "semantic_signal": "A row of 4 equal columns, each holding an empty <span class=\"banner-bg bgN\"> whose only styling is a background colour and 4px height. No text, no links.",
+    "notes": "By the taxonomy this is a decorative divider and therefore NOT a component. Counter-argument: it is a recurring brand device, it is authored as page structure in the source, and reproducing it with default content is impossible since it is pure empty markup. Colours #80D5FF, #BD84BA, #E6B00F, #B9C21F; segment widths 222/237/237/224 (roughly 25% each).",
+    "bounding_rect": {
+      "x": 238,
+      "y": 421,
+      "w": 965,
+      "h": 4
+    },
+    "screenshot_crop": "capture/home/crops/cmp-003.png",
+    "html_snippet": "capture/home/crops/cmp-003.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "resolution": "RESOLVED (agent default): NOT a block. Rendered as a decorative 4-stop gradient rule on the hero section, so authors get no empty block to misuse."
+  },
+  {
+    "id": "cmp-004",
+    "type_guess": null,
+    "confidence": 1.0,
+    "needs_review": false,
+    "label": "EXCLUDED CANDIDATE \u2014 intro statement, a single Georgia paragraph",
+    "source_selector": ".cw-content-section-fullwidth",
+    "semantic_signal": "One <p> in a full-width wrapper. No heading, no repetition, no interactivity.",
+    "notes": "Proposed as NOT a component per the taxonomy rule on text-only leaves. In EDS this is default content; the distinctive look (Georgia 21px/34px, #868686) belongs in global typography or a section style, not a block. Listed so you can veto the exclusion.",
+    "bounding_rect": {
+      "x": 238,
+      "y": 425,
+      "w": 965,
+      "h": 198
+    },
+    "screenshot_crop": "capture/home/crops/cmp-004.png",
+    "html_snippet": "capture/home/crops/cmp-004.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "resolution": "RESOLVED (agent default): NOT a block. Authored as default content, promoted from <p> to <h1> so the page has a real heading, styled Georgia 21px/34px to match the source."
+  },
+  {
+    "id": "cmp-005",
+    "type_guess": "footer",
+    "confidence": 0.9,
+    "needs_review": false,
+    "label": "Footer \u2014 Disclosures / Privacy Policy links on the left, copyright line",
+    "source_selector": "footer .region-footer",
+    "semantic_signal": "<footer> with p.links (2 anchors separated by a pipe) and p.copy",
+    "notes": "Very small. Links 11px #00447C, copyright 11px #999. The Privacy Policy link points off-domain to gafg.widen.net. Sits in the page's own footer region, so in EDS it belongs in the /footer document.",
+    "bounding_rect": {
+      "x": 238,
+      "y": 623,
+      "w": 965,
+      "h": 39
+    },
+    "screenshot_crop": "capture/home/crops/cmp-005.png",
+    "html_snippet": "capture/home/crops/cmp-005.html",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ]
+  }
+]

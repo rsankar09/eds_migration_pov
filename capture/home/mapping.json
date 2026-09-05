@@ -1,0 +1,66 @@
+[
+  {
+    "component_id": "cmp-001",
+    "component_label": "Global header / single-level nav",
+    "verdict": "extend",
+    "target_block": "header",
+    "candidates": [
+      { "block_name": "header", "source": "internal", "score": 0.80,
+        "rationale": "Same architecture: loads a /nav fragment, splits into brand/sections/tools, hamburger below 900px. The source nav is single-level here, which the block already handles without its dropdown machinery.",
+        "gaps": [
+          "Layout: logo sits ABOVE a full-bleed navy menu bar, not inline beside it. Boilerplate is a single inline row.",
+          "Menu bar: #00457C background spanning the container, white 12px bold links with pipe separators between items.",
+          "Type scale: 12px base rather than the boilerplate's larger nav type."
+        ] },
+      { "block_name": "header", "source": "public", "score": 0.80, "rationale": "Identical to the vendored copy." }
+    ],
+    "authoring_target": "/nav document"
+  },
+  {
+    "component_id": "cmp-002",
+    "component_label": "Banner with login panel",
+    "verdict": "extend",
+    "target_block": "hero",
+    "human_decision": "Agent default (user declined to arbitrate): hero + `panel` variant.",
+    "candidates": [
+      { "block_name": "hero", "source": "internal", "score": 0.58,
+        "rationale": "Right slot (first section, one image, no repetition) but the boilerplate hero overlays white text on a full-bleed image, which is not this layout at all.",
+        "gaps": [
+          "Aside panel: a #B2B2B2 block holding a 13px bold white prompt and two stacked CTA links, beside the image rather than over it.",
+          "25/75 split at >=900px, stacked below that.",
+          "Buttons: Georgia 16px, white on #00457C, square, full panel width (142x37).",
+          "Colour bar: 4-stop decorative rule under the whole banner (cmp-003, folded in here).",
+          "Image is contained at 709x215, not full-bleed behind text."
+        ] },
+      { "block_name": "columns", "source": "internal", "score": 0.50, "rationale": "Could do the two-column split with no new code, but gives no panel band, no fixed 25/75, and no colour bar." }
+    ],
+    "authoring_target": "homepage, first section"
+  },
+  {
+    "component_id": "cmp-005",
+    "component_label": "Footer",
+    "verdict": "extend",
+    "target_block": "footer",
+    "candidates": [
+      { "block_name": "footer", "source": "internal", "score": 0.75,
+        "rationale": "Same architecture — content authored in /footer and loaded as a fragment, no structural decoration, so all layout comes from CSS over authored content. The source footer is tiny, so there is little to reshape.",
+        "gaps": [
+          "Link row: two links separated by a pipe, 11px #00447C.",
+          "Copyright line 11px #999 below the links.",
+          "Much tighter vertical rhythm than the boilerplate's 40px padding."
+        ] },
+      { "block_name": "footer", "source": "public", "score": 0.75, "rationale": "Identical to the vendored copy." }
+    ],
+    "authoring_target": "/footer document"
+  },
+  {
+    "component_id": "cmp-003",
+    "verdict": "no-block",
+    "resolution": "Decorative 4-stop rule rendered by the hero block's CSS. No authoring surface."
+  },
+  {
+    "component_id": "cmp-004",
+    "verdict": "no-block",
+    "resolution": "Default content. Promoted to h1 and styled by global typography."
+  }
+]
