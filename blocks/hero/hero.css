@@ -35,3 +35,112 @@
     padding: 40px 32px;
   }
 }
+
+/*
+ * panel variant — a call-to-action aside beside a contained banner image,
+ * closed by the four-stop brand rule. Stacks panel-over-image below 900px.
+ */
+.hero.panel {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(
+      to right,
+      var(--accent-1) 0 25%,
+      var(--accent-2) 25% 50%,
+      var(--accent-3) 50% 75%,
+      var(--accent-4) 75% 100%
+    ) 1;
+}
+
+.hero.panel .hero-panel {
+  box-sizing: border-box;
+  background-color: var(--panel-color);
+  padding: 20px 15px;
+  color: var(--background-color);
+}
+
+.hero.panel .hero-panel > div {
+  padding: 0 40px;
+}
+
+.hero.panel .hero-panel p {
+  margin: 0 0 25px;
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--background-color);
+}
+
+/* the CTA list renders as a stack of full-width buttons */
+.hero.panel .hero-panel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero.panel .hero-panel li + li {
+  margin-top: 16px;
+}
+
+.hero.panel .hero-panel a:any-link {
+  display: block;
+  background-color: var(--brand-navy);
+  color: var(--background-color);
+  font-family: var(--display-font-family);
+  font-size: var(--heading-font-size-l);
+  line-height: 37px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.hero.panel .hero-panel a:hover {
+  background-color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+.hero.panel .hero-image {
+  line-height: 0;
+}
+
+.hero.panel picture {
+  position: static;
+  display: block;
+}
+
+.hero.panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 709 / 215;
+  object-fit: cover;
+}
+
+@media (width >= 900px) {
+  .hero.panel {
+    flex-direction: row;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .hero.panel .hero-panel {
+    flex: 0 0 25%;
+    padding: 20px 4px 20px 15px;
+  }
+
+  .hero.panel .hero-image {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .hero.panel img {
+    height: 100%;
+    aspect-ratio: auto;
+    min-height: 215px;
+  }
+}
