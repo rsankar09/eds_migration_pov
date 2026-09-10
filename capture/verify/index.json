@@ -1,0 +1,21 @@
+{
+  "crawled_at": "2026-09-10T17:43:54.421Z",
+  "breakpoints": [
+    375,
+    768,
+    1440
+  ],
+  "pages": [
+    {
+      "slug": "imported-render",
+      "url": "http://localhost:3000/agentbrokers/transamerica",
+      "ok": true,
+      "notes": []
+    }
+  ],
+  "templates": {
+    "s68aa2131": [
+      "imported-render"
+    ]
+  }
+}

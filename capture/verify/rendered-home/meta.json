@@ -1,0 +1,30 @@
+{
+  "url": "http://localhost:3000/",
+  "slug": "rendered-home",
+  "page_title": "WE ARE Commonwealth Annuity and Life Insurance Company. WE DELIVER customized reinsurance solutions for insurance companies and sound annuity products for individual investors.",
+  "crawled_at": "2026-09-10T17:32:50.826Z",
+  "breakpoints": [
+    375,
+    768,
+    1440
+  ],
+  "status": 200,
+  "structure_hash": "s5abe0626",
+  "node_count": 67,
+  "counts": {
+    "styled_nodes": 67,
+    "css_rules_matched": 80,
+    "keyframes": 0,
+    "font_faces": 4,
+    "assets": 2,
+    "interactions": 6,
+    "rotators": 0,
+    "css_behaviours": 0,
+    "expanded_toggles": 6,
+    "third_party_excluded": 0
+  },
+  "blocked_stylesheets": [],
+  "console_errors": [],
+  "truncated": false,
+  "notes": []
+}

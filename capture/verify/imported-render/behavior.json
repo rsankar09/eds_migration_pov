@@ -1,0 +1,148 @@
+{
+  "interactions": [
+    {
+      "node_id": "n15",
+      "tag": "li",
+      "label": "About Us",
+      "target_ids": [
+        "n17"
+      ],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    },
+    {
+      "node_id": "n17",
+      "tag": "li",
+      "label": "Reinsurance Solutions",
+      "target_ids": [
+        "n19"
+      ],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    },
+    {
+      "node_id": "n19",
+      "tag": "li",
+      "label": "Products",
+      "target_ids": [
+        "n21"
+      ],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    },
+    {
+      "node_id": "n21",
+      "tag": "li",
+      "label": "Policyholders",
+      "target_ids": [
+        "n23"
+      ],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "nav-active-trail nav-drop|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "nav-active-trail nav-drop|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    },
+    {
+      "node_id": "n36",
+      "tag": "li",
+      "label": "Contact",
+      "target_ids": [],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": []
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": []
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    }
+  ],
+  "rotators": [],
+  "css_hover": [],
+  "expanded_toggles": [
+    "n15",
+    "n17",
+    "n19",
+    "n21",
+    "n23",
+    "n36"
+  ]
+}

@@ -1,0 +1,322 @@
+[
+  {
+    "id": "cmp-001",
+    "component_key": "header>div.container>[a>img, ul>li*6[>ul>li*5]]",
+    "type_guess": "navigation",
+    "confidence": 0.95,
+    "needs_review": false,
+    "pages": [
+      "home",
+      "policyholders",
+      "agentbrokers-transamerica"
+    ],
+    "variants": [
+      {
+        "name": "two-level",
+        "pages": [
+          "policyholders",
+          "agentbrokers-transamerica"
+        ],
+        "difference": "the active top-level item renders a statically-expanded second-level ul.menu (5 items, 30px row) below the navy bar"
+      },
+      {
+        "name": "single-level",
+        "pages": [
+          "home"
+        ],
+        "difference": "no item is on the active trail, so no submenu row renders"
+      }
+    ],
+    "description": "Logo row above a full-bleed navy menu bar with 6 top-level items. Interior pages add a second-level row for the active section.",
+    "bounding_rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 190
+    },
+    "crop_source": {
+      "page": "agentbrokers-transamerica",
+      "breakpoint": 1440
+    },
+    "css_node_ids": [
+      "n4",
+      "n5",
+      "n8",
+      "n9",
+      "n10",
+      "n11",
+      "n12",
+      "n13",
+      "n21",
+      "n23",
+      "n24",
+      "n32",
+      "n34"
+    ],
+    "behavior": {
+      "interactions": [],
+      "css_hover": [],
+      "rotators": [],
+      "note": "no JS. The submenu is server-rendered for the active trail only — it is not a dropdown. Confirmed against dom-expanded.html on all three pages."
+    },
+    "assets": [
+      "https://commonwealth.globalatlantic.com/sites/commonwealth/themes/commonwealth/logo.png"
+    ],
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "screenshot_crop": "capture/agentbrokers-transamerica/crops/cmp-001.png"
+  },
+  {
+    "id": "cmp-002",
+    "component_key": "div.content-banner-section>div.row>[div.content-top-right>[p, ul>li*2>a], div.cw-banner-image>img]",
+    "type_guess": "hero",
+    "confidence": 0.9,
+    "needs_review": false,
+    "pages": [
+      "home",
+      "policyholders",
+      "agentbrokers-transamerica"
+    ],
+    "variants": [],
+    "description": "Grey 241px aside carrying a short prompt and two stacked CTA buttons at 25% width, beside a contained banner image at 75%.",
+    "bounding_rect": {
+      "x": 238,
+      "y": 184,
+      "w": 965,
+      "h": 215
+    },
+    "crop_source": {
+      "page": "agentbrokers-transamerica",
+      "breakpoint": 1440
+    },
+    "css_node_ids": [
+      "n46",
+      "n47",
+      "n48",
+      "n49",
+      "n50",
+      "n51",
+      "n52",
+      "n53",
+      "n54",
+      "n55",
+      "n56",
+      "n57",
+      "n58"
+    ],
+    "behavior": {
+      "interactions": [],
+      "css_hover": [],
+      "rotators": []
+    },
+    "assets": [
+      "https://commonwealth.globalatlantic.com/sites/commonwealth/files/2021-09/agent_3.jpg"
+    ],
+    "existing_block": "hero (panel variant) — built during the homepage migration",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "screenshot_crop": "capture/agentbrokers-transamerica/crops/cmp-002.png"
+  },
+  {
+    "id": "cmp-003",
+    "component_key": "div.content-banner-color>div.row>div*4>span.banner-bg",
+    "type_guess": "decorative-rule",
+    "confidence": 0.88,
+    "needs_review": false,
+    "pages": [
+      "home",
+      "policyholders",
+      "agentbrokers-transamerica"
+    ],
+    "variants": [],
+    "description": "Four-stop 4px brand rule closing the banner. Already drawn by the hero block's border-image rather than existing as a block.",
+    "bounding_rect": {
+      "x": 238,
+      "y": 403,
+      "w": 965,
+      "h": 4
+    },
+    "crop_source": {
+      "page": "agentbrokers-transamerica",
+      "breakpoint": 1440
+    },
+    "css_node_ids": [
+      "n59",
+      "n60",
+      "n62",
+      "n64",
+      "n66",
+      "n68"
+    ],
+    "behavior": {
+      "interactions": [],
+      "css_hover": [],
+      "rotators": []
+    },
+    "assets": [],
+    "breakpoint_variants": [
+      "1440"
+    ],
+    "screenshot_crop": "capture/agentbrokers-transamerica/crops/cmp-003.png"
+  },
+  {
+    "id": "cmp-005",
+    "component_key": "footer>div.region-footer>div.clrfix>[p.links>a*2, p.copy]",
+    "type_guess": "footer",
+    "confidence": 0.95,
+    "needs_review": false,
+    "pages": [
+      "home",
+      "policyholders",
+      "agentbrokers-transamerica"
+    ],
+    "variants": [],
+    "description": "Pipe-separated link pair plus a copyright line, identical on every page.",
+    "bounding_rect": {
+      "x": 238,
+      "y": 612,
+      "w": 965,
+      "h": 39
+    },
+    "crop_source": {
+      "page": "agentbrokers-transamerica",
+      "breakpoint": 1440
+    },
+    "css_node_ids": [
+      "n75",
+      "n76",
+      "n77",
+      "n78",
+      "n79",
+      "n80",
+      "n81",
+      "n82",
+      "n83"
+    ],
+    "behavior": {
+      "interactions": [],
+      "css_hover": [],
+      "rotators": []
+    },
+    "assets": [],
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "screenshot_crop": "capture/agentbrokers-transamerica/crops/cmp-005.png"
+  },
+  {
+    "id": "cmp-006",
+    "component_key": "div.content-right-sec-bottom>div*2>[h4, p.special>span.note, p>a.popup-btn, p>a*2]",
+    "type_guess": "card-list",
+    "confidence": 0.72,
+    "needs_review": true,
+    "pages": [
+      "policyholders"
+    ],
+    "variants": [
+      {
+        "name": "two-column",
+        "pages": [
+          "policyholders"
+        ],
+        "difference": "345px left column with 3 entries, 315px right column with 2"
+      }
+    ],
+    "description": "Directory of insurance companies. Each entry is a heading, an optional '(Formerly …)' note, a 'Find your policy by product or prefix' modal trigger, and Contact Info / Login links. Column split is by hand-authored markup, not a grid.",
+    "bounding_rect": {
+      "x": 483,
+      "y": 571,
+      "w": 695,
+      "h": 411
+    },
+    "crop_source": {
+      "page": "policyholders",
+      "breakpoint": 1440
+    },
+    "css_node_ids": [
+      "n74",
+      "n75",
+      "n77",
+      "n79",
+      "n81",
+      "n83",
+      "n84",
+      "n85",
+      "n91",
+      "n96",
+      "n98",
+      "n103"
+    ],
+    "behavior": {
+      "interactions": [
+        "a.popup-btn click → 3 nodes appear elsewhere in the document"
+      ],
+      "css_hover": [],
+      "rotators": []
+    },
+    "assets": [],
+    "out_of_scope_note": "Not on the Transamerica page. Captured for cross-page context; do not build unless the Policyholders page is in scope.",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "screenshot_crop": "capture/policyholders/crops/cmp-006.png"
+  },
+  {
+    "id": "cmp-007",
+    "component_key": "div.cw-modal-popups>div.field__item*5>[h3, table.product-prefix+]",
+    "type_guess": "modal",
+    "confidence": 0.7,
+    "needs_review": true,
+    "pages": [
+      "policyholders"
+    ],
+    "variants": [],
+    "description": "Five hidden modal panels, each a heading plus one or two product-prefix tables, opened by the cmp-006 triggers.",
+    "bounding_rect": {
+      "x": 238,
+      "y": 425,
+      "w": 965,
+      "h": 582
+    },
+    "crop_source": {
+      "page": "policyholders",
+      "breakpoint": 1440
+    },
+    "css_node_ids": [
+      "n108",
+      "n109",
+      "n110",
+      "n111",
+      "n112",
+      "n113",
+      "n114",
+      "n118",
+      "n121",
+      "n124"
+    ],
+    "behavior": {
+      "interactions": [
+        "opened by a.popup-btn; the probe stopped after opening it rather than probing the rest of the page through an overlay"
+      ],
+      "css_hover": [],
+      "rotators": [],
+      "note": "The panels have zero height until opened, so the crop shows the closed state. Re-crop from dom-expanded.html if the modal is built."
+    },
+    "assets": [],
+    "out_of_scope_note": "Not on the Transamerica page. Captured for cross-page context; do not build unless the Policyholders page is in scope.",
+    "breakpoint_variants": [
+      "1440"
+    ],
+    "screenshot_crop": "capture/policyholders/crops/cmp-007.png"
+  }
+]

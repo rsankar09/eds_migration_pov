@@ -48,9 +48,15 @@ header nav[aria-expanded='true'] {
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    gap: 36px;
+
+    /*
+     * The source seats the logo at y=26 and the navy bar at y=128, with the
+     * 30px submenu strip below it on every page, filled or not. 26 + 90 (logo)
+     * + 12 = 128, so the offset lives in the padding, not the gap.
+     */
+    gap: 12px;
     max-width: var(--content-max-width);
-    padding: 14px var(--content-gutter) 0;
+    padding: 26px var(--content-gutter) 0;
   }
 
   header nav .nav-brand,
@@ -302,20 +308,39 @@ header nav .nav-tools {
     background-color: var(--brand-navy);
 
     /*
+     * The source paints the bar with a gif: a 2px navy hairline, then #7298b7
+     * fading back to navy over the next 15px, then flat. Sampled row by row
+     * from capture/agentbrokers-transamerica/screenshots/1440.png, y=128..153.
+     */
+    background-image: linear-gradient(
+      to bottom,
+      var(--brand-navy) 0,
+      var(--brand-navy) 2px,
+      #7298b7 2px,
+      var(--brand-navy) 17px
+    );
+
+    /*
      * The boilerplate sets flex: 1 1 auto later in this file, which stretched
      * the bar to fill the header. Keep it at its natural height.
      */
     flex: 0 0 auto;
   }
 
+  /*
+   * Items are sized by their label, not distributed evenly: the source gives
+   * each link `padding: 0 40px` and floats it, producing widths of
+   * 134/211/133/160/170/125 that happen to fill the 937px bar.
+   */
   header nav .nav-sections .default-content-wrapper > ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 0;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
-    flex: 1;
-    text-align: center;
+    flex: 0 0 auto;
+    text-align: left;
     padding: 7px 0;
     line-height: 12px;
   }
@@ -332,5 +357,108 @@ header nav .nav-tools {
   header nav .nav-sections a:hover {
     color: var(--background-color);
     text-decoration: underline;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > a {
+    padding: 0 40px;
+  }
+}
+
+/*
+ * Active-trail submenu.
+ *
+ * The source has no dropdowns at all: the section you are in renders its
+ * second level as a permanent 30px row directly under the navy bar, on
+ * white, and every other section shows nothing. Source declarations, from
+ * capture/agentbrokers-transamerica/css/matched.css:
+ *   li.menu-item--expanded.menu-item--active-trail ul.menu
+ *     { height: 30px; line-height: 30px; padding: 0 15px; top: 26px }
+ *   ul.menu li ul li a
+ *     { color: #00447c; font-size: 12px; font-weight: normal; padding: 0 10px }
+ *   ul.menu li.menu-item--active-trail { background: rgb(255 255 255 / 20%) }
+ */
+@media (width >= 900px) {
+  header nav .nav-sections {
+    position: relative;
+
+    /* the strip exists on every page; interior pages fill it */
+    margin-bottom: 30px;
+  }
+
+  /*
+   * position: static so the row's containing block is the bar rather than
+   * the item — the item is centred and only a sixth as wide.
+   */
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-active-trail {
+    position: static;
+    background-color: rgb(255 255 255 / 20%);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-active-trail > ul {
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    padding: 0 15px;
+
+    /* sampled from the source's submenu-bg strip */
+    background-color: #e8ecf4;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-active-trail > ul > li {
+    display: inline-block;
+    flex: 0 0 auto;
+    padding: 0;
+    border-left: none;
+    font-weight: 400;
+    line-height: 30px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-active-trail > ul a:any-link {
+    display: block;
+    color: var(--link-color);
+    padding: 0 10px;
+    font-size: var(--body-font-size-m);
+    line-height: 30px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-active-trail > ul a:hover {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
+
+  /*
+   * No chevrons and no dropdowns anywhere: the source exposes a section's
+   * children only once you are inside that section. Deliberate fidelity
+   * choice — see the visual diff report.
+   */
+  header nav .nav-sections .nav-drop {
+    padding-right: 0;
+    cursor: auto;
+  }
+
+  header nav .nav-sections .nav-drop::after {
+    content: none;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-active-trail) > ul {
+    display: none;
+  }
+}
+
+/* mobile: the active section's children indent under it, in the white panel */
+@media (width < 900px) {
+  header nav .nav-sections .default-content-wrapper > ul > li.nav-active-trail > ul {
+    display: block;
+    padding-left: 16px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-active-trail) > ul {
+    display: none;
   }
 }

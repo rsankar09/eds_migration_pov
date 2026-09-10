@@ -1,0 +1,24 @@
+{
+  "crawled_at": "2026-09-10T17:10:37.167Z",
+  "breakpoints": [
+    375,
+    768,
+    1440
+  ],
+  "pages": [
+    {
+      "slug": "policyholders",
+      "url": "https://commonwealth.globalatlantic.com/policyholders",
+      "ok": true,
+      "notes": [
+        "consent dismissed via #onetrust-accept-btn-handler",
+        "1 third-party subtree(s) excluded"
+      ]
+    }
+  ],
+  "templates": {
+    "s6509efa3": [
+      "policyholders"
+    ]
+  }
+}

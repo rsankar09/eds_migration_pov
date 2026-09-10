@@ -1,0 +1,1014 @@
+{
+  "rules": [
+    {
+      "selector": ".clearfix::after",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_BQWJcS8CuTpxaGO5KohlnQepyPSBIDGOqI7-FxT0vFA.css?delta=0&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n34",
+        "n38",
+        "n59",
+        "n64"
+      ],
+      "css": ".clearfix::after { display: table; clear: both; content: \"\"; }"
+    },
+    {
+      "selector": ".visually-hidden",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_BQWJcS8CuTpxaGO5KohlnQepyPSBIDGOqI7-FxT0vFA.css?delta=0&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n1",
+        "n70"
+      ],
+      "css": ".visually-hidden { overflow: hidden; clip: rect(1px, 1px, 1px, 1px); width: 1px; height: 1px; overflow-wrap: normal; position: absolute !important; }"
+    },
+    {
+      "selector": ".visually-hidden.focusable:active, .visually-hidden.focusable:focus",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_BQWJcS8CuTpxaGO5KohlnQepyPSBIDGOqI7-FxT0vFA.css?delta=0&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n1"
+      ],
+      "css": ".visually-hidden.focusable:active, .visually-hidden.focusable:focus { overflow: visible; clip: auto; width: auto; height: auto; position: static !important; }"
+    },
+    {
+      "selector": "article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n34",
+        "n61",
+        "n4",
+        "n25"
+      ],
+      "css": "article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }"
+    },
+    {
+      "selector": "a",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n1",
+        "n9",
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n22",
+        "n24",
+        "n26",
+        "n42",
+        "n44",
+        "n67",
+        "n68"
+      ],
+      "css": "a { background-color: transparent; }"
+    },
+    {
+      "selector": "a:active, a:hover",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n1",
+        "n9",
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n22",
+        "n24",
+        "n26",
+        "n42",
+        "n44",
+        "n67",
+        "n68"
+      ],
+      "css": "a:active, a:hover { outline: 0px; }"
+    },
+    {
+      "selector": "img",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n10",
+        "n47"
+      ],
+      "css": "img { border: 0px; }"
+    },
+    {
+      "selector": "ul.menu",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n12"
+      ],
+      "css": "ul.menu { margin-left: 1em; padding: 0px; list-style: outside none; text-align: left; }"
+    },
+    {
+      "selector": ".menu-item--collapsed",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n19",
+        "n21"
+      ],
+      "css": ".menu-item--collapsed { list-style-type: disc; list-style-image: url(\"/themes/contrib/classy/images/misc/menu-collapsed.png\"); }"
+    },
+    {
+      "selector": ".menu-item",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n13",
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23"
+      ],
+      "css": ".menu-item { margin: 0px; padding-top: 0.2em; }"
+    },
+    {
+      "selector": "*, ::before, ::after",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n1",
+        "n2",
+        "n3",
+        "n4",
+        "n5",
+        "n6",
+        "n7",
+        "n8",
+        "n9",
+        "n10",
+        "n11",
+        "n12",
+        "n13",
+        "n14",
+        "n15",
+        "n16",
+        "n17",
+        "n18",
+        "n19",
+        "n20",
+        "n21",
+        "n22",
+        "n23",
+        "n24",
+        "n25",
+        "n26",
+        "n27",
+        "n28",
+        "n29",
+        "n30",
+        "n31",
+        "n32",
+        "n33",
+        "n34",
+        "n35",
+        "n36",
+        "n37",
+        "n38",
+        "n39",
+        "n40",
+        "n41",
+        "n42",
+        "n43",
+        "n44",
+        "n45",
+        "n46",
+        "n47",
+        "n48",
+        "n49",
+        "n50",
+        "n51",
+        "n52",
+        "n53",
+        "n54",
+        "n55",
+        "n56",
+        "n57",
+        "n58",
+        "n59",
+        "n60",
+        "n61",
+        "n62",
+        "n63",
+        "n64",
+        "n65",
+        "n66",
+        "n67",
+        "n68",
+        "n69",
+        "n70"
+      ],
+      "css": "*, ::before, ::after { box-sizing: border-box; }"
+    },
+    {
+      "selector": "article, aside, figcaption, figure, footer, header, hgroup, main, nav, section",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n34",
+        "n61",
+        "n4",
+        "n25"
+      ],
+      "css": "article, aside, figcaption, figure, footer, header, hgroup, main, nav, section { display: block; }"
+    },
+    {
+      "selector": "p",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n39",
+        "n60",
+        "n66",
+        "n69"
+      ],
+      "css": "p { margin-top: 0px; margin-bottom: 1rem; }"
+    },
+    {
+      "selector": "ol, ul, dl",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n12",
+        "n40"
+      ],
+      "css": "ol, ul, dl { margin: 0px 0px 1rem; padding: 0px; }"
+    },
+    {
+      "selector": "a",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n1",
+        "n9",
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n22",
+        "n24",
+        "n26",
+        "n42",
+        "n44",
+        "n67",
+        "n68"
+      ],
+      "css": "a { color: rgb(0, 123, 255); text-decoration: none; background-color: transparent; }"
+    },
+    {
+      "selector": "a:hover",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n1",
+        "n9",
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n22",
+        "n24",
+        "n26",
+        "n42",
+        "n44",
+        "n67",
+        "n68"
+      ],
+      "css": "a:hover { color: rgb(0, 86, 179); text-decoration: underline; }"
+    },
+    {
+      "selector": "img",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n10",
+        "n47"
+      ],
+      "css": "img { vertical-align: middle; border-style: none; }"
+    },
+    {
+      "selector": ".container",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n5",
+        "n28",
+        "n32"
+      ],
+      "css": ".container { width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; }"
+    },
+    {
+      "selector": ".row",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n6",
+        "n29",
+        "n33",
+        "n36",
+        "n49"
+      ],
+      "css": ".row { display: flex; flex-wrap: wrap; margin-right: -15px; margin-left: -15px; }"
+    },
+    {
+      "selector": ".col-12, .col-sm-12, .col-md-3, .col-md-9, .col-md-12, .col-lg-3, .col-lg-9, .col-lg-12",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n35",
+        "n37",
+        "n45",
+        "n48",
+        "n50",
+        "n52",
+        "n54",
+        "n56"
+      ],
+      "css": ".col-12, .col-sm-12, .col-md-3, .col-md-9, .col-md-12, .col-lg-3, .col-lg-9, .col-lg-12 { position: relative; width: 100%; padding-right: 15px; padding-left: 15px; }"
+    },
+    {
+      "selector": ".col-12",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n35",
+        "n37",
+        "n45",
+        "n48",
+        "n50",
+        "n52",
+        "n54",
+        "n56"
+      ],
+      "css": ".col-12 { flex: 0 0 100%; max-width: 100%; }"
+    },
+    {
+      "selector": ".col-sm-12",
+      "media": "(min-width: 576px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n35",
+        "n37",
+        "n45",
+        "n48",
+        "n50",
+        "n52",
+        "n54",
+        "n56"
+      ],
+      "css": ".col-sm-12 { flex: 0 0 100%; max-width: 100%; }"
+    },
+    {
+      "selector": ".col-md-3",
+      "media": "(min-width: 768px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n37",
+        "n50",
+        "n52",
+        "n54",
+        "n56"
+      ],
+      "css": ".col-md-3 { flex: 0 0 25%; max-width: 25%; }"
+    },
+    {
+      "selector": ".col-md-9",
+      "media": "(min-width: 768px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n45"
+      ],
+      "css": ".col-md-9 { flex: 0 0 75%; max-width: 75%; }"
+    },
+    {
+      "selector": ".col-md-12",
+      "media": "(min-width: 768px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n35",
+        "n48"
+      ],
+      "css": ".col-md-12 { flex: 0 0 100%; max-width: 100%; }"
+    },
+    {
+      "selector": ".col-lg-3",
+      "media": "(min-width: 992px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n37",
+        "n50",
+        "n52",
+        "n54",
+        "n56"
+      ],
+      "css": ".col-lg-3 { flex: 0 0 25%; max-width: 25%; }"
+    },
+    {
+      "selector": ".col-lg-9",
+      "media": "(min-width: 992px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n45"
+      ],
+      "css": ".col-lg-9 { flex: 0 0 75%; max-width: 75%; }"
+    },
+    {
+      "selector": ".col-lg-12",
+      "media": "(min-width: 992px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n35",
+        "n48"
+      ],
+      "css": ".col-lg-12 { flex: 0 0 100%; max-width: 100%; }"
+    },
+    {
+      "selector": "ul",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n12",
+        "n40"
+      ],
+      "css": "ul { margin: 0px; list-style: inside; }"
+    },
+    {
+      "selector": "a:link, a:visited",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n1",
+        "n9",
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n22",
+        "n24",
+        "n42",
+        "n44",
+        "n67",
+        "n68",
+        "n26"
+      ],
+      "css": "a:link, a:visited { color: rgb(204, 153, 51); text-decoration: none; }"
+    },
+    {
+      "selector": ".layout-container",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n3"
+      ],
+      "css": ".layout-container { width: 100%; margin: 12px auto 20px; background: rgb(255, 255, 255); box-shadow: rgb(170, 170, 170) 8px 10px 8px; }"
+    },
+    {
+      "selector": ".layout-container header",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n4"
+      ],
+      "css": ".layout-container header { padding: 2px 14px 0px; }"
+    },
+    {
+      "selector": ".layout-container header .region-header",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n7"
+      ],
+      "css": ".layout-container header .region-header { width: 100%; float: left; }"
+    },
+    {
+      "selector": ".layout-container header .region-header .block-system-branding-block",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n8"
+      ],
+      "css": ".layout-container header .region-header .block-system-branding-block { padding: 12px 0px; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n11"
+      ],
+      "css": ".block-system-menu-blockmain { width: 100%; float: left; padding-bottom: 30px; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n12"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu { background: url(\"/sites/commonwealth/themes/commonwealth/img/menu-bg.gif\") 0px 0px no-repeat; height: 26px; margin: 0px; padding: 0px 0px 26px; width: 100%; position: relative; float: left; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu li",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n13",
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu li { float: left; list-style: none; padding: 7px 0px; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu li:hover, .block-system-menu-blockmain ul.menu li.menu-item--active-trail",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n13",
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu li:hover, .block-system-menu-blockmain ul.menu li.menu-item--active-trail { background: rgba(255, 255, 255, 0.2); }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu li:last-child a",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n24"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu li:last-child a { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu li a",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n22",
+        "n24"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu li a { color: rgb(255, 255, 255); float: left; font-size: 12px; font-weight: bold; line-height: 12px; padding: 0px 40px; border-right: 1px solid rgb(255, 255, 255); }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu::after",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n12"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu::after { width: 100%; content: \"\"; float: left; min-height: 30px; background: url(\"/sites/commonwealth/themes/commonwealth/img/submenu-bg.gif\") 0px 100% repeat-x; }"
+    },
+    {
+      "selector": ".content-top-right",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n37"
+      ],
+      "css": ".content-top-right { padding-right: 4px; }"
+    },
+    {
+      "selector": ".content-top-right .field--name-field-left-side-links",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n38"
+      ],
+      "css": ".content-top-right .field--name-field-left-side-links { background: rgb(178, 178, 178); width: 100%; float: left; height: 100%; padding: 40px 40px 30px; }"
+    },
+    {
+      "selector": ".content-top-right .field--name-field-left-side-links p",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n39"
+      ],
+      "css": ".content-top-right .field--name-field-left-side-links p { font-size: 13px; font-weight: bold; padding: 0px 0px 25px; margin: 0px; color: rgb(255, 255, 255); }"
+    },
+    {
+      "selector": ".content-top-right .field--name-field-left-side-links ul li",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n41",
+        "n43"
+      ],
+      "css": ".content-top-right .field--name-field-left-side-links ul li { padding: 0px 0px 25px; list-style: none; }"
+    },
+    {
+      "selector": ".content-top-right .field--name-field-left-side-links ul li:last-child",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n43"
+      ],
+      "css": ".content-top-right .field--name-field-left-side-links ul li:last-child { padding: 0px; }"
+    },
+    {
+      "selector": ".content-top-right .field--name-field-left-side-links ul li a",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n42",
+        "n44"
+      ],
+      "css": ".content-top-right .field--name-field-left-side-links ul li a { background: rgb(0, 69, 124); color: rgb(255, 255, 255); display: block; font-family: georgia, times, serif; font-size: 16px; line-height: 37px; text-align: center; }"
+    },
+    {
+      "selector": ".cw-banner-image",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n45"
+      ],
+      "css": ".cw-banner-image { padding-left: 0px; }"
+    },
+    {
+      "selector": ".cw-banner-image img",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n47"
+      ],
+      "css": ".cw-banner-image img { width: 100%; }"
+    },
+    {
+      "selector": "article.contextual-region, .region.region-content",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n30"
+      ],
+      "css": "article.contextual-region, .region.region-content { width: 100%; float: left; }"
+    },
+    {
+      "selector": ".content-banner-color",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n48"
+      ],
+      "css": ".content-banner-color { margin: 4px 0px 0px; }"
+    },
+    {
+      "selector": ".content-banner-color .banner-bg",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n51",
+        "n53",
+        "n55",
+        "n57"
+      ],
+      "css": ".content-banner-color .banner-bg { width: 100%; height: 4px; background: red; display: block; }"
+    },
+    {
+      "selector": ".content-banner-color .banner-bg",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n51",
+        "n53",
+        "n55",
+        "n57"
+      ],
+      "css": ".content-banner-color .banner-bg { background-color: rgb(128, 213, 255); }"
+    },
+    {
+      "selector": ".content-banner-color .banner-bg.bg2",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n53"
+      ],
+      "css": ".content-banner-color .banner-bg.bg2 { background-color: rgb(189, 132, 186); }"
+    },
+    {
+      "selector": ".content-banner-color .banner-bg.bg3",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n55"
+      ],
+      "css": ".content-banner-color .banner-bg.bg3 { background-color: rgb(230, 176, 15); }"
+    },
+    {
+      "selector": ".content-banner-color .banner-bg.bg4",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n57"
+      ],
+      "css": ".content-banner-color .banner-bg.bg4 { background-color: rgb(185, 194, 31); }"
+    },
+    {
+      "selector": ".content-banner-color .col-12",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n50",
+        "n52",
+        "n54",
+        "n56"
+      ],
+      "css": ".content-banner-color .col-12 { padding: 0px 2px; }"
+    },
+    {
+      "selector": ".content-banner-color .col-12:first-child",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n50"
+      ],
+      "css": ".content-banner-color .col-12:first-child { padding: 0px 4px 0px 15px; }"
+    },
+    {
+      "selector": ".content-banner-color .col-12:last-child",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n56"
+      ],
+      "css": ".content-banner-color .col-12:last-child { padding-right: 15px; }"
+    },
+    {
+      "selector": ".cw-content-section-fullwidth",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n58"
+      ],
+      "css": ".cw-content-section-fullwidth { padding: 35px 39px 45px; color: rgb(134, 134, 134); font-family: georgia, times, serif; font-size: 21px; font-weight: normal; line-height: 34px; }"
+    },
+    {
+      "selector": ".container > .row > article",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n34"
+      ],
+      "css": ".container > .row > article { width: 100%; float: left; }"
+    },
+    {
+      "selector": "footer #footer",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n65"
+      ],
+      "css": "footer #footer { width: 100%; float: left; padding: 0px 14px 15px; }"
+    },
+    {
+      "selector": "footer #footer p.links",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n66"
+      ],
+      "css": "footer #footer p.links { margin: 5px 0px 0px; float: left; color: rgb(153, 153, 153); }"
+    },
+    {
+      "selector": "footer #footer p.links a",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n67",
+        "n68"
+      ],
+      "css": "footer #footer p.links a { color: rgb(0, 68, 124); font-size: 11px; }"
+    },
+    {
+      "selector": "footer #footer p.copy",
+      "media": null,
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n69"
+      ],
+      "css": "footer #footer p.copy { color: rgb(153, 153, 153); font-size: 11px; float: right; margin: 5px 6px 0px 0px; }"
+    },
+    {
+      "selector": ".layout-container",
+      "media": "(min-width: 992px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n3"
+      ],
+      "css": ".layout-container { max-width: 965px; }"
+    },
+    {
+      "selector": ".layout-container",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n3"
+      ],
+      "css": ".layout-container { margin: 0px; box-shadow: none; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n11"
+      ],
+      "css": ".block-system-menu-blockmain { padding-bottom: 0px; position: relative; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n12"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu { background: rgb(0, 69, 124); position: absolute; top: 0px; left: 0px; z-index: 9; padding: 15px 10px; height: 0px; overflow: hidden; visibility: hidden; transition: 0.26s ease-in-out; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu li",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n13",
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu li { width: 100%; padding: 0px; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu li:hover",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n13",
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu li:hover { background: none; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu li a:hover",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n22",
+        "n24"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu li a:hover { background: rgba(255, 255, 255, 0.2); }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu li a",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n22",
+        "n24"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu li a { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; font-size: 14px; padding: 7px 10px; display: block; width: 100%; }"
+    },
+    {
+      "selector": ".block-system-menu-blockmain ul.menu::after",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n12"
+      ],
+      "css": ".block-system-menu-blockmain ul.menu::after { min-height: auto; background: none; }"
+    },
+    {
+      "selector": ".layout-container header",
+      "media": "(max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n4"
+      ],
+      "css": ".layout-container header { padding: 0px; }"
+    },
+    {
+      "selector": ".content-top-right .field--name-field-left-side-links",
+      "media": "(min-width: 768px) and (max-width: 991px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n38"
+      ],
+      "css": ".content-top-right .field--name-field-left-side-links { padding: 40px 15px 30px; }"
+    },
+    {
+      "selector": ".site-logo img",
+      "media": "(max-width: 767px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n10"
+      ],
+      "css": ".site-logo img { max-width: 270px; }"
+    },
+    {
+      "selector": ".cw-banner-image img",
+      "media": "(max-width: 767px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n47"
+      ],
+      "css": ".cw-banner-image img { height: auto; }"
+    },
+    {
+      "selector": ".content-top-right, .cw-banner-image, .content-banner-color .col-12:first-child, .content-banner-color .col-12:last-child",
+      "media": "(max-width: 767px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n37",
+        "n45",
+        "n50",
+        "n56"
+      ],
+      "css": ".content-top-right, .cw-banner-image, .content-banner-color .col-12:first-child, .content-banner-color .col-12:last-child { padding-right: 0px; padding-left: 0px; }"
+    },
+    {
+      "selector": ".content-banner-color .col-12",
+      "media": "(max-width: 767px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n50",
+        "n52",
+        "n54",
+        "n56"
+      ],
+      "css": ".content-banner-color .col-12 { padding-right: 0px; padding-left: 0px; flex: 0 0 25%; max-width: 25%; }"
+    },
+    {
+      "selector": ".cw-content-section-fullwidth",
+      "media": "(max-width: 767px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n58"
+      ],
+      "css": ".cw-content-section-fullwidth { padding: 25px 15px 20px; }"
+    },
+    {
+      "selector": "footer #footer p.links, footer #footer p.copy",
+      "media": "(max-width: 767px)",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd",
+      "nodes": [
+        "n66",
+        "n69"
+      ],
+      "css": "footer #footer p.links, footer #footer p.copy { width: 100%; margin-right: 0px; }"
+    }
+  ],
+  "keyframes": [
+    {
+      "name": "animate-stripes",
+      "css": "@-webkit-keyframes animate-stripes { \n  0% { background-position: 0px 0px, 0px 0px; }\n  100% { background-position: 0px 0px, -80px 0px; }\n}",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd"
+    },
+    {
+      "name": "animate-stripes",
+      "css": "@keyframes animate-stripes { \n  0% { background-position: 0px 0px, 0px 0px; }\n  100% { background-position: 0px 0px, -80px 0px; }\n}",
+      "origin": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/css/css_9tW8LXDFy42M9k6RjpuUCPFwxHoTdrSPgSV5qIpQw20.css?delta=1&language=en&theme=commonwealth&include=eJwlzFEKgDAMBNELVXqmNCy1kDTQLUg8vaJ_Aw9GTcisTYiifztI6WDRcI95QWyftVs0sYM7bcz-2kKdsVxs3ChMbvi3eQAz0CAd"
+    },
+    {
+      "name": "onetrust-fade-in",
+      "css": "@keyframes onetrust-fade-in { \n  0% { opacity: 0; }\n  100% { opacity: 1; }\n}",
+      "origin": "inline"
+    },
+    {
+      "name": "slide-down-custom",
+      "css": "@keyframes slide-down-custom { \n  0% { }\n  100% { bottom: 0px; }\n}",
+      "origin": "inline"
+    },
+    {
+      "name": "slide-down-custom",
+      "css": "@-webkit-keyframes slide-down-custom { \n  0% { }\n  100% { bottom: 0px; }\n}",
+      "origin": "inline"
+    }
+  ],
+  "fontFaces": [],
+  "rootVars": {}
+}

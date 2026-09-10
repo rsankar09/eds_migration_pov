@@ -1,0 +1,34 @@
+{
+  "interactions": [
+    {
+      "node_id": "n81",
+      "tag": "a",
+      "label": "Find your policy by product or prefix >",
+      "target_ids": [],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "popup-btn|||||inline|visible|1|none|none|auto",
+          "targets": []
+        },
+        "after": {
+          "self": "popup-btn|||||inline|visible|1|none|none|auto",
+          "targets": []
+        },
+        "remote": {
+          "appeared": [
+            "n111",
+            "n112",
+            "n113"
+          ],
+          "disappeared": []
+        },
+        "restored": false,
+        "note": "left the page in a changed state; probe stopped here"
+      }
+    }
+  ],
+  "rotators": [],
+  "css_hover": [],
+  "expanded_toggles": []
+}

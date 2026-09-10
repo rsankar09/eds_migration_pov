@@ -1,0 +1,97 @@
+[
+  {
+    "component_id": "cmp-001",
+    "verdict": "extend",
+    "target_block": "header",
+    "candidates": [
+      {
+        "block_name": "header",
+        "source": "internal",
+        "score": 0.82,
+        "rationale": "Built for this site during the homepage migration. Logo row, navy bar, hamburger and separators all already match. The boilerplate decorate() already tags any <li> containing a <ul> as .nav-drop, so nested markup is understood.",
+        "gaps": [
+          "No active-trail detection. The source expands the submenu of the section the current page belongs to; a shared /nav document cannot know that at author time, so the block must derive it from window.location.pathname at runtime.",
+          "The existing CSS renders a nested <ul> as an absolutely-positioned click dropdown. The source renders it as a static second row below the navy bar, always visible for the active section only."
+        ]
+      },
+      {
+        "block_name": "header (boilerplate default)",
+        "source": "public",
+        "score": 0.44,
+        "rationale": "Generic dropdown nav. Would discard the brand styling already built for this site."
+      }
+    ],
+    "content_model": {
+      "row_contract": "/nav document, three sections: brand | sections | tools. Second level is a nested <ul> inside the parent <li>.",
+      "fields": [],
+      "note": "Header is document-driven in this repo, not a block model — there is no _header.json and none is needed. The authoring change is to the /nav document: the Agents/Brokers and Policyholders items each gain a nested <ul>."
+    },
+    "behavior_contract": {
+      "interaction": "none in the source",
+      "css_hover": [],
+      "notes": "The source submenu is server-rendered for the active trail, not a dropdown — no hover or click behaviour to reproduce. The active trail must be computed client-side. Keep the boilerplate's existing keyboard/escape handling for the mobile hamburger."
+    }
+  },
+  {
+    "component_id": "cmp-002",
+    "verdict": "extend",
+    "target_block": "hero",
+    "candidates": [
+      {
+        "block_name": "hero",
+        "source": "internal",
+        "score": 0.94,
+        "rationale": "The `panel` variant was built for this exact component during the homepage migration. hero.js already tags rows as .hero-image / .hero-panel and the CSS matches the measured geometry.",
+        "gaps": [
+          "blocks/hero/_hero.json declares only image / imageAlt / text and has no `classes` field, so the `panel` variant cannot be selected in Universal Editor. The CSS variant exists and is unreachable to authors."
+        ]
+      }
+    ],
+    "content_model": {
+      "row_contract": "row 1 = panel (prompt paragraph + list of CTA links), row 2 = banner image. hero.js tags whichever row contains a picture/img as .hero-image and the other as .hero-panel.",
+      "fields": [
+        { "name": "image", "component": "reference", "label": "Image" },
+        { "name": "imageAlt", "component": "text", "label": "Alt" },
+        { "name": "text", "component": "richtext", "label": "Text" },
+        { "name": "classes", "component": "select", "label": "Layout", "options": ["default", "panel"] }
+      ]
+    },
+    "behavior_contract": {
+      "interaction": "none",
+      "css_hover": [".hero.panel .hero-panel a:hover — already implemented"],
+      "notes": "Static. The CTA links are ordinary anchors."
+    }
+  },
+  {
+    "component_id": "cmp-003",
+    "verdict": "reuse",
+    "target_block": null,
+    "candidates": [],
+    "content_model": {
+      "row_contract": "none — not authored content",
+      "fields": [],
+      "note": "Drawn by the hero block's border-image, a decision carried over from the homepage migration. Deliberately not a block, so authors cannot place an empty rule."
+    },
+    "behavior_contract": { "interaction": "none", "css_hover": [], "rotators": [] }
+  },
+  {
+    "component_id": "cmp-005",
+    "verdict": "reuse",
+    "target_block": "footer",
+    "candidates": [
+      {
+        "block_name": "footer",
+        "source": "internal",
+        "score": 0.98,
+        "rationale": "Byte-identical markup and measurements to the homepage footer this block was built from. No gaps.",
+        "gaps": []
+      }
+    ],
+    "content_model": {
+      "row_contract": "/footer document: a paragraph of pipe-separated links, then a copyright paragraph.",
+      "fields": [],
+      "note": "Document-driven like the header; no model partial."
+    },
+    "behavior_contract": { "interaction": "none", "css_hover": [], "rotators": [] }
+  }
+]

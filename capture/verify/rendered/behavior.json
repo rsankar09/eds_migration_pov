@@ -1,0 +1,151 @@
+{
+  "interactions": [
+    {
+      "node_id": "n14",
+      "tag": "li",
+      "label": "About Us",
+      "target_ids": [
+        "n16"
+      ],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    },
+    {
+      "node_id": "n16",
+      "tag": "li",
+      "label": "Reinsurance Solutions",
+      "target_ids": [
+        "n18"
+      ],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    },
+    {
+      "node_id": "n18",
+      "tag": "li",
+      "label": "Products",
+      "target_ids": [
+        "n20"
+      ],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "nav-drop|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "nav-drop|false||||list-item|visible|1|none|none|12px"
+          ]
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    },
+    {
+      "node_id": "n20",
+      "tag": "li",
+      "label": "Policyholders Commonwealth Annuity First Allmeri",
+      "target_ids": [
+        "n28",
+        "n22"
+      ],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "nav-drop|false||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "nav-active-trail nav-drop|false||||list-item|visible|1|none|none|12px",
+            "|||||none|visible|1|none|none|auto"
+          ]
+        },
+        "after": {
+          "self": "nav-drop|true||||list-item|visible|1|none|none|12px",
+          "targets": [
+            "nav-active-trail nav-drop|false||||list-item|visible|1|none|none|12px",
+            "|||||none|visible|1|none|none|auto"
+          ]
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    },
+    {
+      "node_id": "n41",
+      "tag": "li",
+      "label": "Contact",
+      "target_ids": [],
+      "hover": null,
+      "click": {
+        "before": {
+          "self": "|false||||list-item|visible|1|none|none|12px",
+          "targets": []
+        },
+        "after": {
+          "self": "|true||||list-item|visible|1|none|none|12px",
+          "targets": []
+        },
+        "remote": {
+          "appeared": [],
+          "disappeared": []
+        },
+        "restored": true
+      }
+    }
+  ],
+  "rotators": [],
+  "css_hover": [],
+  "expanded_toggles": [
+    "n14",
+    "n16",
+    "n18",
+    "n20",
+    "n28",
+    "n41"
+  ]
+}

@@ -77,6 +77,63 @@ const transformStatement = (main, document) => {
 };
 
 /* -------------------------------------------------------------------------- */
+/* interior page body -> default content                                      */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Interior pages put their copy in `.cw-content-section > .content-right-sec`.
+ * It is a heading plus paragraphs — default content, not a block. The source
+ * heading is an h2 and the page has no h1 at all, so it is promoted, matching
+ * the decision made for the homepage lead statement.
+ * @param {Element} main the page root
+ * @param {Document} document the source document
+ */
+const transformBody = (main, document) => {
+  main.querySelectorAll('.cw-content-section').forEach((section) => {
+    const holder = section.querySelector('.content-right-sec');
+    if (!holder) return;
+    // the inner field wrapper if Drupal emitted one, else the holder itself
+    const field = holder.querySelector('.field') || holder;
+    const nodes = [...field.children];
+    if (!nodes.length) return;
+
+    const first = nodes[0];
+    if (first.tagName === 'H2') nodes[0] = retag(document, first, 'h1');
+
+    /*
+     * The source floats this copy into a 75% right-hand column
+     * (`.cw-content-section .content-right-sec { width: 75%; float: right }`)
+     * and sets it in Verdana. That is section layout, not block content, so
+     * it travels as section metadata rather than wrapping the copy in a block.
+     */
+    nodes.push(WebImporter.DOMUtils.createTable([
+      ['Section Metadata'],
+      ['Style', 'content-column'],
+    ], document));
+
+    section.replaceWith(cell(document, nodes));
+  });
+};
+
+/* -------------------------------------------------------------------------- */
+/* link normalisation                                                         */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Drops the legacy `/index.php` path segment. Interior pages link through it
+ * while the homepage does not, so without this the same target imports under
+ * two different paths.
+ * @param {Element} root the element to normalise
+ */
+const normalizeLinks = (root) => {
+  if (!root) return;
+  root.querySelectorAll('a[href]').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (href.startsWith('/index.php/')) a.setAttribute('href', href.replace('/index.php', ''));
+  });
+};
+
+/* -------------------------------------------------------------------------- */
 /* header -> /nav document                                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -110,7 +167,7 @@ const buildNavDocument = (document) => {
 
   const sections = document.createElement('div');
   const list = document.createElement('ul');
-  header.querySelectorAll('#block-mainnavigation ul.menu > li').forEach((item) => {
+  header.querySelectorAll('#block-mainnavigation > ul.menu > li').forEach((item) => {
     const source = item.querySelector(':scope > a');
     if (!source) return;
     const li = document.createElement('li');
@@ -119,9 +176,25 @@ const buildNavDocument = (document) => {
     a.textContent = source.textContent.trim();
     li.append(a);
 
-    // Drupal marks items with children as collapsed, but renders no submenu on
-    // this page, so second-level links cannot be recovered from the homepage
-    if (item.classList.contains('menu-item--collapsed')) {
+    /*
+     * Drupal renders a section's children only when that section is the
+     * active trail, so one page yields one branch. Capture whichever branch
+     * this page exposes; items marked collapsed have children that live on
+     * another page and are flagged for a later pass.
+     */
+    const submenu = item.querySelector(':scope > ul.menu');
+    if (submenu) {
+      const sub = document.createElement('ul');
+      submenu.querySelectorAll(':scope > li > a[href]').forEach((child) => {
+        const subLi = document.createElement('li');
+        const subA = document.createElement('a');
+        subA.href = child.getAttribute('href');
+        subA.textContent = child.textContent.trim();
+        subLi.append(subA);
+        sub.append(subLi);
+      });
+      if (sub.children.length) li.append(sub);
+    } else if (item.classList.contains('menu-item--collapsed')) {
       li.setAttribute('data-has-children', 'true');
     }
     list.append(li);
@@ -205,6 +278,7 @@ export default {
 
     transformBanner(main, document);
     transformStatement(main, document);
+    transformBody(main, document);
 
     WebImporter.DOMUtils.remove(main, [
       // chrome that now lives in /nav and /footer
@@ -231,7 +305,12 @@ export default {
     WebImporter.rules.convertIcons(main, document);
 
     const { pathname } = new URL(url);
-    const documentPath = pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/index';
+    const documentPath = pathname
+      .replace(/^\/index\.php/, '')
+      .replace(/\.html$/, '')
+      .replace(/\/$/, '') || '/index';
+
+    [main, nav, footer].forEach(normalizeLinks);
 
     const results = [{ element: main, path: documentPath }];
     [[nav, '/nav'], [footer, '/footer']].forEach(([element, docPath]) => {

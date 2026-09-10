@@ -1,16 +1,33 @@
 {
   "url": "https://commonwealth.globalatlantic.com/",
-  "final_url": "https://commonwealth.globalatlantic.com/",
-  "http_status": 200,
-  "crawled_at": "2026-09-04T20:13:20.192Z",
+  "slug": "home",
+  "page_title": "Commonwealth Annuity and Life Insurance Company | commonwealth",
+  "crawled_at": "2026-09-10T17:08:40.242Z",
   "breakpoints": [
     375,
     768,
     1440
   ],
-  "page_title": "Commonwealth Annuity and Life Insurance Company | commonwealth",
-  "consent_banner_dismissed": true,
-  "js_errors": [],
-  "body_text_length": 451,
-  "truncated": false
+  "status": 200,
+  "structure_hash": "s49383b58",
+  "node_count": 70,
+  "counts": {
+    "styled_nodes": 70,
+    "css_rules_matched": 82,
+    "keyframes": 5,
+    "font_faces": 0,
+    "assets": 4,
+    "interactions": 0,
+    "rotators": 0,
+    "css_behaviours": 0,
+    "expanded_toggles": 0,
+    "third_party_excluded": 1
+  },
+  "blocked_stylesheets": [],
+  "console_errors": [],
+  "truncated": false,
+  "notes": [
+    "consent dismissed via #onetrust-accept-btn-handler",
+    "1 third-party subtree(s) excluded"
+  ]
 }

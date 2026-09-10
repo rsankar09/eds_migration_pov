@@ -40,6 +40,23 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Layout",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Panel — CTA aside beside a contained banner image",
+              "value": "panel"
+            }
+          ]
         }
       ]
     }

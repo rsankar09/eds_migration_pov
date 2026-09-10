@@ -1,0 +1,31 @@
+[
+  {
+    "url": "https://commonwealth.globalatlantic.com/sites/commonwealth/themes/commonwealth/logo.png",
+    "role": "image",
+    "node_id": "n10",
+    "alt": "Home",
+    "width": 345,
+    "height": 90,
+    "loading": null,
+    "srcset": null
+  },
+  {
+    "url": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/cw_home.jpg",
+    "role": "image",
+    "node_id": "n47",
+    "alt": "home banner",
+    "width": 701,
+    "height": 215,
+    "loading": "lazy",
+    "srcset": null
+  },
+  {
+    "url": "https://commonwealth.globalatlantic.com/sites/commonwealth/themes/commonwealth/img/menu-bg.gif",
+    "role": "background",
+    "node_id": "n12"
+  },
+  {
+    "url": "https://commonwealth.globalatlantic.com/sites/commonwealth/themes/commonwealth/favicon.ico",
+    "role": "icon"
+  }
+]

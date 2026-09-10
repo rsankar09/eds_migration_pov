@@ -1,0 +1,22 @@
+[
+  {
+    "url": "https://commonwealth.globalatlantic.com/sites/commonwealth/themes/commonwealth/logo.png",
+    "role": "image",
+    "node_id": "n11",
+    "alt": "Commonwealth Annuity and Life Insurance Company",
+    "width": 345,
+    "height": 90,
+    "loading": null,
+    "srcset": null
+  },
+  {
+    "url": "https://commonwealth.globalatlantic.com/sites/commonwealth/files/2021-09/agent_3.jpg",
+    "role": "image",
+    "node_id": "n53",
+    "alt": "Transamerica",
+    "width": 701,
+    "height": 215,
+    "loading": "eager",
+    "srcset": null
+  }
+]

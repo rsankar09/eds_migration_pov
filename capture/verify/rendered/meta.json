@@ -1,0 +1,30 @@
+{
+  "url": "http://localhost:3000/agentbrokers/transamerica",
+  "slug": "rendered",
+  "page_title": "Transamerica",
+  "crawled_at": "2026-09-10T17:32:27.052Z",
+  "breakpoints": [
+    375,
+    768,
+    1440
+  ],
+  "status": 200,
+  "structure_hash": "sd9bf5e05",
+  "node_count": 74,
+  "counts": {
+    "styled_nodes": 74,
+    "css_rules_matched": 88,
+    "keyframes": 0,
+    "font_faces": 4,
+    "assets": 2,
+    "interactions": 5,
+    "rotators": 0,
+    "css_behaviours": 0,
+    "expanded_toggles": 6,
+    "third_party_excluded": 0
+  },
+  "blocked_stylesheets": [],
+  "console_errors": [],
+  "truncated": false,
+  "notes": []
+}

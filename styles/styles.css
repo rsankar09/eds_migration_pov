@@ -316,6 +316,51 @@ main > .section:first-of-type {
 }
 
 /* section metadata */
+
+/*
+ * Interior page body. The source floats it into a 75% right column in
+ * Verdana, with a ruled Georgia heading:
+ *   .cw-content-section { padding: 25px 25px 25px 14px; font-family: verdana }
+ *   .cw-content-section .content-right-sec { width: 75%; float: right }
+ *   .cw-content-section .content-right-sec h2
+ *     { border-bottom: 1px solid #ccc; line-height: 30px; margin: 0 0 20px }
+ * Below 992px the source drops it to full width.
+ */
+main > .section.content-column > div {
+  /* the container is 965 including its padding, as the source's is */
+  box-sizing: border-box;
+  padding: 25px 25px 25px 14px;
+  font-family: verdana, arial, sans-serif;
+}
+
+/*
+ * 75% of the wrapper's content box (965 − 25 − 14 = 926), which reproduces
+ * the source's 694.5px column. Applied to the children rather than the
+ * wrapper: the wrapper's percentage would resolve against the full-bleed
+ * section and then be clamped by --content-max-width.
+ */
+main .section.content-column .default-content-wrapper > * {
+  width: 75%;
+  margin-left: auto;
+}
+
+main .section.content-column h1,
+main .section.content-column h2 {
+  margin: 0 0 20px;
+  border-bottom: 1px solid #ccc;
+  color: var(--dark-color);
+  font-family: var(--display-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+}
+
+@media (width < 992px) {
+  main .section.content-column .default-content-wrapper > * {
+    width: 100%;
+  }
+}
+
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);

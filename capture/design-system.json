@@ -1,0 +1,138 @@
+{
+  "source": {
+    "pages": [
+      "agentbrokers-transamerica",
+      "home",
+      "policyholders"
+    ],
+    "urls": [
+      "https://commonwealth.globalatlantic.com/agentbrokers/transamerica",
+      "https://commonwealth.globalatlantic.com/",
+      "https://commonwealth.globalatlantic.com/policyholders"
+    ],
+    "generated_at": "2026-09-10T17:04:59.848Z"
+  },
+  "colors": {
+    "background": "#ffffff",
+    "text": "#666666",
+    "close_calls": [
+      {
+        "role": "text",
+        "chosen": "#666666",
+        "runner_up": "#999999",
+        "margin": "16%"
+      },
+      {
+        "role": "link",
+        "chosen": "#00447c",
+        "runner_up": "#ffffff",
+        "margin": "3%"
+      }
+    ],
+    "text_alternates": [
+      "#999999",
+      "#ffffff",
+      "#868686"
+    ],
+    "link": "#00447c",
+    "link_hover": "#0056b3",
+    "brand": [
+      "#b2b2b2",
+      "#00457c",
+      "rgb(255 255 255 / 0.2)"
+    ],
+    "all_backgrounds": [
+      "#ffffff",
+      "#b2b2b2",
+      "#00457c",
+      "rgb(255 255 255 / 0.2)"
+    ]
+  },
+  "fonts": {
+    "body": "helvetica, arial, sans-serif",
+    "heading": "georgia, times, serif",
+    "display": null,
+    "stacks": [
+      "helvetica, arial, sans-serif",
+      "georgia, times, serif"
+    ]
+  },
+  "type": {
+    "body": {
+      "size": 12,
+      "weight": "400",
+      "line_height": "18px",
+      "count": 13
+    },
+    "headings": {
+      "h2": {
+        "size": 24,
+        "weight": "400",
+        "line_height": "30px",
+        "count": 3
+      }
+    },
+    "observed_sizes": [
+      11,
+      12,
+      13,
+      16,
+      24
+    ],
+    "close_calls": []
+  },
+  "spacing": [
+    {
+      "value": 7,
+      "count": 12
+    },
+    {
+      "value": 12,
+      "count": 3
+    },
+    {
+      "value": 16,
+      "count": 2
+    },
+    {
+      "value": 20,
+      "count": 2
+    },
+    {
+      "value": 25,
+      "count": 4
+    },
+    {
+      "value": 30,
+      "count": 2
+    }
+  ],
+  "layout": {
+    "container_max_width": 965,
+    "gutter": null,
+    "nav_height": 172
+  },
+  "breakpoints": [
+    {
+      "value": 576,
+      "rules": 1
+    },
+    {
+      "value": 767,
+      "rules": 5
+    },
+    {
+      "value": 768,
+      "rules": 4
+    },
+    {
+      "value": 991,
+      "rules": 14
+    },
+    {
+      "value": 992,
+      "rules": 4
+    }
+  ],
+  "source_custom_properties": {}
+}

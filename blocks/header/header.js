@@ -108,6 +108,38 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+/** Normalizes a path so `/a/`, `/a` and `/a.html` all compare equal. */
+function normalizePath(path) {
+  return path.replace(/\.html$/, '').replace(/\/+$/, '') || '/';
+}
+
+/**
+ * Marks the nav branch containing the current page.
+ *
+ * The source renders a section's second level as a permanent row for the
+ * page you are on, rather than as a dropdown. One /nav document is shared by
+ * every page, so that trail cannot be authored — it has to be resolved at
+ * runtime from the current path.
+ *
+ * @param {Element} navSections The nav sections container
+ */
+function markActiveTrail(navSections) {
+  const here = normalizePath(window.location.pathname);
+  navSections.querySelectorAll('a[href]').forEach((a) => {
+    let target;
+    try {
+      target = normalizePath(new URL(a.href, window.location.href).pathname);
+    } catch {
+      return;
+    }
+    if (target !== here) return;
+    a.setAttribute('aria-current', 'page');
+    for (let li = a.closest('li'); li; li = li.parentElement.closest('li')) {
+      li.classList.add('nav-active-trail');
+    }
+  });
+}
+
 /**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -139,8 +171,11 @@ export default async function decorate(block) {
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
+    markActiveTrail(navSections);
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
+      // the active section's submenu is always shown, so it must not toggle
+      if (navSection.classList.contains('nav-active-trail')) return;
       navSection.addEventListener('click', () => {
         if (isDesktop.matches) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';

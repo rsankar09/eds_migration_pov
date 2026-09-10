@@ -1,0 +1,139 @@
+{
+  "fontFamilies": [
+    {
+      "value": "helvetica, arial, sans-serif",
+      "count": 20
+    },
+    {
+      "value": "georgia, times, serif",
+      "count": 3
+    }
+  ],
+  "typeScale": [
+    {
+      "value": "12px/400/12px",
+      "count": 10
+    },
+    {
+      "value": "12px/700/12px",
+      "count": 6
+    },
+    {
+      "value": "11px/400/16.5px",
+      "count": 3
+    },
+    {
+      "value": "16px/400/37px",
+      "count": 2
+    },
+    {
+      "value": "13px/700/19.5px",
+      "count": 1
+    },
+    {
+      "value": "21px/400/34px",
+      "count": 1
+    }
+  ],
+  "colors": [
+    {
+      "value": "rgb(255, 255, 255)",
+      "count": 19
+    },
+    {
+      "value": "rgb(0, 68, 124)",
+      "count": 2
+    },
+    {
+      "value": "rgb(134, 134, 134)",
+      "count": 1
+    },
+    {
+      "value": "rgb(153, 153, 153)",
+      "count": 1
+    }
+  ],
+  "backgrounds": [
+    {
+      "value": "rgb(0, 69, 124)",
+      "count": 3
+    },
+    {
+      "value": "rgb(255, 255, 255)",
+      "count": 2
+    },
+    {
+      "value": "rgb(178, 178, 178)",
+      "count": 1
+    }
+  ],
+  "borderColors": [],
+  "radii": [],
+  "shadows": [],
+  "spacing": [
+    {
+      "value": "7px",
+      "count": 12
+    },
+    {
+      "value": "20px",
+      "count": 5
+    },
+    {
+      "value": "16px",
+      "count": 2
+    },
+    {
+      "value": "26px",
+      "count": 1
+    },
+    {
+      "value": "30px",
+      "count": 1
+    },
+    {
+      "value": "25px",
+      "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
+    },
+    {
+      "value": "24px",
+      "count": 1
+    },
+    {
+      "value": "5px",
+      "count": 1
+    }
+  ],
+  "gaps": [
+    {
+      "value": "24px",
+      "count": 2
+    },
+    {
+      "value": "12px",
+      "count": 1
+    },
+    {
+      "value": "0px",
+      "count": 1
+    },
+    {
+      "value": "0px 6px",
+      "count": 1
+    }
+  ],
+  "containerWidths": [
+    {
+      "value": "965px",
+      "count": 4
+    },
+    {
+      "value": "100%",
+      "count": 2
+    }
+  ]
+}

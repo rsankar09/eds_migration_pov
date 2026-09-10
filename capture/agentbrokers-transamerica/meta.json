@@ -1,0 +1,33 @@
+{
+  "url": "https://commonwealth.globalatlantic.com/agentbrokers/transamerica",
+  "slug": "agentbrokers-transamerica",
+  "page_title": "Transamerica | commonwealth",
+  "crawled_at": "2026-09-10T17:04:59.749Z",
+  "breakpoints": [
+    375,
+    768,
+    1440
+  ],
+  "status": 200,
+  "structure_hash": "s309c8833",
+  "node_count": 84,
+  "counts": {
+    "styled_nodes": 84,
+    "css_rules_matched": 96,
+    "keyframes": 5,
+    "font_faces": 0,
+    "assets": 4,
+    "interactions": 0,
+    "rotators": 0,
+    "css_behaviours": 0,
+    "expanded_toggles": 0,
+    "third_party_excluded": 1
+  },
+  "blocked_stylesheets": [],
+  "console_errors": [],
+  "truncated": false,
+  "notes": [
+    "consent dismissed via #onetrust-accept-btn-handler",
+    "1 third-party subtree(s) excluded"
+  ]
+}

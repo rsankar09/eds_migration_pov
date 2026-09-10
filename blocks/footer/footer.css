@@ -9,6 +9,20 @@ footer .footer > div {
   padding: 10px var(--content-gutter) 24px;
 }
 
+/*
+ * Source: `p.links { float: left }` and `p.copy { float: right }`, collapsing
+ * to full width below 767px. Measured on the source at 1440: both rows sit at
+ * y=617, links at x=252 and copyright at x=736.
+ */
+@media (width >= 768px) {
+  footer .footer .default-content-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+  }
+}
+
 footer .footer p {
   margin: 5px 0 0;
   line-height: 1.5;

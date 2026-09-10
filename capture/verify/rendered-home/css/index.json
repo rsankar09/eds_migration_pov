@@ -1,0 +1,913 @@
+{
+  "rules": [
+    {
+      "selector": "header",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n1"
+      ],
+      "css": "header { height: var(--nav-height); }"
+    },
+    {
+      "selector": "header .header, footer .footer",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n2",
+        "n58"
+      ],
+      "css": "header .header, footer .footer { visibility: hidden; }"
+    },
+    {
+      "selector": "header .header[data-block-status=\"loaded\"], footer .footer[data-block-status=\"loaded\"]",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n2",
+        "n58"
+      ],
+      "css": "header .header[data-block-status=\"loaded\"], footer .footer[data-block-status=\"loaded\"] { visibility: visible; }"
+    },
+    {
+      "selector": "h1, h2, h3, h4, h5, h6",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n56"
+      ],
+      "css": "h1, h2, h3, h4, h5, h6 { margin-top: 0.8em; margin-bottom: 0.25em; font-family: var(--heading-font-family); font-weight: 700; line-height: 1.25; scroll-margin: 40px; }"
+    },
+    {
+      "selector": "h1",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n56"
+      ],
+      "css": "h1 { margin: 0px 0px 16px; font-size: var(--heading-font-size-xxl); font-family: var(--display-font-family); font-weight: 400; line-height: 34px; color: var(--dark-color); }"
+    },
+    {
+      "selector": "p, dl, ol, ul, pre, blockquote",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n8",
+        "n44",
+        "n67",
+        "n13",
+        "n22",
+        "n30",
+        "n45",
+        "n62"
+      ],
+      "css": "p, dl, ol, ul, pre, blockquote { margin-top: 0.8em; margin-bottom: 0.25em; }"
+    },
+    {
+      "selector": "main > div",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n39",
+        "n54"
+      ],
+      "css": "main > div { margin: 40px 16px; }"
+    },
+    {
+      "selector": "input, textarea, select, button",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n5"
+      ],
+      "css": "input, textarea, select, button { font: inherit; }"
+    },
+    {
+      "selector": "a:any-link",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n9",
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23",
+        "n24",
+        "n25",
+        "n26",
+        "n27",
+        "n29",
+        "n31",
+        "n32",
+        "n33",
+        "n34",
+        "n35",
+        "n37",
+        "n47",
+        "n49",
+        "n64",
+        "n66"
+      ],
+      "css": "a:any-link { color: var(--link-color); text-decoration: none; overflow-wrap: break-word; }"
+    },
+    {
+      "selector": "a:hover",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n9",
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23",
+        "n24",
+        "n25",
+        "n26",
+        "n27",
+        "n29",
+        "n31",
+        "n32",
+        "n33",
+        "n34",
+        "n35",
+        "n37",
+        "n47",
+        "n49",
+        "n64",
+        "n66"
+      ],
+      "css": "a:hover { color: var(--link-hover-color); text-decoration: underline; }"
+    },
+    {
+      "selector": "main img",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n53"
+      ],
+      "css": "main img { max-width: 100%; width: auto; height: auto; }"
+    },
+    {
+      "selector": "main > .section",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n39",
+        "n54"
+      ],
+      "css": "main > .section { margin: 20px 0px; }"
+    },
+    {
+      "selector": "main > .section > div",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n40",
+        "n55"
+      ],
+      "css": "main > .section > div { max-width: var(--content-max-width); margin: auto; padding: 0 var(--content-gutter); }"
+    },
+    {
+      "selector": "main > .section:first-of-type",
+      "media": null,
+      "origin": "http://localhost:3000/styles/styles.css",
+      "nodes": [
+        "n39"
+      ],
+      "css": "main > .section:first-of-type { margin-top: 0px; }"
+    },
+    {
+      "selector": ".hero-container .hero-wrapper",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n40"
+      ],
+      "css": ".hero-container .hero-wrapper { max-width: unset; padding: 0px; }"
+    },
+    {
+      "selector": ".hero",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n41"
+      ],
+      "css": ".hero { position: relative; padding: 40px 24px; min-height: 300px; }"
+    },
+    {
+      "selector": ".hero picture",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n52"
+      ],
+      "css": ".hero picture { position: absolute; z-index: -1; inset: 0px; object-fit: cover; box-sizing: border-box; }"
+    },
+    {
+      "selector": ".hero img",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n53"
+      ],
+      "css": ".hero img { object-fit: cover; width: 100%; height: 100%; }"
+    },
+    {
+      "selector": ".hero",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n41"
+      ],
+      "css": ".hero { padding: 40px 32px; }"
+    },
+    {
+      "selector": ".hero.panel",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n41"
+      ],
+      "css": ".hero.panel { box-sizing: border-box; max-width: var(--content-max-width); margin-inline: auto; padding: 0px; min-height: 0px; display: flex; flex-direction: column; border-bottom: 4px solid transparent; border-image: linear-gradient(\n      to right,\n      var(--accent-1) 0 25%,\n      var(--accent-2) 25% 50%,\n      var(--accent-3) 50% 75%,\n      var(--accent-4) 75% 100%\n    ) 1; }"
+    },
+    {
+      "selector": ".hero.panel .hero-panel",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n42"
+      ],
+      "css": ".hero.panel .hero-panel { box-sizing: border-box; background-color: var(--panel-color); padding: 20px 15px; color: var(--background-color); }"
+    },
+    {
+      "selector": ".hero.panel .hero-panel > div",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n43"
+      ],
+      "css": ".hero.panel .hero-panel > div { padding: 0px 40px; }"
+    },
+    {
+      "selector": ".hero.panel .hero-panel p",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n44"
+      ],
+      "css": ".hero.panel .hero-panel p { margin: 0px 0px 25px; font-size: var(--heading-font-size-s); font-weight: 700; line-height: 1.5; color: var(--background-color); }"
+    },
+    {
+      "selector": ".hero.panel .hero-panel ul",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n45"
+      ],
+      "css": ".hero.panel .hero-panel ul { margin: 0px; padding: 0px; list-style: none; }"
+    },
+    {
+      "selector": ".hero.panel .hero-panel li + li",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n48"
+      ],
+      "css": ".hero.panel .hero-panel li + li { margin-top: 16px; }"
+    },
+    {
+      "selector": ".hero.panel .hero-panel a:any-link",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n47",
+        "n49"
+      ],
+      "css": ".hero.panel .hero-panel a:any-link { display: block; background-color: var(--brand-navy); color: var(--background-color); font-family: var(--display-font-family); font-size: var(--heading-font-size-l); line-height: 37px; text-align: center; text-decoration: none; }"
+    },
+    {
+      "selector": ".hero.panel .hero-panel a:hover",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n47",
+        "n49"
+      ],
+      "css": ".hero.panel .hero-panel a:hover { background-color: var(--link-hover-color); text-decoration: none; }"
+    },
+    {
+      "selector": ".hero.panel .hero-image",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n50"
+      ],
+      "css": ".hero.panel .hero-image { line-height: 0; }"
+    },
+    {
+      "selector": ".hero.panel picture",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n52"
+      ],
+      "css": ".hero.panel picture { position: static; display: block; }"
+    },
+    {
+      "selector": ".hero.panel img",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n53"
+      ],
+      "css": ".hero.panel img { display: block; width: 100%; height: auto; aspect-ratio: 709 / 215; object-fit: cover; }"
+    },
+    {
+      "selector": ".hero.panel",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n41"
+      ],
+      "css": ".hero.panel { flex-direction: row; align-items: stretch; padding: 0px; }"
+    },
+    {
+      "selector": ".hero.panel .hero-panel",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n42"
+      ],
+      "css": ".hero.panel .hero-panel { flex: 0 0 25%; padding: 20px 4px 20px 15px; }"
+    },
+    {
+      "selector": ".hero.panel .hero-image",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n50"
+      ],
+      "css": ".hero.panel .hero-image { flex: 1 1 0px; min-width: 0px; }"
+    },
+    {
+      "selector": ".hero.panel img",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/hero/hero.css",
+      "nodes": [
+        "n53"
+      ],
+      "css": ".hero.panel img { height: 100%; aspect-ratio: auto; min-height: 215px; }"
+    },
+    {
+      "selector": "header .nav-wrapper",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n3"
+      ],
+      "css": "header .nav-wrapper { background-color: var(--background-color); width: 100%; z-index: 2; position: fixed; }"
+    },
+    {
+      "selector": "header nav",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n4"
+      ],
+      "css": "header nav { box-sizing: border-box; display: grid; grid-template: \"brand tools hamburger\" \"sections sections sections\" 1fr / 1fr auto auto; align-items: center; gap: 0px; margin: auto; max-width: var(--content-max-width); height: var(--nav-height); padding: 0 var(--content-gutter); font-family: var(--body-font-family); }"
+    },
+    {
+      "selector": "header nav[aria-expanded=\"true\"]",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n4"
+      ],
+      "css": "header nav[aria-expanded=\"true\"] { grid-template: 'brand hamburger' var(--nav-height)\n    'sections sections' 1fr\n    'tools tools' var(--nav-height) / 1fr auto; overflow-y: auto; min-height: 100dvh; }"
+    },
+    {
+      "selector": "header .nav-wrapper",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n3"
+      ],
+      "css": "header .nav-wrapper { position: relative; }"
+    },
+    {
+      "selector": "header nav",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n4"
+      ],
+      "css": "header nav { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 12px; max-width: var(--content-max-width); padding: 26px var(--content-gutter) 0; }"
+    },
+    {
+      "selector": "header nav .nav-brand, header nav .nav-sections",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n6",
+        "n11"
+      ],
+      "css": "header nav .nav-brand, header nav .nav-sections { flex: 0 0 auto; }"
+    },
+    {
+      "selector": "header nav[aria-expanded=\"true\"]",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n4"
+      ],
+      "css": "header nav[aria-expanded=\"true\"] { min-height: 0px; overflow: visible; }"
+    },
+    {
+      "selector": "header nav p",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n8"
+      ],
+      "css": "header nav p { margin: 0px; line-height: 1; }"
+    },
+    {
+      "selector": "header nav a:any-link",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n9",
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23",
+        "n24",
+        "n25",
+        "n26",
+        "n27",
+        "n29",
+        "n31",
+        "n32",
+        "n33",
+        "n34",
+        "n35",
+        "n37"
+      ],
+      "css": "header nav a:any-link { color: currentcolor; }"
+    },
+    {
+      "selector": "header nav .nav-hamburger button",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n5"
+      ],
+      "css": "header nav .nav-hamburger button { height: 22px; margin: 0px; border: 0px; border-radius: 0px; padding: 0px; background-color: var(--background-color); color: inherit; overflow: initial; text-overflow: initial; white-space: initial; }"
+    },
+    {
+      "selector": "header .nav-brand",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n6"
+      ],
+      "css": "header .nav-brand { grid-area: brand; flex-basis: 128px; font-size: var(--heading-font-size-s); font-weight: 700; line-height: 1; }"
+    },
+    {
+      "selector": "header nav .nav-brand img",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n10"
+      ],
+      "css": "header nav .nav-brand img { width: auto; max-width: 245px; max-height: 90px; }"
+    },
+    {
+      "selector": "header nav .nav-brand img",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n10"
+      ],
+      "css": "header nav .nav-brand img { max-width: 100%; }"
+    },
+    {
+      "selector": "header nav .nav-sections",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n11"
+      ],
+      "css": "header nav .nav-sections { grid-area: sections; flex: 1 1 auto; display: none; visibility: hidden; }"
+    },
+    {
+      "selector": "header nav[aria-expanded=\"true\"] .nav-sections",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n11"
+      ],
+      "css": "header nav[aria-expanded=\"true\"] .nav-sections { display: block; visibility: visible; align-self: start; }"
+    },
+    {
+      "selector": "header nav .nav-sections ul",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n13",
+        "n22",
+        "n30"
+      ],
+      "css": "header nav .nav-sections ul { list-style: none; padding-left: 0px; margin: 0px; font-size: var(--body-font-size-m); }"
+    },
+    {
+      "selector": "header nav .nav-sections ul > li",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n28",
+        "n36"
+      ],
+      "css": "header nav .nav-sections ul > li { font-weight: 700; }"
+    },
+    {
+      "selector": "header nav .nav-sections ul > li > ul",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n22",
+        "n30"
+      ],
+      "css": "header nav .nav-sections ul > li > ul { margin-top: 0px; }"
+    },
+    {
+      "selector": "header nav .nav-sections",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n11"
+      ],
+      "css": "header nav .nav-sections { display: block; visibility: visible; white-space: nowrap; }"
+    },
+    {
+      "selector": "header nav[aria-expanded=\"true\"] .nav-sections",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n11"
+      ],
+      "css": "header nav[aria-expanded=\"true\"] .nav-sections { align-self: unset; }"
+    },
+    {
+      "selector": "header nav .nav-sections .nav-drop",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n20",
+        "n28"
+      ],
+      "css": "header nav .nav-sections .nav-drop { position: relative; padding-right: 16px; cursor: pointer; }"
+    },
+    {
+      "selector": "header nav .nav-sections .nav-drop::after",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n20",
+        "n28"
+      ],
+      "css": "header nav .nav-sections .nav-drop::after { content: \"\"; display: inline-block; position: absolute; top: 0.5em; right: 2px; transform: rotate(135deg); width: 6px; height: 6px; border-style: solid; border-color: currentcolor; border-image: none; border-radius: 0px 1px 0px 0px; border-width: 2px 2px 0px 0px; }"
+    },
+    {
+      "selector": "header nav .nav-sections ul",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n13",
+        "n22",
+        "n30"
+      ],
+      "css": "header nav .nav-sections ul { display: flex; gap: 24px; margin: 0px; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul > li",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n28",
+        "n36"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul > li { flex: 0 1 auto; position: relative; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul > li > ul",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n22",
+        "n30"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul > li > ul { display: none; position: relative; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul > li > ul::before",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n22",
+        "n30"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul > li > ul::before { content: \"\"; position: absolute; top: -8px; left: 16px; width: 0px; height: 0px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid var(--light-color); }"
+    },
+    {
+      "selector": "header nav .nav-sections",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n11"
+      ],
+      "css": "header nav .nav-sections { background-color: var(--brand-navy); background-image: linear-gradient(\n      to bottom,\n      var(--brand-navy) 0,\n      var(--brand-navy) 2px,\n      #7298b7 2px,\n      var(--brand-navy) 17px\n    ); flex: 0 0 auto; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n13"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul { display: flex; justify-content: flex-start; gap: 0px; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul > li",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n14",
+        "n16",
+        "n18",
+        "n20",
+        "n28",
+        "n36"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul > li { flex: 0 0 auto; text-align: left; padding: 7px 0px; line-height: 12px; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul > li + li",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n16",
+        "n18",
+        "n20",
+        "n28",
+        "n36"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul > li + li { border-left: 1px solid rgba(255, 255, 255, 0.45); }"
+    },
+    {
+      "selector": "header nav .nav-sections a:any-link",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23",
+        "n24",
+        "n25",
+        "n26",
+        "n27",
+        "n29",
+        "n31",
+        "n32",
+        "n33",
+        "n34",
+        "n35",
+        "n37"
+      ],
+      "css": "header nav .nav-sections a:any-link { color: var(--background-color); }"
+    },
+    {
+      "selector": "header nav .nav-sections a:hover",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n23",
+        "n24",
+        "n25",
+        "n26",
+        "n27",
+        "n29",
+        "n31",
+        "n32",
+        "n33",
+        "n34",
+        "n35",
+        "n37"
+      ],
+      "css": "header nav .nav-sections a:hover { color: var(--background-color); text-decoration: underline; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul > li > a",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n15",
+        "n17",
+        "n19",
+        "n21",
+        "n29",
+        "n37"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul > li > a { padding: 0px 40px; }"
+    },
+    {
+      "selector": "header nav .nav-sections",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n11"
+      ],
+      "css": "header nav .nav-sections { position: relative; margin-bottom: 30px; }"
+    },
+    {
+      "selector": "header nav .nav-sections .nav-drop",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n20",
+        "n28"
+      ],
+      "css": "header nav .nav-sections .nav-drop { padding-right: 0px; cursor: auto; }"
+    },
+    {
+      "selector": "header nav .nav-sections .nav-drop::after",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n20",
+        "n28"
+      ],
+      "css": "header nav .nav-sections .nav-drop::after { content: none; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-active-trail) > ul",
+      "media": "(width >= 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n22",
+        "n30"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-active-trail) > ul { display: none; }"
+    },
+    {
+      "selector": "header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-active-trail) > ul",
+      "media": "(width < 900px)",
+      "origin": "http://localhost:3000/blocks/header/header.css",
+      "nodes": [
+        "n22",
+        "n30"
+      ],
+      "css": "header nav .nav-sections .default-content-wrapper > ul > li:not(.nav-active-trail) > ul { display: none; }"
+    },
+    {
+      "selector": "footer",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/footer/footer.css",
+      "nodes": [
+        "n57"
+      ],
+      "css": "footer { background-color: var(--background-color); font-size: var(--body-font-size-s); }"
+    },
+    {
+      "selector": "footer .footer > div",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/footer/footer.css",
+      "nodes": [
+        "n59"
+      ],
+      "css": "footer .footer > div { margin: auto; max-width: var(--content-max-width); padding: 10px var(--content-gutter) 24px; }"
+    },
+    {
+      "selector": "footer .footer p",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/footer/footer.css",
+      "nodes": [
+        "n67"
+      ],
+      "css": "footer .footer p { margin: 5px 0px 0px; line-height: 1.5; }"
+    },
+    {
+      "selector": "footer .footer ul",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/footer/footer.css",
+      "nodes": [
+        "n62"
+      ],
+      "css": "footer .footer ul { display: flex; flex-wrap: wrap; align-items: center; gap: 0px 6px; margin: 0px; padding: 0px; list-style: none; }"
+    },
+    {
+      "selector": "footer .footer li + li::before",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/footer/footer.css",
+      "nodes": [
+        "n65"
+      ],
+      "css": "footer .footer li + li::before { content: \"|\"; margin-right: 6px; color: var(--muted-color); }"
+    },
+    {
+      "selector": "footer .footer a:any-link",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/footer/footer.css",
+      "nodes": [
+        "n64",
+        "n66"
+      ],
+      "css": "footer .footer a:any-link { color: var(--link-color); }"
+    },
+    {
+      "selector": "footer .footer a:hover",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/footer/footer.css",
+      "nodes": [
+        "n64",
+        "n66"
+      ],
+      "css": "footer .footer a:hover { color: var(--link-hover-color); text-decoration: underline; }"
+    },
+    {
+      "selector": "footer .footer .footer-copyright, footer .footer p:last-child",
+      "media": null,
+      "origin": "http://localhost:3000/blocks/footer/footer.css",
+      "nodes": [
+        "n67"
+      ],
+      "css": "footer .footer .footer-copyright, footer .footer p:last-child { color: var(--muted-color); }"
+    }
+  ],
+  "keyframes": [],
+  "fontFaces": [
+    {
+      "css": "@font-face { font-family: roboto-condensed; font-style: normal; font-weight: 700; font-display: swap; src: url(\"../fonts/roboto-condensed-bold.woff2\") format(\"woff2\"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }",
+      "origin": "http://localhost:3000/styles/fonts.css"
+    },
+    {
+      "css": "@font-face { font-family: roboto; font-style: normal; font-weight: 700; font-display: swap; src: url(\"../fonts/roboto-bold.woff2\") format(\"woff2\"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }",
+      "origin": "http://localhost:3000/styles/fonts.css"
+    },
+    {
+      "css": "@font-face { font-family: roboto; font-style: normal; font-weight: 500; font-display: swap; src: url(\"../fonts/roboto-medium.woff2\") format(\"woff2\"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }",
+      "origin": "http://localhost:3000/styles/fonts.css"
+    },
+    {
+      "css": "@font-face { font-family: roboto; font-style: normal; font-weight: 400; font-display: swap; src: url(\"../fonts/roboto-regular.woff2\") format(\"woff2\"); unicode-range: U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }",
+      "origin": "http://localhost:3000/styles/fonts.css"
+    }
+  ],
+  "rootVars": {
+    "--accent-3": "#e6b00f",
+    "--dark-color": "#868686",
+    "--accent-4": "#b9c21f",
+    "--brand-navy": "#00457c",
+    "--content-gutter": "15px",
+    "--body-font-family": "helvetica, arial, sans-serif",
+    "--content-max-width": "965px",
+    "--heading-font-size-l": "16px",
+    "--heading-font-size-xxl": "21px",
+    "--link-hover-color": "#00294a",
+    "--heading-font-size-s": "13px",
+    "--display-font-family": "georgia, times, serif",
+    "--panel-color": "#b2b2b2",
+    "--muted-color": "#999",
+    "--accent-2": "#bd84ba",
+    "--body-font-size-s": "11px",
+    "--body-font-size-xs": "10px",
+    "--heading-font-size-xl": "18px",
+    "--accent-1": "#80d5ff",
+    "--link-color": "#00447c",
+    "--heading-font-family": "helvetica, arial, sans-serif",
+    "--body-font-size-m": "12px",
+    "--heading-font-size-xs": "12px",
+    "--background-color": "white",
+    "--nav-height": "184px",
+    "--light-color": "#f4f4f4",
+    "--heading-font-size-m": "14px",
+    "--text-color": "#666"
+  }
+}

@@ -1,0 +1,144 @@
+<html lang="en"><head><meta http-equiv="Content-Security-Policy" content="script-src 'nonce-aem' 'strict-dynamic' 'unsafe-inline' http: https:; base-uri 'self'; object-src 'none';" move-to-http-header="true">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script nonce="aem" src="/scripts/aem.js" type="module"></script>
+<script nonce="aem" src="/scripts/scripts.js" type="module"></script>
+<link rel="stylesheet" href="/styles/styles.css"><title>Transamerica</title><meta name="title" content="Transamerica"><meta property="og:title" content="Transamerica"><meta name="twitter:title" content="Transamerica"><meta name="image" content="/drafts/media/agent-banner.jpg"><meta property="og:image" content="/drafts/media/agent-banner.jpg"><meta name="twitter:image" content="/drafts/media/agent-banner.jpg"><script nonce="aem">window.LiveReloadOptions={port:3000,host:location.hostname,https:false};</script><script nonce="aem" src="/__internal__/livereload.js"></script><script nonce="aem">/*
+ * Copyright 2025 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+
+/**
+ * Browser Console Interceptor
+ * Intercepts console methods and forwards them via WebSocket to the server
+ * This script is self-contained and browser-compatible (no module system)
+ */
+(function iife() {
+  // Wait for LiveReload connection
+  var checkInterval = setInterval(function checkLiveReload() {
+    if (window.LiveReload && window.LiveReload.connector && window.LiveReload.connector.socket) {
+      clearInterval(checkInterval);
+
+      // Store original console methods
+      var originalConsole = {
+        log: console.log,
+        error: console.error,
+        warn: console.warn,
+        info: console.info,
+      };
+
+      // Helper to safely serialize arguments
+      function serializeArgs(args) {
+        return Array.from(args).map(function mapArg(arg) {
+          try {
+            if (arg instanceof Error) {
+              return { type: 'Error', message: arg.message, stack: arg.stack };
+            }
+            return JSON.parse(JSON.stringify(arg));
+          } catch (e) {
+            return String(arg);
+          }
+        });
+      }
+
+      // Get current file location
+      function getLocation() {
+        try {
+          var stack = new Error().stack;
+          var match = stack.match(/at.*?((https?:\/\/[^\s]+?):(\d+):(\d+))/);
+          if (match) {
+            return { url: match[2], line: match[3] };
+          }
+        } catch (e) {
+          // Ignore error when getting stack
+        }
+        return { url: window.location.href, line: 0 };
+      }
+
+      // Intercept console methods
+      ['log', 'error', 'warn', 'info'].forEach(function interceptLevel(level) {
+        console[level] = function interceptedConsole() {
+          // Call original method
+          originalConsole[level].apply(console, arguments);
+
+          // Forward to server if connected
+          if (window.LiveReload.connector.socket.readyState === 1) {
+            var location = getLocation();
+            window.LiveReload.connector.socket.send(JSON.stringify({
+              command: 'log',
+              level: level,
+              args: serializeArgs(arguments),
+              url: location.url,
+              line: location.line,
+            }));
+          }
+        };
+      });
+    }
+  }, 100);
+}());
+</script><link rel="stylesheet" href="/blocks/hero/hero.css"><link rel="stylesheet" href="/styles/fonts.css"><link rel="stylesheet" href="/blocks/header/header.css"><link rel="stylesheet" href="/blocks/footer/footer.css"><link rel="stylesheet" href="/styles/lazy-styles.css"></head><body class="appear"><header class="header-wrapper" data-eds-id="n1"><div class="header block" data-block-name="header" data-block-status="loaded" data-eds-id="n2"><div class="nav-wrapper" data-eds-id="n3"><nav id="nav" aria-expanded="true" data-eds-id="n4"><div class="nav-hamburger"><button type="button" aria-controls="nav" aria-label="Close navigation" data-eds-id="n5">
+      <span class="nav-hamburger-icon"></span>
+    </button></div><div class="section nav-brand" data-section-status="loaded" style="" data-eds-id="n6">
+  
+<div class="default-content-wrapper" data-eds-id="n7"><p data-eds-id="n8"><a href="/" title="" data-eds-id="n9"><img src="/drafts/media/logo.png" alt="Commonwealth Annuity and Life Insurance Company" data-eds-id="n10"></a></p></div></div><div class="section nav-sections" data-section-status="loaded" style="" data-eds-id="n11">
+  
+<div class="default-content-wrapper" data-eds-id="n12"><ul data-eds-id="n13">
+    <li aria-expanded="false" data-eds-id="n14"><a href="/about-us" data-eds-id="n15">About Us</a></li>
+    <li aria-expanded="false" data-eds-id="n16"><a href="/reinsurance-solutions" data-eds-id="n17">Reinsurance Solutions</a></li>
+    <li aria-expanded="false" data-eds-id="n18"><a href="/products" data-eds-id="n19">Products</a></li>
+    <li class="nav-drop" aria-expanded="false" tabindex="0" data-eds-id="n20">
+      <a href="/policyholders" data-eds-id="n21">Policyholders</a>
+      <ul data-eds-id="n22">
+        <li><a href="/policyholders/commonwealth-annuity" data-eds-id="n23">Commonwealth Annuity</a></li>
+        <li><a href="/policyholders/first-allmerica" data-eds-id="n24">First Allmerica</a></li>
+        <li><a href="/policyholders/zurich-american-protective-life" data-eds-id="n25">Zurich American/Protective Life</a></li>
+        <li><a href="/policyholders/fidelity-mutual" data-eds-id="n26">Fidelity Mutual</a></li>
+        <li><a href="/policyholders/transamerica" data-eds-id="n27">Transamerica</a></li>
+      </ul>
+    </li>
+    <li class="nav-active-trail nav-drop" aria-expanded="false" tabindex="0" data-eds-id="n28">
+      <a href="/agentbrokers" data-eds-id="n29">Agents/Brokers</a>
+      <ul data-eds-id="n30">
+        <li data-eds-id="n31"><a href="/agentbrokers/commonwealth-annuity" data-eds-id="n32">Commonwealth Annuity</a></li>
+        <li data-eds-id="n33"><a href="/agentbrokers/first-allmerica" data-eds-id="n34">First Allmerica</a></li>
+        <li data-eds-id="n35"><a href="/agentbrokers/zurich-american-protective-life" data-eds-id="n36">Zurich American/Protective Life</a></li>
+        <li data-eds-id="n37"><a href="/agentbrokers/fidelity-mutual" data-eds-id="n38">Fidelity Mutual</a></li>
+        <li class="nav-active-trail" data-eds-id="n39"><a href="/agentbrokers/transamerica" aria-current="page" data-eds-id="n40">Transamerica</a></li>
+      </ul>
+    </li>
+    <li aria-expanded="true" data-eds-id="n41"><a href="/contact-us" data-eds-id="n42">Contact</a></li>
+  </ul></div></div></nav></div></div></header><main data-eds-id="n43"><div class="section hero-container" data-section-status="loaded" style="" data-eds-id="n44">
+  
+<div class="hero-wrapper" data-eds-id="n45"><div class="hero panel block" data-block-name="hero" data-block-status="loaded" data-eds-id="n46">
+    <div class="hero-panel" data-eds-id="n47">
+      <div data-eds-id="n48">
+        <p data-eds-id="n49">Quick links:</p>
+        <ul data-eds-id="n50">
+          <li data-eds-id="n51"><a href="/policyholders" data-eds-id="n52">Policyholders</a></li>
+          <li data-eds-id="n53"><a href="/agentbrokers" data-eds-id="n54">Agents/Brokers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="hero-image" data-eds-id="n55">
+      <div data-eds-id="n56"><picture data-eds-id="n57"><img src="/drafts/media/agent-banner.jpg" alt="" data-eds-id="n58"></picture></div>
+    </div>
+  </div></div></div>
+<div class="section" data-section-status="loaded" style="" data-eds-id="n59">
+  
+  
+  
+<div class="default-content-wrapper" data-eds-id="n60"><h1 data-eds-id="n61">Transamerica</h1><p data-eds-id="n62">Phone: 800.782.8315</p><p data-eds-id="n63">Variable Life Service Center<br>PO BOX 758554<br>Topeka, KS 66675-8550</p></div></div>
+</main><footer class="footer-wrapper" data-eds-id="n64"><div class="footer block" data-block-name="footer" data-block-status="loaded" data-eds-id="n65"><div data-eds-id="n66"><div class="section" data-section-status="loaded" style="" data-eds-id="n67">
+  
+  
+<div class="default-content-wrapper" data-eds-id="n68"><ul data-eds-id="n69">
+    <li data-eds-id="n70"><a href="/disclosures" data-eds-id="n71">Disclosures</a></li>
+    <li data-eds-id="n72"><a href="https://gafg.widen.net/s/dtgmv9vqtv/privacy_statement" data-eds-id="n73">Privacy Policy</a></li>
+  </ul><p data-eds-id="n74">© Copyright 2014, Commonwealth Annuity and Life Insurance Company. All rights reserved.</p></div></div></div></div></footer></body></html>

@@ -1,16 +1,33 @@
 {
   "url": "https://commonwealth.globalatlantic.com/policyholders",
-  "final_url": "https://commonwealth.globalatlantic.com/policyholders",
-  "http_status": 200,
-  "crawled_at": "2026-09-05T00:48:16.876Z",
+  "slug": "policyholders",
+  "page_title": "Policyholders | commonwealth",
+  "crawled_at": "2026-09-10T17:10:37.128Z",
   "breakpoints": [
     375,
     768,
     1440
   ],
-  "page_title": "Policyholders | commonwealth",
-  "consent_banner_dismissed": true,
-  "js_errors": [],
-  "body_text_length": 1271,
-  "truncated": false
+  "status": 200,
+  "structure_hash": "s6509efa3",
+  "node_count": 137,
+  "counts": {
+    "styled_nodes": 137,
+    "css_rules_matched": 108,
+    "keyframes": 5,
+    "font_faces": 0,
+    "assets": 4,
+    "interactions": 1,
+    "rotators": 0,
+    "css_behaviours": 0,
+    "expanded_toggles": 0,
+    "third_party_excluded": 1
+  },
+  "blocked_stylesheets": [],
+  "console_errors": [],
+  "truncated": false,
+  "notes": [
+    "consent dismissed via #onetrust-accept-btn-handler",
+    "1 third-party subtree(s) excluded"
+  ]
 }

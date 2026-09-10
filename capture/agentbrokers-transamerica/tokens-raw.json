@@ -1,0 +1,183 @@
+{
+  "fontFamilies": [
+    {
+      "value": "helvetica, arial, sans-serif",
+      "count": 17
+    },
+    {
+      "value": "georgia, times, serif",
+      "count": 3
+    },
+    {
+      "value": "verdana, arial, sans-serif",
+      "count": 2
+    }
+  ],
+  "typeScale": [
+    {
+      "value": "12px/700/12px",
+      "count": 6
+    },
+    {
+      "value": "12px/400/30px",
+      "count": 5
+    },
+    {
+      "value": "12px/400/18px",
+      "count": 4
+    },
+    {
+      "value": "11px/400/16.5px",
+      "count": 3
+    },
+    {
+      "value": "16px/400/37px",
+      "count": 2
+    },
+    {
+      "value": "13px/700/19.5px",
+      "count": 1
+    },
+    {
+      "value": "24px/400/30px",
+      "count": 1
+    }
+  ],
+  "colors": [
+    {
+      "value": "rgb(255, 255, 255)",
+      "count": 9
+    },
+    {
+      "value": "rgb(0, 68, 124)",
+      "count": 7
+    },
+    {
+      "value": "rgb(102, 102, 102)",
+      "count": 2
+    },
+    {
+      "value": "rgb(153, 153, 153)",
+      "count": 2
+    },
+    {
+      "value": "rgb(204, 153, 51)",
+      "count": 1
+    },
+    {
+      "value": "rgb(134, 134, 134)",
+      "count": 1
+    }
+  ],
+  "backgrounds": [
+    {
+      "value": "rgba(255, 255, 255, 0.2)",
+      "count": 2
+    },
+    {
+      "value": "rgb(0, 69, 124)",
+      "count": 2
+    },
+    {
+      "value": "rgb(255, 255, 255)",
+      "count": 1
+    },
+    {
+      "value": "rgb(178, 178, 178)",
+      "count": 1
+    },
+    {
+      "value": "rgb(128, 213, 255)",
+      "count": 1
+    },
+    {
+      "value": "rgb(189, 132, 186)",
+      "count": 1
+    },
+    {
+      "value": "rgb(230, 176, 15)",
+      "count": 1
+    },
+    {
+      "value": "rgb(185, 194, 31)",
+      "count": 1
+    }
+  ],
+  "borderColors": [],
+  "radii": [],
+  "shadows": [
+    {
+      "value": "rgb(170, 170, 170) 8px 10px 8px 0px",
+      "count": 1
+    }
+  ],
+  "spacing": [
+    {
+      "value": "7px",
+      "count": 12
+    },
+    {
+      "value": "25px",
+      "count": 4
+    },
+    {
+      "value": "12px",
+      "count": 3
+    },
+    {
+      "value": "20px",
+      "count": 2
+    },
+    {
+      "value": "30px",
+      "count": 2
+    },
+    {
+      "value": "16px",
+      "count": 2
+    },
+    {
+      "value": "5px",
+      "count": 2
+    },
+    {
+      "value": "2px",
+      "count": 1
+    },
+    {
+      "value": "26px",
+      "count": 1
+    },
+    {
+      "value": "40px",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "15px",
+      "count": 1
+    }
+  ],
+  "gaps": [],
+  "containerWidths": [
+    {
+      "value": "25%",
+      "count": 5
+    },
+    {
+      "value": "100%",
+      "count": 2
+    },
+    {
+      "value": "965px",
+      "count": 1
+    },
+    {
+      "value": "75%",
+      "count": 1
+    }
+  ]
+}
