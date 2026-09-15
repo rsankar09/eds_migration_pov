@@ -1,0 +1,28 @@
+{
+ "title": "Credit union | Jackson",
+ "fonts": [
+  "Apercu, sans-serif, verdana",
+  "\"Superior Title\", sans-serif",
+  "Roboto, sans-serif"
+ ],
+ "stylesheets": [
+  "https://fonts.googleapis.com/css?family=Istok+Web:400,700,400italic,700italic%7CCinzel%7CPrata%7CRoboto:300,400,500,700&display=swap",
+  "https://www.jackson.com/etc.clientlibs/jackson-fp/clientlibs/jackson-fp-base.min.6d0bfe23cbee67ac71fb46b8017c0edb.css",
+  "https://www.jackson.com/etc.clientlibs/jackson-commons/clientlibs/dialog.min.a29bbb3ed449c75c76c138f7ecc80ec7.css",
+  "https://customer.cludo.com/css/templates/v2.1/essentials/cludo-search.min.css",
+  "https://www.jackson.com/etc.clientlibs/jackson-commons/components/content/site-selector-bar/v1/site-selector-bar/clientlibs.min.697a34727e48d5a05652e5e3caf1a56f.css"
+ ],
+ "scrollHeight": 7204,
+ "url": "https://www.jackson.com/financial-professional/credit-union.html",
+ "crawled_at": "2026-09-15T12:22:26.138726",
+ "breakpoints": [
+  375,
+  768,
+  1440
+ ],
+ "page_title": "Credit union | Jackson",
+ "fidelity_mode": "as-is",
+ "authoring_mode": "xwalk",
+ "truncated": false,
+ "notes": "Server-rendered AEM Sites page; header/footer are Experience Fragments shared site-wide. A Give Feedback tab (3rd-party) is present at right edge."
+}

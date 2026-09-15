@@ -1,0 +1,93 @@
+[
+  {
+    "component_id": "cmp-001",
+    "component": "masthead / mega nav (XF)",
+    "verdict": "defer",
+    "rationale": "Out of scope under open decision D1 (main content only). The masthead alone — site selector, 5-item mega menu, Cludo third-party search, breadcrumb, auth pills — rivals the four body blocks combined.",
+    "candidates": [
+      { "block_name": "header", "source": "internal", "score": 0.4, "rationale": "Boilerplate header exists but is nav-document-driven and has no _header.json, so it is not author-configurable.", "gaps": ["mega menu", "site selector bar", "third-party search", "breadcrumb", "no model partial"] }
+    ]
+  },
+  {
+    "component_id": "cmp-002",
+    "component": "text-only hero (H1 + lede on grey band)",
+    "verdict": "none",
+    "recommendation": "Default content (H1 + paragraph) inside a section carrying a `hero-band` section style. No block.",
+    "rationale": "Scores higher as default content (0.80) than as a hero block (0.50). Two concrete blockers for reusing `hero`: (1) VERIFIED in this repo — `.hero h1 { color: var(--background-color) }` renders the H1 in the page background colour, i.e. invisible on the source's #EBEBEB band, so the CSS contract assumes a photo behind it; (2) `_hero.json` requires image + imageAlt, which would sit permanently empty in Universal Editor — a misleading authoring signal. Per David's Model this is a heading and a paragraph.",
+    "note": "DIVERGES from analysis.md §2.1, which proposed extending `hero` with a `text-only` variant.",
+    "candidates": [
+      { "block_name": "hero", "source": "internal/public", "score": 0.5, "rationale": "Right name and page position, but entire CSS contract assumes a background photo.", "gaps": ["h1 colour override", "text-only variant", "no classes field in model", "unused image field"] },
+      { "block_name": "(section style)", "source": "n/a", "score": 0.8, "rationale": "Band colour via Section Metadata Style; needs one style option added to models/_section.json." }
+    ]
+  },
+  {
+    "component_id": "cmp-003,cmp-004,cmp-005,cmp-006,cmp-010",
+    "component": "feature-50-50 band x5 (image pane + heading/body/CTA)",
+    "verdict": "new",
+    "recommended_block": "feature",
+    "rationale": "No public block matches this shape in any of the four collections (verified absent). `columns` is a close structural host (0.75) but is a generic layout primitive: authors get free-form cells with no guidance that cell 1 must be the image, and loading it with 2 layout + 4 brand background variants (including the gradient and its white-text coupling) turns a shared primitive into a brand component. A dedicated block gives named fields and makes the gradient own its own text colour in CSS — which is the specific authoring smell the source exhibits (white text hand-applied per element via span.text__color--primary-white).",
+    "source_contract": "wrapper carries background class (e.g. color-grad-red-plum-diag); __content carries layout class (image-left|image-right); __card holds h2 + rich description (p, br, sup, ul) + optional a.primary-button.",
+    "alternative": "EXTEND `columns` with image-left/image-right + background variants. Cheaper (no new block, exact 50/50 and mobile stacking already work) but weaker author model and pollutes a shared primitive.",
+    "candidates": [
+      { "block_name": "columns", "source": "internal/public", "score": 0.75, "rationale": "1 row x 2 cells; picture-only cell gets .columns-img-col; flex row at >=900px gives exact 50/50; link auto-decorates to .button.", "gaps": ["named left/right variant (order-only today)", "4 background variants + gradient", "band padding", "gradient white-text coupling"] },
+      { "block_name": "hero", "source": "internal", "score": 0.35, "rationale": "Local panel variant already splits .hero-image / .hero-panel rows, but hero is semantically one-per-page and this repeats 5x.", "gaps": ["repeatability", "backgrounds"] }
+    ]
+  },
+  {
+    "component_id": "cmp-007",
+    "component": "full-bleed decorative image band",
+    "verdict": "none",
+    "recommendation": "Default-content image + `full-width-image` section style.",
+    "rationale": "Confirmed at the detection gate. Nothing public matches (the Block Party 'Tiles' lead resolves to a 404 repo and is unverifiable). An image-only `hero` scores only 0.45 and is semantically wrong — an empty hero confuses both authors and screen readers.",
+    "candidates": [
+      { "block_name": "(section style)", "source": "n/a", "score": 0.85, "rationale": "Zero block cost; full-bleed via object-fit: cover + fixed band height." },
+      { "block_name": "hero", "source": "public", "score": 0.45, "rationale": "Full-bleed wrapper exists but emits a real picture, not a CSS background; min-height is a floor, not a fixed height.", "gaps": ["fixed height", "decorative alt handling"] }
+    ]
+  },
+  {
+    "component_id": "cmp-008",
+    "component": "product-card grid (4 cards on stone band)",
+    "verdict": "new",
+    "recommended_block": "product-cards",
+    "rationale": "The blocking gap is structural, not cosmetic: cards.js gives a picture-only cell .cards-card-image and collapses EVERY other cell into .cards-card-body, so there is no hook for a discrete eyebrow. The source card carries an inline --accent-color custom property, a distinct eyebrow, an H4, a <sup>-bearing description, and 1..n aria-labelled forward links. The `card` model is image + richtext only, so all of that would be smuggled into one richtext blob and targeted with fragile nth-child CSS. Extending the shared `cards` model would also push product-specific fields onto every card author site-wide.",
+    "source_contract": "product-card__block[style=--accent-color] > __image(img 306x94) + __card-content(__product-line eyebrow, h4 __product-name, __product-description with <sup>) + __cta-section(1..n a.forward-link-dark[aria-label]).",
+    "alternative": "EXTEND `cards` with a decorate() extension for the eyebrow hook plus a per-card colour token. Avoids a new block but mutates a shared model.",
+    "candidates": [
+      { "block_name": "cards", "source": "internal/public", "score": 0.6, "rationale": "Correct block family and responsive auto-fill grid; authored #### becomes a real H4.", "gaps": ["no eyebrow hook (cells collapse to .cards-card-body)", "accent bar colour token", "multi-link footer", "default 4/3 image crop fights the 306x94 source image"] }
+    ]
+  },
+  {
+    "component_id": "cmp-009",
+    "component": "annuities disclosure paragraph",
+    "verdict": "none",
+    "recommendation": "Default content + `disclosure` section style (14/21 type).",
+    "candidates": []
+  },
+  {
+    "component_id": "cmp-011",
+    "component": "icon-feature pair (2-up with divider)",
+    "verdict": "new",
+    "recommended_block": "icon-feature",
+    "rationale": "Verified absent from all four public collections and Block Party. `columns` can host the 2-up layout (0.55) but every visually distinctive part — the vertical divider rule, icon sizing/colour, pill CTA — is custom CSS anyway, and the author model wants named icon/heading/body/CTA fields rather than free-form cells. Confirmed at the detection gate as distinct from cmp-008.",
+    "candidates": [
+      { "block_name": "columns", "source": "internal/public", "score": 0.55, "rationale": "2-up responsive layout free; :icon-name: tokens hydrate via decorateIcons from /icons.", "gaps": ["vertical divider rule", "icon sizing/colour", "pill CTA radius variant"] },
+      { "block_name": "cards", "source": "internal/public", "score": 0.45, "rationale": "Card border chrome and 4/3 image crop work against an icon-led layout.", "gaps": ["card chrome", "image crop"] }
+    ]
+  },
+  {
+    "component_id": "cmp-012",
+    "component": "footnotes + legal disclosure",
+    "verdict": "none",
+    "recommendation": "Default content + `disclosure` section style. Preserve <sup> markers and the <hr>.",
+    "candidates": []
+  },
+  {
+    "component_id": "cmp-013",
+    "component": "global footer (XF)",
+    "verdict": "defer",
+    "rationale": "Out of scope under D1, same as cmp-001.",
+    "candidates": [
+      { "block_name": "footer", "source": "internal", "score": 0.4, "rationale": "Exists but is footer-document-driven with no _footer.json.", "gaps": ["5-column sitemap", "social row", "disclosures bar", "BrokerCheck badge", "no model partial"] }
+    ]
+  }
+]

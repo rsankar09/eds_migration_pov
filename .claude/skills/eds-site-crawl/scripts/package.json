@@ -1,0 +1,8 @@
+{
+  "name": "eds-site-crawl-scripts",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "playwright": "^1.50.0"
+  }
+}

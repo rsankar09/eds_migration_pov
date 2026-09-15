@@ -1,0 +1,140 @@
+/*
+ * icon-feature — an icon-led 2-up with a hairline rule between items.
+ *
+ * The rule's colour is re-derived from capture/credit-union/crops/cmp-011.png:
+ * the source renders it with no border on the item or the grid and shipped no
+ * stylesheet text, so it is matched to the gradient's mid stop rather than
+ * taken from a measured value.
+ */
+.icon-feature {
+  --divider-color: #760014;
+}
+
+.icon-feature > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.icon-feature > ul > li {
+  padding: 24px 0;
+}
+
+.icon-feature > ul > li + li {
+  border-top: 1px solid var(--divider-color);
+}
+
+.icon-feature .icon-feature-icon {
+  line-height: 0;
+}
+
+.icon-feature .icon-feature-icon .icon {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-feature .icon-feature-copy :is(h3, h4) {
+  margin: 20px 0 10px;
+  font-family: var(--display-font-family);
+  font-size: var(--band-heading-size);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--plum);
+}
+
+.icon-feature .icon-feature-copy p {
+  margin: 0 0 10px;
+  font-size: var(--band-body-size);
+  line-height: 1.5;
+}
+
+.icon-feature .icon-feature-copy .button-wrapper {
+  margin: 20px 0 0;
+}
+
+/* an outlined pill, per the source's ghost-button treatment */
+.icon-feature .icon-feature-copy a.button:any-link {
+  border-radius: 999px;
+  border-width: 1px;
+  border-color: var(--plum);
+  background-color: transparent;
+  padding: 0 var(--pill-padding-x);
+  font-family: var(--body-font-family);
+  font-size: var(--pill-font-size);
+  font-weight: 700;
+  line-height: var(--pill-height);
+  color: var(--plum);
+  white-space: normal;
+}
+
+.icon-feature .icon-feature-copy a.button:any-link:hover,
+.icon-feature .icon-feature-copy a.button:any-link:focus-visible {
+  border-color: var(--plum);
+  background-color: var(--plum);
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  /*
+   * The column count is fixed by decorate() (see columnsFor) rather than left
+   * to auto-fit, so row starts are addressable below and the divider does not
+   * draw down the first item of a wrapped row. 3 is the fallback if the block
+   * renders without its JS.
+   */
+  .icon-feature > ul {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 32px;
+  }
+
+  .icon-feature[data-columns='1'] > ul {
+    grid-template-columns: 1fr;
+  }
+
+  .icon-feature[data-columns='2'] > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .icon-feature > ul > li {
+    padding: 8px 40px;
+  }
+
+  /* keep the glyph in proportion once the heading steps up */
+  .icon-feature .icon-feature-icon .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon-feature > ul > li + li {
+    border-top: 0;
+    border-left: 1px solid var(--divider-color);
+  }
+
+  /*
+   * A row's first item carries no rule and sits flush with the column edge;
+   * its last sits flush with the opposite edge. The last item overall is
+   * always a row end, so :last-child covers the final partial row.
+   */
+  .icon-feature > ul > li:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .icon-feature > ul > li:last-child {
+    padding-right: 0;
+  }
+
+  .icon-feature[data-columns='2'] > ul > li:nth-child(2n + 1),
+  .icon-feature[data-columns='3'] > ul > li:nth-child(3n + 1) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .icon-feature[data-columns='2'] > ul > li:nth-child(2n),
+  .icon-feature[data-columns='3'] > ul > li:nth-child(3n) {
+    padding-right: 0;
+  }
+}
