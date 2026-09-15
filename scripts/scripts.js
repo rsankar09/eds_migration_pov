@@ -45,6 +45,49 @@ export function moveInstrumentation(from, to) {
   );
 }
 
+const CTA_TYPES = ['primary', 'secondary'];
+
+/**
+ * Turns a block's authored CTA into a button.
+ *
+ * decorateButtons() below only buttonizes links the author wrapped in
+ * strong/em, which Universal Editor's `*_cta` fields never produce — so blocks
+ * whose model has an explicit CTA field decorate it through here instead. Also
+ * consumes a `*_ctaType` token if the model offers one. Safe to call after the
+ * global pass: a link that is already a button keeps the style it was given.
+ *
+ * @param {Element} container The element holding the CTA
+ * @param {string} [defaultType] Button style to apply when none was authored
+ * @returns {Element|undefined} The decorated link, if there was one
+ */
+export function decorateCta(container, defaultType = 'primary') {
+  if (!container) return undefined;
+
+  let type = defaultType;
+  [...container.children].forEach((el) => {
+    const token = el.textContent.trim().toLowerCase();
+    if (CTA_TYPES.includes(token) && !el.querySelector('a')) {
+      type = token;
+      el.remove();
+    }
+  });
+
+  const link = [...container.querySelectorAll('a[href]')].pop();
+  if (!link) return undefined;
+
+  const wrapper = link.closest('p') || link.parentElement;
+  if (wrapper && wrapper.textContent.trim() === link.textContent.trim()) {
+    wrapper.className = 'button-wrapper';
+    // unwrap authored emphasis so the label isn't nested inside the button
+    const emphasis = link.closest('strong, em');
+    if (emphasis) emphasis.replaceWith(link);
+  }
+
+  if (!link.classList.contains('button')) link.classList.add('button', type);
+  link.title = link.title || link.textContent.trim();
+  return link;
+}
+
 /**
  * load fonts.css and set a session storage flag
  */

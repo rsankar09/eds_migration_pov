@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-09-15",
+  "repo": "eds_migration_pov",
+  "source": "internal",
+  "blocks": [
+    {
+      "name": "hero",
+      "has_model_partial": true,
+      "decorate_shape": "Tags each row: rows containing a picture/img get .hero-image, all others get .hero-panel. Purely additive classes; no DOM restructuring.",
+      "content_contract": "Row per content group. One row with an image, one row with copy.",
+      "model_fields": ["image (reference)", "imageAlt (text)", "text (richtext)"],
+      "variants_in_css": ["panel"],
+      "variants_in_model": [],
+      "gap": "CRITICAL: `panel` variant is styled in hero.css but there is no `classes` field in _hero.json, so authors cannot select it in Universal Editor. The variant is effectively dead code today."
+    },
+    {
+      "name": "cards",
+      "has_model_partial": true,
+      "decorate_shape": "Converts block rows into <ul>/<li>. Within each li, a cell containing only a <picture> becomes .cards-card-image; every other cell becomes .cards-card-body. Rewrites images via createOptimizedPicture (750w).",
+      "content_contract": "One row per card. Cell 1 = picture (optional), cell 2 = body richtext.",
+      "model_fields": ["image (reference)", "text (richtext)"],
+      "variants_in_css": [],
+      "variants_in_model": [],
+      "gap": "Card model has only image + richtext. No slots for eyebrow label, accent-bar colour, discrete title, or multiple links. Everything beyond image+prose would have to be smuggled inside the richtext and targeted with fragile nth-child CSS."
+    },
+    {
+      "name": "columns",
+      "has_model_partial": true,
+      "decorate_shape": "Adds .columns-N-cols from first row's cell count. Cells whose sole child is a picture get .columns-img-col.",
+      "content_contract": "Grid of rows x cells; each cell is free-form content.",
+      "model_fields": ["(container/item pattern)"],
+      "variants_in_css": [],
+      "variants_in_model": [],
+      "gap": "No left/right image variant class, no background variants. Image side is implied only by DOM cell order, giving CSS nothing to hook. Stacking order on mobile cannot be controlled independently of desktop order."
+    },
+    {
+      "name": "fragment",
+      "has_model_partial": true,
+      "decorate_shape": "Loads and inlines another document fragment.",
+      "content_contract": "Single cell with a path to the fragment.",
+      "model_fields": ["(reference)"],
+      "gap": "Not a layout block; relevant only if header/footer are migrated as fragments."
+    },
+    {
+      "name": "header",
+      "has_model_partial": false,
+      "decorate_shape": "Site navigation block loaded in the lazy phase.",
+      "content_contract": "Driven by nav document, not page authoring.",
+      "gap": "No _header.json — not author-configurable in Universal Editor."
+    },
+    {
+      "name": "footer",
+      "has_model_partial": false,
+      "decorate_shape": "Site footer block loaded in the lazy phase.",
+      "content_contract": "Driven by footer document, not page authoring.",
+      "gap": "No _footer.json — not author-configurable in Universal Editor."
+    }
+  ],
+  "section_styles_available": ["light", "highlight"],
+  "section_styles_referenced_by_import_but_missing": [
+    "brand-gradient",
+    "blush",
+    "sand",
+    "disclosure",
+    "full-width-image"
+  ]
+}

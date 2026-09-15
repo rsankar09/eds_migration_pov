@@ -1,0 +1,1 @@
+{ "name": "eds-component-detect-scripts", "private": true, "type": "module", "dependencies": { "sharp": "^0.35.0" } }

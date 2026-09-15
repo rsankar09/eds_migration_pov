@@ -1,0 +1,153 @@
+{
+  "definitions": [
+    {
+      "title": "Product Cards",
+      "id": "product-cards",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Product Cards",
+              "filter": "product-cards"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Product Card",
+      "id": "product-card",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Product Card",
+              "model": "product-card",
+              "copy_headingType": "h4",
+              "classes": "accent-plum"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "product-card",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Alt Text",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "copy_eyebrow",
+          "label": "Eyebrow",
+          "description": "Optional product category above the title, e.g. \"Variable annuity\"."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "copy_heading",
+          "label": "Product Name",
+          "required": true
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "copy_headingType",
+          "label": "Heading Type",
+          "value": "h4",
+          "options": [
+            {
+              "name": "H4",
+              "value": "h4"
+            },
+            {
+              "name": "H3",
+              "value": "h3"
+            }
+          ]
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "copy_description",
+          "label": "Description",
+          "value": ""
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "links_cta",
+          "label": "Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "links_ctaText",
+          "label": "Link Label"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "links_cta2",
+          "label": "Second Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "links_cta2Text",
+          "label": "Second Link Label"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Accent Colour",
+          "value": "accent-plum",
+          "description": "Colour of the card's accent border.",
+          "options": [
+            {
+              "name": "Plum",
+              "value": "accent-plum"
+            },
+            {
+              "name": "Coral",
+              "value": "accent-coral"
+            },
+            {
+              "name": "Charcoal",
+              "value": "accent-charcoal"
+            },
+            {
+              "name": "Tan",
+              "value": "accent-tan"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "product-cards",
+      "components": [
+        "product-card"
+      ]
+    }
+  ]
+}

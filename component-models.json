@@ -136,6 +136,34 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Grey Band",
+            "value": "grey"
+          },
+          {
+            "name": "Tan Band",
+            "value": "tan"
+          },
+          {
+            "name": "Stone Band",
+            "value": "stone"
+          },
+          {
+            "name": "Brand Gradient",
+            "value": "brand-gradient"
+          },
+          {
+            "name": "Full Width Image",
+            "value": "full-width-image"
+          },
+          {
+            "name": "Disclosure",
+            "value": "disclosure"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
           }
         ]
       }
@@ -180,6 +208,105 @@
     ]
   },
   {
+    "id": "feature",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "description": "Optional. With no image the copy pane spans the full width."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt Text",
+        "value": "",
+        "description": "Describe the image. Leave empty only if the image is purely decorative."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_heading",
+        "label": "Heading",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "copy_headingType",
+        "label": "Heading Type",
+        "value": "h2",
+        "options": [
+          {
+            "name": "H2",
+            "value": "h2"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "copy_description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "copy_cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_ctaText",
+        "label": "CTA Label"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "copy_ctaType",
+        "label": "CTA Style",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Layout",
+        "value": "image-right",
+        "description": "Which side the image sits on. Defaults to image on the right.",
+        "options": [
+          {
+            "name": "Image Right",
+            "value": "image-right"
+          },
+          {
+            "name": "Image Left",
+            "value": "image-left"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
@@ -212,6 +339,191 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      },
+      {
+        "component": "multiselect",
+        "valueType": "string[]",
+        "name": "classes",
+        "label": "Style",
+        "description": "Panel renders the text as a call-to-action aside beside a contained banner image.",
+        "options": [
+          {
+            "name": "Panel",
+            "value": "panel"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "icon-feature-item",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "icon",
+        "label": "Icon",
+        "description": "Icons are served from /icons. Add a new SVG there before extending this list.",
+        "options": [
+          {
+            "name": "Map Marker",
+            "value": "map-marker"
+          },
+          {
+            "name": "User Plus",
+            "value": "user-plus"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_heading",
+        "label": "Heading",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "copy_headingType",
+        "label": "Heading Type",
+        "value": "h3",
+        "options": [
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "H4",
+            "value": "h4"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "copy_description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "copy_cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_ctaText",
+        "label": "CTA Label"
+      }
+    ]
+  },
+  {
+    "id": "product-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_eyebrow",
+        "label": "Eyebrow",
+        "description": "Optional product category above the title, e.g. \"Variable annuity\"."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_heading",
+        "label": "Product Name",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "copy_headingType",
+        "label": "Heading Type",
+        "value": "h4",
+        "options": [
+          {
+            "name": "H4",
+            "value": "h4"
+          },
+          {
+            "name": "H3",
+            "value": "h3"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "copy_description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "links_cta",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "links_ctaText",
+        "label": "Link Label"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "links_cta2",
+        "label": "Second Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "links_cta2Text",
+        "label": "Second Link Label"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Accent Colour",
+        "value": "accent-plum",
+        "description": "Colour of the card's accent border.",
+        "options": [
+          {
+            "name": "Plum",
+            "value": "accent-plum"
+          },
+          {
+            "name": "Coral",
+            "value": "accent-coral"
+          },
+          {
+            "name": "Charcoal",
+            "value": "accent-charcoal"
+          },
+          {
+            "name": "Tan",
+            "value": "accent-tan"
+          }
+        ]
       }
     ]
   }

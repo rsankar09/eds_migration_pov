@@ -30,6 +30,37 @@
   --accent-3: #e6b00f;
   --accent-4: #b9c21f;
 
+  /*
+   * Jackson brand palette — measured from the credit-union source capture.
+   * Additive: the Commonwealth tokens above are unchanged.
+   */
+  --plum: #3b052e;
+  --red: #eb0028;
+  --band-grey: #ebebeb;
+  --band-tan: #d4b5a3;
+  --band-stone: #dbcfc7;
+  --brand-gradient: linear-gradient(135deg, #eb0028, #760014, #5c2642);
+
+  /* per-card accent bars for product-cards */
+  --card-plum: #995d7a;
+  --card-coral: #fa9e73;
+  --card-charcoal: #474546;
+  --card-tan: #d4b5a3;
+
+  /*
+   * Band-component scale. The blocks read only these tokens, never raw
+   * values, so a brand theme can rescale them without touching block CSS.
+   * Defaults here are the Commonwealth scale.
+   */
+  --band-heading-size: 24px;
+  --band-heading-size-l: 32px;
+  --band-body-size: 14px;
+  --card-title-size: var(--heading-font-size-l);
+  --eyebrow-size: var(--body-font-size-s);
+  --pill-font-size: var(--body-font-size-m);
+  --pill-height: 35px;
+  --pill-padding-x: 1.6em;
+
   /* fonts — the source uses system stacks only, no webfonts */
   --body-font-family: helvetica, arial, sans-serif;
   --heading-font-family: helvetica, arial, sans-serif;
@@ -321,4 +352,221 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/*
+ * Brand band styles. A background on the section is full-bleed for free,
+ * because `main > .section` is the full-width wrapper and `.section > div`
+ * is the constrained column — so bands live here rather than as block
+ * variants (see capture/credit-union/content-model.md, decision D-A).
+ *
+ * `grey` is deliberately distinct from `light`: the source band is #EBEBEB
+ * and --light-color is #F4F4F4. Reusing `light` would be a silent shift.
+ */
+main .section.grey,
+main .section.tan,
+main .section.stone,
+main .section.brand-gradient {
+  margin: 0;
+  padding: 40px 0;
+}
+
+main .section.grey { background-color: var(--band-grey); }
+main .section.tan { background-color: var(--band-tan); }
+main .section.stone { background-color: var(--band-stone); }
+
+/*
+ * The gradient owns its own text colour. The source hand-applied white per
+ * element (and missed one heading); coupling it to the background here makes
+ * that mistake unauthorable.
+ */
+main .section.brand-gradient {
+  background: var(--brand-gradient);
+  color: var(--background-color);
+}
+
+main .section.brand-gradient :is(h1, h2, h3, h4, h5, h6, p, li) {
+  color: var(--background-color);
+}
+
+/* a decorative full-bleed image strip; the band height is the design unit */
+main .section.full-width-image {
+  margin: 0;
+  padding: 0;
+}
+
+main .section.full-width-image > div {
+  max-width: none;
+  padding: 0;
+}
+
+main .section.full-width-image :is(p, picture) {
+  margin: 0;
+  line-height: 0;
+}
+
+main .section.full-width-image img {
+  display: block;
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+@media (width >= 900px) {
+  main .section.full-width-image img {
+    height: 160px;
+  }
+}
+
+/*
+ * Fine print. The source measures 14/21 against a 16px base; this repo's
+ * base is 12px, so the ratio is preserved rather than the absolute value —
+ * otherwise disclosures would render larger than body copy.
+ */
+main .section.disclosure {
+  margin: 0;
+  padding: 20px 0;
+  font-size: var(--body-font-size-xs);
+  line-height: 1.6;
+  color: var(--muted-color);
+}
+
+main .section.disclosure :is(p, li) {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+main .section.disclosure hr {
+  border: 0;
+  border-top: 1px solid #d8d8d8;
+  margin: 16px 0;
+}
+
+/*
+ * Centres the default content that introduces a block — a heading and lede
+ * outside the block cannot be scoped to it, so the section carries the style.
+ * Deliberately limited to default content: centring the whole section would
+ * also centre the block's own copy.
+ */
+main .section.centered > .default-content-wrapper {
+  text-align: center;
+}
+
+main .section.centered > .default-content-wrapper .button-wrapper {
+  justify-content: center;
+}
+
+/*
+ * ---------------------------------------------------------------------------
+ * Jackson brand theme
+ * ---------------------------------------------------------------------------
+ * Opt-in per page via `theme: jackson-brand` in the page metadata —
+ * decorateTemplateAndTheme() puts the value on <body>, so no JS is needed.
+ *
+ * The repo's :root scale came from the Commonwealth homepage (12px base,
+ * 965px column). The Jackson pages are a 16px-base design on a 1344px
+ * column, so they are scoped here rather than rescaling the globals, which
+ * would silently restyle Commonwealth.
+ *
+ * Sizes are the measured source values (capture/credit-union/analysis.md
+ * §1.2). The source's own breakpoints are 625/769/1024; these are snapped to
+ * the project's 600/900/1200 per AGENTS.md, which the measurements tolerate.
+ */
+
+/*
+ * Scoped to `main`, not `body`: the header and footer also read
+ * --content-max-width / --body-font-size-* / --heading-font-size-*, and they
+ * are shared site chrome (cmp-001 / cmp-013 are `defer` in mapping.json).
+ * Theming the body restyled them — wider nav, larger footer type — on themed
+ * pages only. Scoping to main keeps the chrome identical site-wide.
+ */
+body.jackson-brand main {
+  --text-color: #231f20;
+  --link-color: var(--plum);
+  --link-hover-color: var(--red);
+  --content-max-width: 1344px;
+  --content-gutter: 24px;
+
+  /* body 16/24, fine print 14/21 */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 14px;
+
+  /* band components */
+  --band-heading-size: 36px;
+  --band-heading-size-l: 48px;
+  --band-body-size: 16px;
+  --card-title-size: 22px;
+  --eyebrow-size: 14px;
+  --pill-font-size: 16px;
+  --pill-height: 48px;
+  --pill-padding-x: 32px;
+
+  /* body sets these from :root, so main must re-resolve them */
+  font-size: var(--body-font-size-m);
+  color: var(--text-color);
+}
+
+/*
+ * Default-content headings. Block headings resolve through the band tokens
+ * above; these rules cover the headings authors write outside a block — the
+ * hero H1 and the heading that introduces a card grid.
+ */
+body.jackson-brand main :is(h1, h2, h3) {
+  font-family: var(--display-font-family);
+  font-weight: 700;
+  color: var(--plum);
+}
+
+body.jackson-brand main h1 {
+  margin: 0 0 16px;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+body.jackson-brand main h2 {
+  font-size: 36px;
+  line-height: 49px;
+}
+
+body.jackson-brand main h3 {
+  font-size: 28px;
+  line-height: 38px;
+}
+
+body.jackson-brand main h4 {
+  font-family: var(--body-font-family);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 28px;
+  color: var(--text-color);
+}
+
+body.jackson-brand main p {
+  line-height: 1.5;
+}
+
+@media (width >= 600px) {
+  body.jackson-brand main h2 {
+    font-size: 48px;
+    line-height: 58px;
+  }
+}
+
+@media (width >= 900px) {
+  body.jackson-brand main h1 {
+    font-size: 72px;
+    line-height: 80px;
+  }
+
+  body.jackson-brand main h3 {
+    font-size: 40px;
+    line-height: 54px;
+  }
+}
+
+@media (width >= 1200px) {
+  body.jackson-brand main {
+    --content-gutter: 48px;
+  }
 }

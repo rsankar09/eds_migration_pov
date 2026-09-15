@@ -40,6 +40,19 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string[]",
+          "name": "classes",
+          "label": "Style",
+          "description": "Panel renders the text as a call-to-action aside beside a contained banner image.",
+          "options": [
+            {
+              "name": "Panel",
+              "value": "panel"
+            }
+          ]
         }
       ]
     }

@@ -1,0 +1,197 @@
+/*
+ * feature — a 50/50 image + copy band.
+ *
+ * The band background comes from the section style (grey / tan / stone /
+ * brand-gradient), so this file owns only the split, the type and the CTA.
+ * Ink colours route through custom properties so a band can recolour the
+ * copy without the block needing to know which band it sits on.
+ */
+.feature {
+  --feature-ink: var(--plum);
+  --feature-body-ink: var(--text-color);
+
+  /*
+   * The copy column, measured from the source at 1440 (475px content box —
+   * capture/credit-union/styles-rects-1440.json). The image pane takes half
+   * the viewport, so the copy is capped here rather than stretched across the
+   * other half.
+   */
+  --feature-copy-width: 475px;
+}
+
+/*
+ * Release the band from the content column so the image pane can reach the
+ * viewport edge, as the source does: at 1440 the image measures exactly half
+ * the viewport (720px) flush to the edge, with the band wrapper full-width.
+ *
+ * This reuses the mechanism `main .section.full-width-image > div` already
+ * uses in styles.css — `main > .section` is the full-width wrapper and
+ * `.section > div` the constrained column — rather than `100vw` + negative
+ * margins. That matters: `100vw` includes the scrollbar, so the vw form
+ * overflows horizontally by the scrollbar width on a scrolling page, which is
+ * why decision D-A originally rejected it. Widening the block's own wrapper
+ * needs no viewport units at all.
+ *
+ * Sibling wrappers in the same section (default content, section metadata)
+ * keep their own max-width, so only the band is released.
+ */
+main .section > .feature-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+main .section.brand-gradient .feature {
+  --feature-ink: var(--background-color);
+  --feature-body-ink: var(--background-color);
+}
+
+.feature > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature .feature-image {
+  line-height: 0;
+}
+
+.feature .feature-image picture {
+  display: block;
+}
+
+.feature .feature-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+}
+
+/*
+ * The released wrapper no longer supplies the column gutter, so the copy owns
+ * its own inset. The image is intentionally left flush to the viewport edge.
+ * At 375 this resolves to the source's measured 327px copy column.
+ */
+.feature .feature-copy {
+  padding: 24px var(--content-gutter) 8px;
+}
+
+.feature .feature-copy :is(h2, h3) {
+  margin: 0 0 12px;
+  font-family: var(--display-font-family);
+  font-size: var(--band-heading-size);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--feature-ink);
+}
+
+.feature .feature-copy :is(p, li) {
+  margin: 0 0 10px;
+  font-size: var(--band-body-size);
+  line-height: 1.5;
+  color: var(--feature-body-ink);
+}
+
+.feature .feature-copy ul {
+  margin: 0 0 10px;
+  padding-left: 18px;
+}
+
+.feature .feature-copy li {
+  margin: 0 0 4px;
+}
+
+/* the source sets footnote markers raised and small inside body copy */
+.feature .feature-copy sup {
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+.feature .feature-copy .button-wrapper {
+  margin: 20px 0 0;
+}
+
+/*
+ * An outlined pill on the light bands, inverted to a solid white one on the
+ * gradient. Set explicitly rather than inherited from the global primary /
+ * secondary styles, which are square and navy.
+ */
+.feature .feature-copy a.button:any-link {
+  border-radius: 999px;
+  border-width: 1px;
+  border-color: #231f20;
+  background-color: transparent;
+  padding: 0 var(--pill-padding-x);
+  font-family: var(--body-font-family);
+  font-size: var(--pill-font-size);
+  font-weight: 700;
+  line-height: var(--pill-height);
+  color: #231f20;
+  white-space: normal;
+}
+
+.feature .feature-copy a.button:any-link:hover,
+.feature .feature-copy a.button:any-link:focus-visible {
+  border-color: #231f20;
+  background-color: #231f20;
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+main .section.brand-gradient .feature a.button:any-link {
+  border-color: var(--background-color);
+  background-color: var(--background-color);
+  color: var(--plum);
+}
+
+main .section.brand-gradient .feature a.button:any-link:hover,
+main .section.brand-gradient .feature a.button:any-link:focus-visible {
+  border-color: var(--background-color);
+  background-color: transparent;
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+@media (width >= 900px) {
+  .feature > div {
+    flex-direction: row;
+    align-items: center;
+
+    /* the copy's auto margins own the spacing; a gap would offset the split */
+    gap: 0;
+  }
+
+  /* half the viewport, flush to its edge — the wrapper above is full-width */
+  .feature .feature-image {
+    flex: 0 0 50%;
+    min-width: 0;
+  }
+
+  /*
+   * The copy is centred within its half rather than filling it: auto margins
+   * absorb whatever the capped column leaves over. At 1440 this puts the copy
+   * content box at x=842.5 against the source's measured 842, and it degrades
+   * safely — below ~1030 the column shrinks instead of overflowing, since the
+   * cap is a width with flex-shrink left enabled.
+   */
+  .feature .feature-copy {
+    flex: 0 1 auto;
+    width: var(--feature-copy-width);
+    max-width: 100%;
+    margin-inline: auto;
+    padding: 8px var(--content-gutter);
+  }
+
+  /* image-left is DOM order; image-right swaps it without reordering content */
+  .feature.image-right .feature-image {
+    order: 2;
+  }
+
+  /* with no image pane the copy has no half to sit in, so it takes the column */
+  .feature.feature-no-image .feature-copy {
+    width: var(--content-max-width);
+  }
+
+  .feature .feature-copy :is(h2, h3) {
+    font-size: var(--band-heading-size-l);
+  }
+}

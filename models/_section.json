@@ -33,6 +33,34 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Grey Band",
+              "value": "grey"
+            },
+            {
+              "name": "Tan Band",
+              "value": "tan"
+            },
+            {
+              "name": "Stone Band",
+              "value": "stone"
+            },
+            {
+              "name": "Brand Gradient",
+              "value": "brand-gradient"
+            },
+            {
+              "name": "Full Width Image",
+              "value": "full-width-image"
+            },
+            {
+              "name": "Disclosure",
+              "value": "disclosure"
+            },
+            {
+              "name": "Centered",
+              "value": "centered"
             }
           ]
         }
@@ -50,7 +78,10 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "feature",
+        "product-cards",
+        "icon-feature"
       ]
     }
   ]

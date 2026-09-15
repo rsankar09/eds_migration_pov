@@ -1,0 +1,139 @@
+/*
+ * product-cards — a responsive grid of white cards on a brand band.
+ *
+ * Each card carries a 12px accent bar on its leading edge. The colour is a
+ * per-card author choice (cards 1 and 2 share the eyebrow "Variable annuity"
+ * yet differ), so it routes through a custom property set by the accent class.
+ */
+.product-cards > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-cards .product-card {
+  --accent-color: var(--card-charcoal);
+
+  display: flex;
+  flex-direction: column;
+  border-left: 12px solid var(--accent-color);
+  background-color: var(--background-color);
+}
+
+.product-cards .product-card.accent-plum { --accent-color: var(--card-plum); }
+.product-cards .product-card.accent-coral { --accent-color: var(--card-coral); }
+.product-cards .product-card.accent-charcoal { --accent-color: var(--card-charcoal); }
+.product-cards .product-card.accent-tan { --accent-color: var(--card-tan); }
+
+.product-cards .product-card-image {
+  line-height: 0;
+}
+
+.product-cards .product-card-image picture {
+  display: block;
+}
+
+.product-cards .product-card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 306 / 94;
+  object-fit: cover;
+}
+
+.product-cards .product-card-body {
+  padding: 18px 20px 0;
+}
+
+.product-cards .product-card-body :is(h3, h4) {
+  margin: 0 0 10px;
+  font-family: var(--body-font-family);
+  font-size: var(--card-title-size);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #231f20;
+}
+
+.product-cards .product-card-body p {
+  margin: 0 0 10px;
+  font-size: var(--band-body-size);
+  line-height: 1.5;
+}
+
+/* the optional product category above the name */
+.product-cards .product-card-body .product-card-eyebrow {
+  margin: 0 0 6px;
+  font-size: var(--eyebrow-size);
+  line-height: 1.4;
+  color: var(--red);
+}
+
+.product-cards .product-card-body sup {
+  font-size: 0.7em;
+  line-height: 0;
+}
+
+/* links sit at the foot of the card so uneven bodies still align */
+.product-cards .product-card-links {
+  margin-top: auto;
+  padding: 10px 20px 20px;
+}
+
+.product-cards .product-card-links p {
+  margin: 0 0 8px;
+}
+
+.product-cards .product-card-links p:last-child {
+  margin-bottom: 0;
+}
+
+.product-cards .product-card-links a:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--band-body-size);
+  font-weight: 700;
+  color: #231f20;
+  text-decoration: none;
+}
+
+/* the source's circled forward arrow, drawn rather than shipped as an asset */
+.product-cards .product-card-links a:any-link::after {
+  content: "\2192";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--red);
+  border-radius: 50%;
+  padding-bottom: 1px;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--red);
+}
+
+.product-cards .product-card-links a:hover {
+  text-decoration: underline;
+}
+
+@media (width >= 600px) {
+  .product-cards > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  /*
+   * auto-fit rather than a fixed 4 columns: the source leaves a 3+1 orphan row
+   * at ~1200px, which this avoids by letting the track count follow the width.
+   */
+  .product-cards > ul {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

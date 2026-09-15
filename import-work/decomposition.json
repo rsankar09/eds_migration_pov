@@ -1,0 +1,142 @@
+{
+  "source": "https://www.jackson.com/financial-professional/credit-union.html",
+  "documentPath": "/financial-professional/credit-union",
+  "note": "Neutral content-sequence decomposition. NO block names assigned - authoring decisions happen in block-inventory / authoring-analysis / content-modeling. Header navigation, breadcrumb, footer, feedback tab and cookie banner are page chrome and excluded.",
+  "sections": [
+    {
+      "sectionNumber": 1,
+      "sectionMetadata": { "style": "light-grey" },
+      "visual": "Full-width light grey band at top of page, centered content, generous vertical padding",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Large centered page heading with a short centered paragraph of intro text below it, stacked vertically"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 2,
+      "sectionMetadata": { "style": "red-gradient" },
+      "visual": "Full-bleed split band, deep red gradient on the left half, full-height photograph on the right half",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Left half: large heading, short paragraph, and one button stacked vertically on a saturated colored background with light text. Right half: one large full-height photograph. The two halves are side-by-side and equal width."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 3,
+      "sectionMetadata": { "style": "tan" },
+      "visual": "Full-bleed split band, full-height photograph on the left half, muted tan/rose background on the right half",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Left half: one large full-height photograph. Right half: large heading, short paragraph containing superscript footnote markers, and one button stacked vertically. Halves are side-by-side and equal width, with the image on the opposite side from the previous section."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 4,
+      "sectionMetadata": { "style": "light" },
+      "visual": "Split band on white background, text on the left half, full-height photograph on the right half",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Left half: large heading, short paragraph with a superscript symbol, and one button stacked vertically. Right half: one large full-height photograph. Halves are side-by-side and equal width."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 5,
+      "sectionMetadata": { "style": "light-grey" },
+      "visual": "Split band on light grey background, text on the left half, product-interface imagery on the right half",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Left half: large heading, short paragraph, a bulleted list of three short items, and one button stacked vertically. Right half: one image showing overlapping device/interface mockups. Halves are side-by-side and equal width."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 6,
+      "sectionMetadata": { "style": "image-band" },
+      "visual": "Narrow full-bleed decorative photograph band spanning the entire viewport width, no text",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "A single full-width decorative image used as a visual separator, no accompanying text or links"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 7,
+      "sectionMetadata": { "style": "tan" },
+      "visual": "Tall band with muted tan background containing a centered intro and a grid of content tiles",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Centered heading with a single centered paragraph of supporting text below it"
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Grid of 4 tiles on a white tile background, 3 across on the first row and 1 centered on the second row. Each tile has a decorative image at the top, an optional short colored eyebrow label, a heading, a short paragraph (some containing superscript footnote markers), and one or more arrow links. Three tiles have one link each and an eyebrow label; the fourth tile has no eyebrow label and two stacked arrow links. Each tile shows a thin colored accent stripe along its left edge, a different color per tile."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 8,
+      "sectionMetadata": { "style": "light" },
+      "visual": "White band with a single block of small-type prose spanning the content width",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "One paragraph of small-type legal prose spanning the full content width, no heading and no links"
+        }
+      ]
+    },
+    {
+      "sectionNumber": 9,
+      "sectionMetadata": { "style": "light-grey" },
+      "visual": "Split band, full-height photograph on the left half, light grey background with text on the right half",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Left half: one large full-height photograph. Right half: large heading with a superscript footnote marker, short paragraph, and one button stacked vertically. Halves are side-by-side and equal width."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 10,
+      "sectionMetadata": { "style": "light" },
+      "visual": "White band containing two parallel small promo items separated by a thin horizontal rule",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Two parallel items, each with a small line icon, a heading, a short paragraph, and one button stacked vertically and left-aligned. The markup arranges them as two equal columns; the captured full-page screenshot renders them stacked one above the other with a thin horizontal rule between - confirm intended arrangement at each breakpoint before modeling."
+        }
+      ]
+    },
+    {
+      "sectionNumber": 11,
+      "sectionMetadata": { "style": "light" },
+      "visual": "White band of small-type footnote and legal text at the bottom of the page content, split by a horizontal rule",
+      "sequences": [
+        {
+          "sequenceNumber": 1,
+          "description": "Six short small-type paragraphs, each opening with a superscript reference symbol (asterisk, dagger, double dagger, section sign, double asterisk, numeral) that corresponds to a marker used earlier on the page"
+        },
+        {
+          "sequenceNumber": 2,
+          "description": "Horizontal rule, followed by a run of small-type legal prose paragraphs: the first two set in bold, the remainder in regular weight, one containing an inline external link"
+        }
+      ]
+    }
+  ],
+  "observations": [
+    "Sections 2, 3, 4, 5 and 9 are all the same underlying pattern - an equal-width split of one photograph and a stacked heading/paragraph/button group - varying only by image side, background color, and whether a bulleted list is present. This is the dominant repeating pattern on the page.",
+    "Section 5's right-hand visual is a single flattened composite image of interface mockups, not live UI - it does not need interactive modeling.",
+    "Superscript footnote markers in sections 3, 4, 7 and 9 are semantically tied to section 11's reference paragraphs; keep both authorable together or the references break.",
+    "Section 7 tile 4 deviates from the other three tiles (no eyebrow label, two links instead of one) - the model must treat eyebrow and link count as optional/repeatable."
+  ]
+}
