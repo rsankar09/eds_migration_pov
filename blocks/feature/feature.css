@@ -241,7 +241,18 @@ main .section.brand-gradient .feature a.button:any-link:focus-visible {
     padding: 8px var(--content-gutter);
   }
 
-  /* image-left is DOM order; image-right swaps it without reordering content */
+  /*
+   * Both variants set order explicitly rather than letting image-left fall
+   * through to DOM order, because cell order is not guaranteed: it follows the
+   * model's field order in the editor and the author's column order in a
+   * document. Stating both keeps the variant meaning what it says.
+   */
+  .feature.image-left .feature-image,
+  .feature.image-right .feature-copy {
+    order: 1;
+  }
+
+  .feature.image-left .feature-copy,
   .feature.image-right .feature-image {
     order: 2;
   }

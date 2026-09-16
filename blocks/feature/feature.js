@@ -38,10 +38,17 @@ function publishImageRatio(block, img) {
 /**
  * loads and decorates the block
  *
- * Expects one row of two cells — image, then copy. Either may be empty: with
- * no image the copy pane spans the full band, and with no copy the image
+ * Takes an image cell and a copy cell, in either order. Either may be absent:
+ * with no image the copy pane spans the full band, and with no copy the image
  * stands alone. The band background is a section style, not a block variant
  * (see capture/credit-union/content-model.md decision D-A).
+ *
+ * The number of *rows* those cells arrive in is deliberately not part of the
+ * contract, because it differs per authoring surface. Universal Editor renders
+ * one row per field group in the model — `image`/`imageAlt` in the first,
+ * the `copy_*` group in the second — while document authoring puts both cells
+ * in a single row. So classify cells and flatten them into one row, which
+ * makes the 50/50 split a single flex container either way.
  *
  * @param {Element} block The block element
  */
@@ -49,21 +56,27 @@ export default function decorate(block) {
   // the author-facing default is image-right; apply it when no variant is set
   if (!block.classList.contains('image-left')) block.classList.add('image-right');
 
-  const row = block.firstElementChild;
-  if (!row) return;
+  const cells = [...block.querySelectorAll(':scope > div > div')];
+  if (!cells.length) return;
 
-  [...row.children].forEach((cell) => {
+  const row = document.createElement('div');
+  cells.forEach((cell) => {
     if (cell.querySelector('picture, img')) {
       cell.classList.add('feature-image');
+      row.append(cell);
     } else if (cell.textContent.trim() || cell.childElementCount) {
       cell.classList.add('feature-copy');
-    } else {
-      // an unauthored image slot would otherwise hold open half the band
-      cell.remove();
+      row.append(cell);
     }
+    // an unauthored slot is left behind rather than appended: an empty image
+    // cell would otherwise hold open half the band
   });
 
-  if (!row.querySelector('.feature-image')) block.classList.add('feature-no-image');
+  block.replaceChildren(row);
+
+  // toggled, not just added: the editor re-runs decorate() after every change,
+  // so an image added to a copy-only band has to clear this again
+  block.classList.toggle('feature-no-image', !row.querySelector('.feature-image'));
 
   decorateCta(row.querySelector('.feature-copy'));
 
