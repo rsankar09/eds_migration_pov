@@ -1,5 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, replaceWithOptimizedPicture } from '../../scripts/scripts.js';
 
 const ACCENTS = ['plum', 'coral', 'charcoal', 'tan'];
 const HEADINGS = 'h1, h2, h3, h4, h5, h6';
@@ -115,12 +114,10 @@ export default function decorate(block) {
     ul.append(li);
   });
 
-  // the source image is a 306x94 strip — deliberately not the cards 4/3 crop
-  ul.querySelectorAll('picture > img').forEach((img) => {
-    const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    moveInstrumentation(img, optimized.querySelector('img'));
-    img.closest('picture').replaceWith(optimized);
-  });
+  // the source image is a 306x94 strip — deliberately not the cards 4/3 crop.
+  // The CSS crops every card to that strip on purpose: see the note there for
+  // why a grid wants a uniform ratio where the feature band wants the asset's.
+  ul.querySelectorAll('picture > img').forEach((img) => replaceWithOptimizedPicture(img, [{ width: '750' }]));
 
   block.replaceChildren(ul);
 }

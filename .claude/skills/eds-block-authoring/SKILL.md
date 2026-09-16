@@ -1,7 +1,7 @@
 ---
 name: eds-block-authoring
-description: For EDS components approved as "extend" or "new" in a block mapping, extract style tokens from the captured source styles and author or modify the actual block code (decorate.js + CSS) in the target EDS repo, then visually verify the rendered block against the original screenshot. Use this once a block mapping has been human-approved and only for entries whose verdict is extend or new — reused blocks don't need this skill. Always leave extend/new block code as a reviewable diff or branch; never merge/commit directly without a code review gate.
-compatibility: requires an approved mapping.json with extend/new verdicts; the capture bundle (styles.json, screenshots); write access to the target EDS repo; a local EDS dev server or equivalent render harness; Playwright for screenshot diffing
+description: For EDS components approved as "extend" or "new" in a block mapping, extract style tokens from the captured source styles and author or modify the actual block code (decorate.js + CSS + model partial) in the target EDS repo, then verify the rendered block against the original — measured numerically on both authoring surfaces, not just eyeballed against the screenshot. Use this once a block mapping has been human-approved and only for entries whose verdict is extend or new — reused blocks don't need this skill. Always leave extend/new block code as a reviewable diff or branch; never merge/commit directly without a code review gate.
+compatibility: requires an approved mapping.json with extend/new verdicts; the capture bundle (measured rects, styles.json, screenshots); write access to the target EDS repo; a local EDS dev server or equivalent render harness; a headless browser for measuring rects and computed styles, not only for screenshots
 ---
 
 # EDS block authoring
@@ -37,11 +37,64 @@ class on the block wrapper is the common EDS pattern).
 
 ### 3a. New block
 
-Scaffold `/blocks/<name>/<name>.js` and `<name>.css`:
-- `decorate(block)` restructures the authored table markup into the final
-  DOM (see repo conventions from step 2 — don't reinvent the pattern).
+Scaffold `/blocks/<name>/<name>.js`, `<name>.css`, and `_<name>.json`, then
+run the repo's JSON aggregation step (commonly `npm run build:json`). A block
+without a model partial is invisible to authors in Universal Editor — it is
+not optional.
+
+- `decorate(block)` restructures the authored markup into the final DOM (see
+  repo conventions from step 2 — don't reinvent the pattern).
 - CSS uses the normalized tokens from step 1.
 - Match the component's responsive behavior across the breakpoints captured.
+
+**Write `decorate()` against cells, not rows.** The row structure is not a
+fixed contract — it differs by authoring surface for the same block:
+
+- Universal Editor renders **one row per field group** in the model partial.
+  Fields sharing a `prefix_` (e.g. `copy_heading`, `copy_description`,
+  `copy_cta`) collapse into one cell in one row; a separate field group
+  becomes its own row.
+- Document authoring puts the author's columns in a **single row**.
+
+So a two-field-group model delivers 2 rows × 1 cell from the editor and
+1 row × 2 cells from a document. Anything anchored to `block.firstElementChild`
+or `[...row.children]` silently processes half the block on one of the two
+surfaces — the unclassified half keeps its authored markup, so every CSS rule
+scoped to the class you meant to add is dead and the block looks unstyled
+rather than throwing an error.
+
+Read cells directly and normalize:
+
+```js
+const cells = [...block.querySelectorAll(':scope > div > div')];
+const row = document.createElement('div');
+cells.forEach((cell) => { /* classify, then row.append(cell) */ });
+block.replaceChildren(row);
+```
+
+Two consequences to handle while you're there:
+
+- **Don't rely on cell order.** It follows model field order in the editor and
+  column order in a document. If a variant means "media on the left", set
+  `order` explicitly for *both* variants rather than letting one fall through
+  to DOM order.
+- **Check how the project re-decorates before assuming anything about
+  idempotency.** In the standard boilerplate, `editor-support.js` inserts a
+  *fresh server-rendered* block per content change, decorates that, and removes
+  the old one — so `decorate()` never runs on its own output, and writing
+  idempotency machinery on the belief that it does is wasted work built on a
+  false premise. Read the project's `editor-support.js` and confirm which it
+  does. It matters most for blocks that rebuild their own DOM (`block
+  .replaceChildren(ul)`): those break badly if re-run and are completely fine
+  if not. Prefer `classList.toggle(name, condition)` over `add` regardless —
+  it states the current content either way and costs nothing.
+
+**Never hardcode an image `aspect-ratio` as a stand-in for intrinsic
+dimensions.** It reads as a layout-stability fix and behaves as a crop: any
+asset whose real ratio differs is silently cut, at every breakpoint. The
+platform's image helpers typically copy only `src` and `alt`, so carry
+`width`/`height` across onto the optimized image, and publish the real ratio
+to CSS as a custom property with the measured design ratio as the fallback.
 
 ### 3b. Extend existing block
 
@@ -51,25 +104,100 @@ Scaffold `/blocks/<name>/<name>.js` and `<name>.css`:
 - Confirm the change doesn't alter output for existing usages of the block —
   check other pages/blocks that already reference it if you can find them.
 
-### 4. Verify visually
+### 4. Verify numerically, then visually
 
-Render the block standalone (local EDS dev server, or an equivalent minimal
-harness) and screenshot it at the same breakpoints as the capture. Diff
-against the original `screenshots/*.png` crop for that component region.
-Iterate on CSS until the diff is within a reasonable tolerance, or — if a gap
-remains that's a deliberate simplification rather than a bug — note it
-explicitly in the handoff rather than silently leaving it.
+Screenshot comparison alone is not enough — a side-by-side at a glance hides
+exactly the errors this step exists to catch. Measure first.
 
-### 5. Lint/build
+Render the block (local EDS dev server, or an equivalent minimal harness) and
+read back `getBoundingClientRect()` plus the computed styles you care about at
+the same breakpoints as the capture. Compare against the measured rects in the
+capture bundle, not against your reading of the screenshot.
+
+**Report both axes for every element you check.** A verification table with
+only `x` and `w` columns is not a verification — full-bleed failures, wrong
+image crops, and stray section padding are all purely vertical, so an x/w
+table reports "strong match" on a block that is visibly wrong. Every row needs
+`x, y, w, h`, and any element you claim matches needs a source number beside
+it:
+
+| element | source (x,y,w,h) | rendered (x,y,w,h) | Δ |
+|---|---|---|---|
+
+Specific things the numbers catch that the eye does not:
+
+- **Band heights and full-bleed panes.** Check whether the source's media pane
+  fills its band's full height or sits at its own intrinsic ratio. If the band
+  height is a fixed design unit, confirm it is constant in the capture across
+  *all* instances of the component regardless of their copy length — then
+  implement it as `min-height`, so longer authored copy grows the band instead
+  of overflowing it.
+- **Section-level spacing.** Section styles in the repo may add vertical
+  padding or margin the source band does not have. Compare consecutive
+  components' `y` offsets in the capture: if they are exactly one band-height
+  apart, the bands are contiguous and the section must contribute nothing.
+- **Leading.** Line-height is a computed length, so it can be matched exactly
+  and is worth matching even when the font itself is unavailable. Hold it as a
+  ratio rather than a length so a theme rescale keeps it proportional.
+
+Then screenshot at each breakpoint and diff against the original crop, and
+confirm no horizontal overflow (`documentElement.scrollWidth` equals the
+viewport at every breakpoint).
+
+### 5. Verify on both authoring surfaces
+
+Geometry verified on one surface tells you nothing about the other, because
+the delivered row structure differs (see 3a). Before calling the block done,
+render it **both** ways and confirm the measurements are identical:
+
+1. The document-authored shape (a local drafts page, or real content).
+2. The Universal Editor shape — one row per model field group.
+
+If you cannot reach an author instance, build the editor-shaped markup by hand
+from the model partial's field groups as a local fixture and measure that. Keep
+it as a regression page if the repo has somewhere sensible to put it: this bug
+class is invisible without one, and it does not announce itself as an error.
+
+Confirm on both: the expected classes are actually applied to every cell, the
+CTA/button decoration ran, and the geometry matches the numbers from step 4.
+
+### 6. Lint/build
 
 Run whatever lint/build step the repo defines before considering the block
-done.
+done, including the model-partial aggregation step from 3a. Delete any
+throwaway verification scripts first — a linter that reports the repo as dirty
+because of your own scratch files buries real findings.
 
 ## Output
 
-A branch/diff containing the new or modified block files, plus a short visual
-diff report (before/after screenshots + any noted remaining gaps) attached to
-the same component id from `mapping.json`.
+A branch/diff containing the new or modified block files and model partial,
+plus a verification report attached to the same component id from
+`mapping.json`, containing:
+
+- The numeric table from step 4 (`x, y, w, h` per element, per breakpoint,
+  source beside rendered).
+- Confirmation that both authoring surfaces were measured (step 5).
+- Before/after screenshots.
+- Remaining gaps, stated as gaps.
+
+### Separate code gaps from content and licensing gaps
+
+Some mismatches cannot be fixed in block code. Report them as blocked, name
+what would unblock them, and do not compensate for them in CSS:
+
+- **Unavailable fonts.** Captured `font-family` values are frequently licensed
+  webfonts absent from the target repo. A fallback stack has different metrics,
+  so headings wrap at different points and no amount of tracking or size
+  tweaking fixes it — it just bakes in compensation that breaks when the real
+  font arrives. Report the exact families the capture names.
+- **Assets wrong for the component.** An author can put any asset in any slot.
+  If the ratio is far from what the design implies, the block will upscale and
+  cover-crop it. Report the asset's real dimensions and the ratio the component
+  expects, rather than reshaping the block around one bad asset.
+- **Deliberate deviations.** Breakpoints snapped to the project's standard set
+  rather than the source's, tokens reused instead of duplicated, and similar
+  choices. State the resulting numeric difference so a reviewer can accept it
+  knowingly instead of discovering it later.
 
 ## Human gate
 

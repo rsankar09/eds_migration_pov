@@ -1,4 +1,5 @@
 import {
+  createOptimizedPicture,
   loadHeader,
   loadFooter,
   decorateIcons,
@@ -43,6 +44,34 @@ export function moveInstrumentation(from, to) {
       .map(({ nodeName }) => nodeName)
       .filter((attr) => attr.startsWith('data-aue-') || attr.startsWith('data-richtext-')),
   );
+}
+
+/**
+ * Replaces an authored image with an optimized picture, keeping its intrinsic
+ * dimensions.
+ *
+ * createOptimizedPicture() copies only src and alt, so the width/height the
+ * delivery pipeline puts on every authored image are lost — leaving the
+ * browser no ratio to reserve space with. Blocks were compensating with a
+ * hardcoded CSS `aspect-ratio`, which reads as a layout-stability fix and
+ * behaves as a crop on any asset whose real ratio differs.
+ *
+ * @param {HTMLImageElement} img The authored image
+ * @param {Array} [breakpoints] Passed through to createOptimizedPicture
+ * @returns {HTMLImageElement} The optimized image
+ */
+export function replaceWithOptimizedPicture(img, breakpoints) {
+  const optimized = createOptimizedPicture(img.src, img.alt, false, breakpoints);
+  const optimizedImg = optimized.querySelector('img');
+
+  ['width', 'height'].forEach((attr) => {
+    const value = img.getAttribute(attr);
+    if (value) optimizedImg.setAttribute(attr, value);
+  });
+
+  moveInstrumentation(img, optimizedImg);
+  img.closest('picture').replaceWith(optimized);
+  return optimizedImg;
 }
 
 const CTA_TYPES = ['primary', 'secondary'];

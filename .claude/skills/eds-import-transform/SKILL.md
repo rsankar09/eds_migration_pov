@@ -16,6 +16,14 @@ migrated component into the correct block markup.
   block's `decorate()` expects. For reused blocks, read this off the existing
   block's own example markup/docs. For extend/new blocks, this comes from
   `eds-block-authoring`'s output.
+
+  Note that the import output is only *one* of the shapes a block must accept:
+  the importer emits document-shaped markup (columns in a single row), while
+  Universal Editor emits one row per model field group for the same block. So
+  match the contract as the block documents it for imported content, and if a
+  block turns out to only tolerate the shape you emit, that is a bug in the
+  block — hand it back to `eds-block-authoring` rather than shaping the
+  transform around it.
 - The original page HTML (from the capture bundle) for each component.
 
 ## Process

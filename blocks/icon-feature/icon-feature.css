@@ -8,6 +8,24 @@
  */
 .icon-feature {
   --divider-color: #760014;
+
+  /*
+   * The track and its inner gutter, overridden per breakpoint below. An even
+   * split is the default; the measured fixed track applies only where it fits.
+   */
+  --icon-feature-track: minmax(0, 1fr);
+  --icon-feature-gutter: 40px;
+}
+
+/*
+ * The row is centred on the viewport, so the block's wrapper is released from
+ * the content column — the same mechanism the feature band uses, and the same
+ * reason: no viewport units, so it cannot overflow by the scrollbar width.
+ * Sibling wrappers in the section keep their own column.
+ */
+main .section > .icon-feature-wrapper {
+  max-width: none;
+  padding: 0;
 }
 
 .icon-feature > ul {
@@ -19,8 +37,9 @@
   list-style: none;
 }
 
+/* the released wrapper no longer supplies the column gutter, so the item owns it */
 .icon-feature > ul > li {
-  padding: 24px 0;
+  padding: 24px var(--content-gutter);
 }
 
 .icon-feature > ul > li + li {
@@ -86,20 +105,35 @@
    * renders without its JS.
    */
   .icon-feature > ul {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, var(--icon-feature-track));
+    justify-content: center;
     row-gap: 32px;
   }
 
   .icon-feature[data-columns='1'] > ul {
-    grid-template-columns: 1fr;
+    grid-template-columns: var(--icon-feature-track);
   }
 
   .icon-feature[data-columns='2'] > ul {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, var(--icon-feature-track));
+  }
+
+  /*
+   * Band rhythm measured at 1440: block 1440x486 = 104 + 278 row + 104, where
+   * this section was inheriting the 20px default margin instead.
+   *
+   * Both declarations are scoped to the breakpoint that was measured. Zeroing
+   * the margin globally while only adding the padding here left the band with
+   * no vertical space at all below 900, so mobile keeps the default margin
+   * rather than a guessed-at padding.
+   */
+  main .section:has(> .icon-feature-wrapper) {
+    margin: 0;
+    padding: 104px 0;
   }
 
   .icon-feature > ul > li {
-    padding: 8px 40px;
+    padding: 8px var(--icon-feature-gutter);
   }
 
   /* keep the glyph in proportion once the heading steps up */
@@ -114,27 +148,37 @@
   }
 
   /*
-   * A row's first item carries no rule and sits flush with the column edge;
-   * its last sits flush with the opposite edge. The last item overall is
-   * always a row end, so :last-child covers the final partial row.
+   * A row's first item carries no rule. Only the border is suppressed — the
+   * padding stays, because the gutter is what positions the content: the
+   * source's first column starts at x=163, which is its track edge plus the
+   * 125px half-gutter, not flush to it.
    */
-  .icon-feature > ul > li:first-child {
-    border-left: 0;
-    padding-left: 0;
-  }
-
-  .icon-feature > ul > li:last-child {
-    padding-right: 0;
-  }
-
+  .icon-feature > ul > li:first-child,
   .icon-feature[data-columns='2'] > ul > li:nth-child(2n + 1),
   .icon-feature[data-columns='3'] > ul > li:nth-child(3n + 1) {
     border-left: 0;
-    padding-left: 0;
   }
+}
 
-  .icon-feature[data-columns='2'] > ul > li:nth-child(2n),
-  .icon-feature[data-columns='3'] > ul > li:nth-child(3n) {
-    padding-right: 0;
+/*
+ * The measured 1440 track: 432px of content (styles-1440.json
+ * `.icon-feature__block`) plus a 250px gutter between columns, split as 125px
+ * per item. Pixel-measured from crops/cmp-011.png, where the content spans
+ * x=163..1266 with the rule at x=718 — two 682px tracks centred put the
+ * content at 163 and the rule on the shared track edge at 720.
+ *
+ * Symmetric padding on every item, rather than flushing the outer edges, keeps
+ * the content the same width in each column at any column count.
+ *
+ * Held back to this breakpoint because the pair needs 1364px: applied from
+ * 900px it left only 200px of content per column once the fixed gutter came
+ * out of a shrunken track, so the even split above covers that range instead.
+ * Exact at 1440; between 1200 and 1364 the tracks shrink and the content
+ * narrows with them.
+ */
+@media (width >= 1200px) {
+  .icon-feature {
+    --icon-feature-track: minmax(0, 682px);
+    --icon-feature-gutter: 125px;
   }
 }
