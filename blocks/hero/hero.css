@@ -58,7 +58,15 @@
     ) 1;
 }
 
+/*
+ * The panel always leads — above the image when stacked, to its left at
+ * desktop — whichever order the panes arrive in. Pane order follows the
+ * model's field order in the editor, which puts the image first, and the
+ * author's column order in a document, so neither can be relied on: without
+ * this the same content renders mirrored between the two surfaces.
+ */
 .hero.panel .hero-panel {
+  order: 1;
   box-sizing: border-box;
   background-color: var(--panel-color);
   padding: 20px 15px;
@@ -105,6 +113,7 @@
 }
 
 .hero.panel .hero-image {
+  order: 2;
   line-height: 0;
 }
 

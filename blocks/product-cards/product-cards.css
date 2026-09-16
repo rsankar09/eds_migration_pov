@@ -5,10 +5,39 @@
  * per-card author choice (cards 1 and 2 share the eyebrow "Variable annuity"
  * yet differ), so it routes through a custom property set by the accent class.
  */
+
+/*
+ * The band's vertical rhythm belongs to the band, not to the shared section
+ * style. The source's card band measures 104px top and bottom at 1440 (block
+ * 1440x726 = 104 + 94 title + 40 + 384 cards + 104), where the section styles
+ * in styles.css supply 40px — those styles carry default-content bands too, so
+ * the correction is scoped here by wrapper.
+ *
+ * It sits on the section rather than the block because the band's heading is
+ * default content in a sibling wrapper, so the top padding has to fall above
+ * it. Only 1440 was measured, so the existing 40px is left in place below the
+ * desktop breakpoint rather than guessed at.
+ */
+main .section:has(> .product-cards-wrapper) {
+  margin: 0;
+}
+
+/*
+ * The measured 40px between the band's heading block and the cards: the
+ * source's title area ends at y=3329 and its card row starts at y=3369.
+ * Scoped to a following sibling so a band with no heading keeps its own
+ * top padding unchanged.
+ */
+main .section > .product-cards-wrapper:not(:first-child) {
+  margin-top: 40px;
+}
+
 .product-cards > ul {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+
+  /* measured 24px at 375, 768 and 1440 — constant across breakpoints */
+  gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -36,6 +65,13 @@
   display: block;
 }
 
+/*
+ * A fixed ratio is correct here, unlike the feature band's pane. These are a
+ * grid: a uniform strip across every card is the design, so an asset with a
+ * different ratio should be cropped to match its neighbours rather than set
+ * its own height and leave the row ragged. decorate() still carries the
+ * intrinsic dimensions through for layout stability.
+ */
 .product-cards .product-card-image img {
   display: block;
   width: 100%;
@@ -44,8 +80,12 @@
   object-fit: cover;
 }
 
+/*
+ * 32px, not 20px: the source's card is 318 wide over a 12px accent border, and
+ * its text measures 242 at every breakpoint — (318 - 12 - 242) / 2 = 32.
+ */
 .product-cards .product-card-body {
-  padding: 18px 20px 0;
+  padding: 18px 32px 0;
 }
 
 .product-cards .product-card-body :is(h3, h4) {
@@ -63,11 +103,11 @@
   line-height: 1.5;
 }
 
-/* the optional product category above the name */
+/* the optional product category above the name; measured 14/14, so set solid */
 .product-cards .product-card-body .product-card-eyebrow {
   margin: 0 0 6px;
   font-size: var(--eyebrow-size);
-  line-height: 1.4;
+  line-height: 1;
   color: var(--red);
 }
 
@@ -79,7 +119,7 @@
 /* links sit at the foot of the card so uneven bodies still align */
 .product-cards .product-card-links {
   margin-top: auto;
-  padding: 10px 20px 20px;
+  padding: 10px 32px 20px;
 }
 
 .product-cards .product-card-links p {
@@ -135,5 +175,10 @@
    */
   .product-cards > ul {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  /* the measured band padding; see the note at the top of this file */
+  main .section:has(> .product-cards-wrapper) {
+    padding: 104px 0;
   }
 }

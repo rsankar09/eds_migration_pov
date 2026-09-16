@@ -8,9 +8,9 @@ Verified at: 375 / 768 / 1440 against `crops/cmp-*.png`
 
 | Component id | Verdict | Block | Files | Visual match |
 |---|---|---|---|---|
-| cmp-003/4/5/6/10 | new | `feature` | `feature.js`, `feature.css` | Strong — layout, bands, type scale and pill CTAs all match |
-| cmp-008 | new | `product-cards` | `product-cards.js`, `product-cards.css` | Close — accents, eyebrow, circled arrow, bottom-aligned links match |
-| cmp-011 | new | `icon-feature` | `icon-feature.js`, `icon-feature.css` | Strong — icons, divider, ghost pills match |
+| cmp-003/4/5/6/10 | new | `feature` | `feature.js`, `feature.css` | **Superseded — see Amendment 1** |
+| cmp-008 | new | `product-cards` | `product-cards.js`, `product-cards.css` | **Superseded — see Amendment 1** |
+| cmp-011 | new | `icon-feature` | `icon-feature.js`, `icon-feature.css` | **Superseded — see Amendment 1** |
 | cmp-002 | none | section style `grey, centered` | `styles/styles.css` | Match — band and centred 72px plum H1 |
 | cmp-007 | none | section style `full-width-image` | `styles/styles.css` | Match |
 | cmp-009 / cmp-012 | none | section style `disclosure` | `styles/styles.css` | Match — 14/21 under the Jackson theme |
@@ -138,3 +138,88 @@ across, row starts 1,4,7).
 The only remaining console errors are a local-dev artifact: `--html-folder drafts`
 serves nav at `/drafts/nav` while `header.js` fetches `/nav`. Not present in
 preview or production.
+
+---
+
+## Amendment 1 — the original verification was single-axis
+
+The "Strong/Close match" verdicts above were wrong, and the way they were
+verified is why. Every measurement table in this report has `x` and `w`
+columns and no `y` or `h`. Full-bleed failures, wrong image crops and stray
+section padding are all purely vertical, so the checks could not see them —
+and the screenshot comparison that accompanied them did not catch what the
+numbers were not asked about.
+
+Re-verified by reading `getBoundingClientRect()` back from the rendered page
+against the capture's measured rects on both axes, at 375 / 768 / 900 / 1440.
+`crops/cmp-011.png` was additionally measured pixel-wise for ink extents,
+because the 37-selector sample in `styles-1440.json` carries that component's
+item width but no `x`.
+
+### What was actually wrong
+
+| | source | as reported | now |
+|---|---|---|---|
+| feature band (1440) | 1440x607 | 1440x575 | 1440x607 |
+| feature image pane | 720x607 | 720x495 | 720x607 |
+| product-cards band | 1440x726 | 1440x570 | 1440x728 |
+| product-cards band padding | 104px | 40px | 104px |
+| card | 318 wide | 321 | 318 |
+| card text | 242 wide | 269 | 242 |
+| card eyebrow | 242x14 @14/14 | 269x20 @14/19.6 | 242x14 @14/14 |
+| card grid gap | 24px | 20px | 24px |
+| heading to cards | 40px | ~13px | 40px |
+| icon-feature band | 1440x486 | 1440x223 | 1440x455 |
+| icon-feature band padding | 104px | 0 | 104px |
+| icon-feature content left | 163 | 287 | 163 |
+| icon-feature item content | 432 | 672 | 432 |
+| icon-feature rule | x=718 | — | x=720 |
+
+Root causes, all of them vertical or structural:
+
+1. **`aspect-ratio: 16 / 11` on the feature pane was a crop, not a ratio.**
+   Every source asset is 720x600 (1.200) and the source pane measures `/1.2`
+   at both stacked breakpoints. The pane came out 105px short at 1440, 112 at
+   768, 55 at 375, with the photo cropped tighter than the original. The ratio
+   is now read from the image itself, with the measured 6/5 as the fallback.
+   `product-cards` keeps its fixed 306/94 deliberately — a grid wants one
+   uniform strip, so an odd asset should be cropped to match its neighbours
+   rather than set its own height.
+2. **Section band padding was applied to bands that have none, and withheld
+   from bands that have 104px.** The source's feature bands are flush and
+   contiguous (y=503, 1110, 1717, 2324 — exactly 607 apart); its card bands
+   carry 104px. The shared 40px in `styles.css` was wrong for all of them, and
+   is now corrected per band by wrapper rather than changed globally, since
+   those same styles carry the default-content bands.
+3. **`icon-feature` filled the content column.** The source is a 432px content
+   track with a 250px gutter, centred on the viewport with the rule on the
+   shared track edge — not a row stretched across 1344.
+
+### A structural defect the report could not have caught
+
+`feature`'s `decorate()` read `block.firstElementChild` and walked only that
+row. That is correct for document authoring and wrong in Universal Editor,
+which renders **one row per model field group** — `image` in the first, the
+`copy_*` group in the second. Row two, the entire copy pane, was never
+classified, so every `.feature-copy` rule was dead and the CTA fell back to
+the global square button. It now classifies cells and flattens them to one
+row, verified identical on both shapes.
+
+`hero` had the inverse: it tagged rows, which works in the editor and
+collapses in a document where both cells share one row. Its `panel` variant
+also depended on DOM order, so the editor's image-first field order rendered
+it mirrored. Both fixed; the Commonwealth homepage is pixel-identical
+(screenshot md5 match) and both shapes now measure the same.
+
+### Still open, and not fixable in block code
+
+- **Fonts.** The source is `"Superior Title"` (headings) and `Apercu` (body);
+  the repo has Roboto and a Georgia fallback. Different metrics mean different
+  wrap points — the feature heading still breaks a word earlier than the
+  source. This accounts for the residual vertical deltas: card 357 against
+  384, icon-feature band 455 against 486. Deliberately not compensated for,
+  since any correction would have to be undone when the real fonts land.
+- **768 feature band** is 900 against the source's 1093: the source steps the
+  heading to 48px at 769 and the project's breakpoints are 600/900/1200.
+- **Intermediate widths for `icon-feature`** are unmeasured; the fixed track
+  applies from 1200 and is exact at 1440.

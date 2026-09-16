@@ -1,5 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-import { decorateCta, moveInstrumentation } from '../../scripts/scripts.js';
+import { decorateCta, replaceWithOptimizedPicture } from '../../scripts/scripts.js';
 
 /**
  * Publishes the image's own aspect ratio to the block as
@@ -74,26 +73,15 @@ export default function decorate(block) {
 
   block.replaceChildren(row);
 
-  // toggled, not just added: the editor re-runs decorate() after every change,
-  // so an image added to a copy-only band has to clear this again
+  // toggled rather than added so the flag states the current content either
+  // way. editor-support.js decorates a fresh server-rendered block per change,
+  // so this never has to clear a previous run's value — but it costs nothing
+  // to not depend on that.
   block.classList.toggle('feature-no-image', !row.querySelector('.feature-image'));
 
   decorateCta(row.querySelector('.feature-copy'));
 
   row.querySelectorAll('picture > img').forEach((img) => {
-    const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-    const optimizedImg = optimized.querySelector('img');
-
-    // createOptimizedPicture copies only src and alt, so carry the intrinsic
-    // dimensions across: without them the browser has no ratio to reserve
-    // space with, which is what the removed hardcoded crop was standing in for
-    ['width', 'height'].forEach((attr) => {
-      const value = img.getAttribute(attr);
-      if (value) optimizedImg.setAttribute(attr, value);
-    });
-
-    moveInstrumentation(img, optimizedImg);
-    img.closest('picture').replaceWith(optimized);
-    publishImageRatio(block, optimizedImg);
+    publishImageRatio(block, replaceWithOptimizedPicture(img, [{ width: '750' }]));
   });
 }
