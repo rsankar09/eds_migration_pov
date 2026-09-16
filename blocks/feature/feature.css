@@ -17,6 +17,47 @@
    * other half.
    */
   --feature-copy-width: 475px;
+
+  /*
+   * The image's own ratio, not a crop. Every source asset is 720x600, and the
+   * source pane measures /1.2 at both stacked breakpoints (375 -> 313,
+   * 768 -> 640), so 6/5 is the correct default. decorate() overwrites this per
+   * block from the real image, so an author uploading a different ratio is not
+   * silently cropped to this one.
+   */
+  --feature-image-ratio: 6 / 5;
+
+  /*
+   * Desktop band height. A fixed design unit in the source: all five bands
+   * measure exactly 607px at 1440 regardless of how tall their copy is
+   * (measured card-content heights vary 373-486). Applied as a min-height so
+   * longer copy grows the band instead of overflowing it.
+   */
+  --feature-band-height: 607px;
+
+  /*
+   * Measured heading leading: 49px on 36px stacked, 58px on 48px split.
+   * Held as ratios rather than lengths so a theme rescaling
+   * --band-heading-size keeps its leading proportional.
+   */
+  --feature-heading-leading: 1.361;
+}
+
+/*
+ * The band owns its full height edge to edge, so the section contributes no
+ * vertical space: the source's bands are flush (the image touches the top and
+ * bottom of the gradient) and consecutive bands are contiguous, measuring
+ * y=503, 1110, 1717, 2324 — exactly 607 apart with no gap.
+ *
+ * This has to undo the 40px the band section styles apply, and the default
+ * `main > .section { margin: 20px 0 }` for a band with no section style. It is
+ * matched on the wrapper rather than added to the section styles in styles.css
+ * because those same styles carry the product-card and disclosure bands, which
+ * do want their padding.
+ */
+main .section:has(> .feature-wrapper) {
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -62,7 +103,7 @@ main .section.brand-gradient .feature {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: var(--feature-image-ratio);
   object-fit: cover;
 }
 
@@ -80,7 +121,7 @@ main .section.brand-gradient .feature {
   font-family: var(--display-font-family);
   font-size: var(--band-heading-size);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: var(--feature-heading-leading);
   color: var(--feature-ink);
 }
 
@@ -155,6 +196,7 @@ main .section.brand-gradient .feature a.button:any-link:focus-visible {
   .feature > div {
     flex-direction: row;
     align-items: center;
+    min-height: var(--feature-band-height);
 
     /* the copy's auto margins own the spacing; a gap would offset the split */
     gap: 0;
@@ -164,6 +206,24 @@ main .section.brand-gradient .feature a.button:any-link:focus-visible {
   .feature .feature-image {
     flex: 0 0 50%;
     min-width: 0;
+
+    /* the row centres the copy, but the image pane fills the band's height */
+    align-self: stretch;
+  }
+
+  /*
+   * In the split layout the pane's height comes from the band, not the image,
+   * so the ratio is released and the photo covers whatever the band is. This
+   * is what makes the image reach the band's top and bottom edges as the
+   * source does (measured pane 720x607 against a 607px band).
+   */
+  .feature .feature-image picture,
+  .feature .feature-image img {
+    height: 100%;
+  }
+
+  .feature .feature-image img {
+    aspect-ratio: auto;
   }
 
   /*
@@ -192,6 +252,9 @@ main .section.brand-gradient .feature a.button:any-link:focus-visible {
   }
 
   .feature .feature-copy :is(h2, h3) {
+    /* 58px on the measured 48px heading */
+    --feature-heading-leading: 1.208;
+
     font-size: var(--band-heading-size-l);
   }
 }
