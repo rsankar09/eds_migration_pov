@@ -153,3 +153,72 @@
     min-height: 215px;
   }
 }
+
+/*
+ * no-image variant — a centred title, description and CTA on a band, for a
+ * source hero that has no image at all.
+ *
+ * It cannot reuse the default hero styling: that positions the picture
+ * absolutely behind the copy and sets the heading to --background-color
+ * (white), so with no image the title renders white on the band and
+ * disappears. Everything image-related is unwound here.
+ *
+ * Measured from the RIA page's `no-image-hero` (band #ebebeb, a `grey`
+ * section style): content padding 80px/48px at 1440 and 72px/24px below,
+ * title 1344x80 at 72px, description capped at 605px and centred, CTA 159x55.
+ */
+.hero.no-image {
+  position: static;
+  box-sizing: border-box;
+  min-height: 0;
+
+  /*
+   * The band is full width and the padding supplies the gutter, which is what
+   * puts the content box at the measured 1344 at 1440. Capping the block at
+   * --content-max-width instead and then padding inside it gives 1248 — the
+   * cap and the gutter subtract twice.
+   */
+  padding: 72px var(--content-gutter);
+  text-align: center;
+}
+
+.hero.no-image :is(h1, h2) {
+  max-width: none;
+  margin: 0 0 16px;
+  color: var(--plum);
+}
+
+/* the source caps the description well inside the title's width */
+.hero.no-image.no-image p {
+  max-width: var(--hero-copy-width, 605px);
+  margin-inline: auto;
+}
+
+.hero.no-image .button-wrapper {
+  margin: 24px 0 0;
+}
+
+/* an outlined pill, matching the band CTAs elsewhere on the page */
+.hero.no-image a.button:any-link {
+  border-radius: 999px;
+  border: 1px solid #231f20;
+  background-color: var(--background-color);
+  padding: 0 var(--pill-padding-x);
+  font-family: var(--body-font-family);
+  font-size: var(--pill-font-size);
+  font-weight: 700;
+  line-height: var(--pill-height);
+  color: #231f20;
+}
+
+.hero.no-image a.button:any-link:hover {
+  background-color: #231f20;
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+@media (width >= 1200px) {
+  .hero.no-image {
+    padding: 80px var(--content-gutter);
+  }
+}
