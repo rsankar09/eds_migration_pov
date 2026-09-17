@@ -49,6 +49,30 @@ function columnsFor(count) {
 }
 
 /**
+ * Turns an item's heading into the link, for the `cards` variant.
+ *
+ * The source's gradient card has no pill: where a card is linked, the title
+ * itself carries the href (underlined). The authored anchor is reused rather
+ * than replaced so its instrumentation survives and the field stays editable;
+ * only its visible text changes, which makes the item's CTA *label* field
+ * inert in this variant — the heading supplies the text.
+ *
+ * @param {Element} copy The item's copy container
+ */
+function linkHeading(copy) {
+  const link = copy.querySelector('a[href]');
+  const heading = copy.querySelector('h2, h3, h4, h5, h6');
+  if (!link || !heading) return;
+
+  link.textContent = '';
+  while (heading.firstChild) link.append(heading.firstChild);
+  const wrapper = link.closest('p');
+  heading.append(link);
+  if (wrapper && !wrapper.textContent.trim()) wrapper.remove();
+  link.title = link.title || link.textContent.trim();
+}
+
+/**
  * loads and decorates the block
  *
  * A pure collection: one row per item, each row an icon cell followed by a
@@ -59,6 +83,7 @@ function columnsFor(count) {
  * @param {Element} block The block element
  */
 export default function decorate(block) {
+  const cards = block.classList.contains('cards');
   const ul = document.createElement('ul');
 
   [...block.children].forEach((row) => {
@@ -85,7 +110,7 @@ export default function decorate(block) {
       li.append(iconWrapper);
     }
 
-    decorateCta(copy, 'secondary');
+    if (cards) linkHeading(copy); else decorateCta(copy, 'secondary');
     li.append(copy);
     ul.append(li);
   });

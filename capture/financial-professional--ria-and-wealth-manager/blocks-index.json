@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-09-16",
+  "repo": "eds_migration_pov",
+  "source": "internal",
+  "note": "Refreshed after the feature/product-cards/icon-feature/hero fixes; the 2026-09-15 index is stale (it still reports hero as missing a `classes` field, which _hero.json now has).",
+  "blocks": [
+    {
+      "name": "feature",
+      "has_model_partial": true,
+      "decorate_shape": "Classifies cells (not rows) into .feature-image/.feature-copy and flattens them into one row; publishes the image's real ratio as --feature-image-ratio; decorateCta().",
+      "content_contract": "Image cell + copy cell, in either order, any row arrangement.",
+      "model_fields": [
+        "image",
+        "imageAlt",
+        "copy_heading",
+        "copy_headingType",
+        "copy_description",
+        "copy_cta",
+        "copy_ctaText",
+        "copy_ctaType",
+        "classes"
+      ],
+      "variants": [
+        "image-left",
+        "image-right"
+      ],
+      "verified": "1440 band 1440x607, pane 720x607, h2 475x174; 375 pane 375x313; 768 pane 768x640"
+    },
+    {
+      "name": "icon-feature",
+      "has_model_partial": true,
+      "decorate_shape": "Container: one row per item; resolves an icon token to a span.icon, moves copy into .icon-feature-copy, fixes desktop column count via data-columns.",
+      "content_contract": "Per item: icon cell + copy cell.",
+      "model_fields": [
+        "icon",
+        "copy_heading",
+        "copy_headingType",
+        "copy_description",
+        "copy_cta",
+        "copy_ctaText"
+      ],
+      "variants": [
+        "data-columns 1/2/3"
+      ],
+      "verified": "1440 content x=163 w=432, rule x=720, band padding 104"
+    },
+    {
+      "name": "product-cards",
+      "has_model_partial": true,
+      "decorate_shape": "Container: one row per card; classifies image/copy/links/accent cells; cards become ul>li; derives aria-labels for repeated link text.",
+      "content_contract": "Per card: image cell, copy cell (eyebrow + heading + body), links cell, accent token cell.",
+      "model_fields": [
+        "image",
+        "imageAlt",
+        "copy_eyebrow",
+        "copy_heading",
+        "copy_headingType",
+        "copy_description",
+        "links_cta",
+        "links_ctaText",
+        "links_cta2",
+        "links_cta2Text",
+        "classes"
+      ],
+      "variants": [
+        "accent-plum",
+        "accent-coral",
+        "accent-charcoal",
+        "accent-tan"
+      ]
+    },
+    {
+      "name": "cards",
+      "has_model_partial": true,
+      "decorate_shape": "Boilerplate: rows to ul>li, cells classed cards-card-image / cards-card-body.",
+      "content_contract": "Per card: image cell + text cell.",
+      "model_fields": [
+        "image",
+        "text"
+      ],
+      "variants": []
+    },
+    {
+      "name": "hero",
+      "has_model_partial": true,
+      "decorate_shape": "Splits cells into panes (.hero-image/.hero-panel) as direct block children; explicit CSS order so panel always leads.",
+      "content_contract": "Image cell + copy cell, either arrangement.",
+      "model_fields": [
+        "image",
+        "imageAlt",
+        "text",
+        "classes"
+      ],
+      "variants": [
+        "panel"
+      ]
+    },
+    {
+      "name": "columns",
+      "has_model_partial": true,
+      "decorate_shape": "Adds columns-N-cols; tags image-only columns.",
+      "content_contract": "Free-form grid of cells.",
+      "model_fields": [
+        "columns",
+        "rows"
+      ],
+      "variants": []
+    },
+    {
+      "name": "fragment",
+      "has_model_partial": false,
+      "decorate_shape": "Loads another page's .plain.html inline.",
+      "content_contract": "A path.",
+      "model_fields": [],
+      "variants": []
+    },
+    {
+      "name": "header",
+      "has_model_partial": false,
+      "decorate_shape": "Chrome (nav fragment).",
+      "content_contract": "n/a",
+      "model_fields": [],
+      "variants": []
+    },
+    {
+      "name": "footer",
+      "has_model_partial": false,
+      "decorate_shape": "Chrome (footer fragment).",
+      "content_contract": "n/a",
+      "model_fields": [],
+      "variants": []
+    }
+  ],
+  "section_styles": [
+    "grey",
+    "tan",
+    "stone",
+    "brand-gradient",
+    "full-width-image",
+    "disclosure",
+    "centered",
+    "light",
+    "highlight"
+  ]
+}

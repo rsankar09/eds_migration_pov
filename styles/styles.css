@@ -570,3 +570,30 @@ body.jackson-brand main p {
     --content-gutter: 48px;
   }
 }
+
+/*
+ * A default-content CTA inside a centred band is the brand's outlined pill,
+ * not the global square button — measured from the RIA hero (cmp-002): a
+ * white fill with a thin dark border on the grey band.
+ *
+ * Scoped to `centered` so it reaches the band heroes only. The Commonwealth
+ * pages do not use that section style, and the credit-union hero that does
+ * has no CTA, so nothing already signed off changes.
+ */
+main .section.centered .default-content-wrapper a.button:any-link {
+  border-radius: 999px;
+  border: 1px solid #231f20;
+  background-color: var(--background-color);
+  padding: 0 var(--pill-padding-x);
+  font-family: var(--body-font-family);
+  font-size: var(--pill-font-size);
+  font-weight: 700;
+  line-height: var(--pill-height);
+  color: #231f20;
+}
+
+main .section.centered .default-content-wrapper a.button:any-link:hover {
+  background-color: #231f20;
+  color: var(--background-color);
+  text-decoration: none;
+}

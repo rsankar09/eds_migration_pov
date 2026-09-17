@@ -188,11 +188,266 @@ const addSectionBreaks = (main, document) => {
 
   tables.forEach((table) => {
     const next = table.nextElementSibling;
-    if (next && next.tagName !== 'HR') {
-      next.parentElement.insertBefore(document.createElement('hr'), next);
-    }
+    if (!next || next.tagName === 'HR') return;
+    /*
+     * A Section Metadata table belongs to the section it follows, so no break
+     * goes between them. Without this the style lands on the *next* section:
+     * the block ends up in one section and its own `Style` in the one after.
+     */
+    if (next.tagName === 'TABLE' && next.rows[0]?.textContent.trim() === 'Section Metadata') return;
+    next.parentElement.insertBefore(document.createElement('hr'), next);
   });
 };
+
+/* ========================================================================== */
+/* Jackson (AEM, fp-site components) -> the blocks in this project            */
+/*                                                                            */
+/* Contracts are the *document* shape each block documents: one row of cells. */
+/* The same blocks also accept Universal Editor's one-row-per-field-group     */
+/* shape; see .claude/skills/eds-block-authoring/references/                  */
+/* authoring-contract.md. Do not reshape a transform to work around a block   */
+/* that only tolerates one of the two — fix the block.                        */
+/* ========================================================================== */
+
+/**
+ * Band background colour -> the project's section style.
+ * Measured from capture/financial-professional--ria-and-wealth-manager.
+ */
+const JACKSON_BANDS = {
+  '#d4b5a3': 'tan',
+  '#ebebeb': 'grey',
+  '#f5f3f0': 'stone',
+  // #ffffff is the default band and needs no section style
+};
+
+/**
+ * Appends a Section Metadata table plus a break, so the band's background
+ * survives as a section style rather than being lost with the source markup.
+ * @param {Element} target the element to insert after
+ * @param {Document} document the source document
+ * @param {string} style the section style value
+ */
+const sectionStyle = (target, document, style) => {
+  if (!style) return;
+  const table = WebImporter.DOMUtils.createTable([['Section Metadata'], ['Style', style]], document);
+  target.after(table);
+  table.after(document.createElement('hr'));
+};
+
+/**
+ * Reads the band colour a Jackson wrapper carries.
+ *
+ * The source sets it as a CSS custom property — `style="--bg-color: #d4b5a3"`
+ * — not as `background-color`, and in hex rather than rgb(). Matching the
+ * wrong one returns null for every band and every section style is silently
+ * dropped.
+ */
+const bandStyle = (el) => {
+  // `[class$=]` would miss it: the source emits `class="…__wrapper "` with a
+  // trailing space, so the attribute does not end with the suffix
+  const wrapper = el.querySelector('[class*="__wrapper"]') || el;
+  const bg = (wrapper.getAttribute('style') || '').match(/--bg-color:\s*(#[0-9a-f]{3,8})/i);
+  return bg ? JACKSON_BANDS[bg[1].toLowerCase()] : null;
+};
+
+/**
+ * Line Awesome class -> icon token. The source names its icons `la-chart-bar`
+ * and /icons is named to match, so the token is derived rather than mapped
+ * through a table that would drift.
+ * @param {Element} scope the element holding the <i>
+ * @returns {string} the token, or '' when there is no icon
+ */
+const iconToken = (scope) => {
+  // icon-card uses <i>, icon-feature uses <span> — match both
+  const i = scope.querySelector('i[class*="la-"], span[class*="la-"]');
+  if (!i) return '';
+  const m = [...i.classList].find((c) => c.startsWith('la-'));
+  return m ? m.replace(/^la-/, '') : '';
+};
+
+/** Collects a component's copy nodes: heading, body, then each CTA. */
+const copyNodes = (document, scope, headingTag) => {
+  const nodes = [];
+  // several components title themselves with `<p class="…__title">` rather
+  // than a heading tag, so fall back to the class before giving up
+  const heading = scope.querySelector('h1, h2, h3, h4, h5, h6')
+    || scope.querySelector('[class*="__title"]');
+  if (heading) nodes.push(retag(document, heading, headingTag));
+  scope.querySelectorAll('[class*="__description"] > *, [class*="__text"] > p').forEach((n) => {
+    if (n.textContent.trim()) nodes.push(n);
+  });
+  scope.querySelectorAll('a[href]').forEach((a) => {
+    // a CTA is its own paragraph so decorateCta() sees it as standalone
+    if (!a.textContent.trim()) return;
+    const p = document.createElement('p');
+    p.append(a);
+    nodes.push(p);
+  });
+  return nodes;
+};
+
+/* feature-50-50 -> Feature ------------------------------------------------- */
+
+const transformJacksonFeature = (main, document) => {
+  main.querySelectorAll('.feature-50-50').forEach((band) => {
+    const content = band.querySelector('[class*="__content"]');
+    const img = band.querySelector('img');
+    const card = band.querySelector('[class*="__card-content"], [class*="__content-inner"]');
+    if (!card) return;
+
+    const variant = content && content.classList.contains('image-left') ? 'image-left' : 'image-right';
+    const style = bandStyle(band);
+    const rows = [[`Feature (${variant})`], [img || '', cell(document, copyNodes(document, card, 'h2'))]];
+    const table = WebImporter.DOMUtils.createTable(rows, document);
+    band.replaceWith(table);
+    sectionStyle(table, document, style);
+  });
+};
+
+/* card-container + icon-card -> Icon Feature (cards) ----------------------- */
+
+const transformJacksonIconCards = (main, document) => {
+  main.querySelectorAll('.card-container').forEach((band) => {
+    const cards = [...band.querySelectorAll('.icon-card')];
+    if (!cards.length) return;
+
+    const heading = band.querySelector('[class*="__title"]');
+    const rows = [['Icon Feature (cards)']];
+    cards.forEach((c) => {
+      rows.push([iconToken(c), cell(document, copyNodes(document, c, 'h3'))]);
+    });
+
+    const table = WebImporter.DOMUtils.createTable(rows, document);
+    band.replaceWith(table);
+    // the band heading is default content above the block, as the blocks expect
+    if (heading) table.before(retag(document, heading, 'h3'));
+    sectionStyle(table, document, 'centered');
+  });
+};
+
+/* card-container + icon-feature -> Icon Feature (columns) ------------------ */
+
+const transformJacksonIconFeature = (main, document) => {
+  main.querySelectorAll('.card-container').forEach((band) => {
+    const items = [...band.querySelectorAll('.icon-feature__block')];
+    if (!items.length) return;
+
+    const rows = [['Icon Feature']];
+    items.forEach((it) => rows.push([iconToken(it), cell(document, copyNodes(document, it, 'h3'))]));
+    band.replaceWith(WebImporter.DOMUtils.createTable(rows, document));
+  });
+};
+
+/* carousel-card-container -> Carousel -------------------------------------- */
+
+const transformJacksonCarousel = (main, document) => {
+  main.querySelectorAll('.carousel-card-container').forEach((band) => {
+    // the slides are `feature-card` components; matching on `__card*` instead
+    // selects the two *containers* (`__cards`, `__card-content`), which both
+    // contain images and so silently pass an img-presence filter
+    const cards = [...band.querySelectorAll('.feature-card')];
+    if (!cards.length) return;
+
+    const heading = band.querySelector('[class*="__title"]');
+    const rows = [['Carousel']];
+    cards.forEach((c) => rows.push([c.querySelector('img'), cell(document, copyNodes(document, c, 'h3'))]));
+
+    const table = WebImporter.DOMUtils.createTable(rows, document);
+    band.replaceWith(table);
+    if (heading) table.before(retag(document, heading, 'h2'));
+  });
+};
+
+/* flexible-width-container (marketing-automation embed) -> Form ------------ */
+
+const transformJacksonForm = (main, document) => {
+  main.querySelectorAll('.flexible-width-container').forEach((band) => {
+    const form = band.querySelector('form.mktoForm, form');
+    if (!form) return;
+
+    const rows = [['Form']];
+    // `flexible-width-container__content` exists but is an empty 0-height
+    // wrapper; the copy is a `flexible-content-area` in the first column
+    const intro = band.querySelector('.flexible-content-area');
+    if (intro && intro.textContent.trim()) {
+      rows.push([cell(document, copyNodes(document, intro, 'h2'))]);
+    }
+
+    form.querySelectorAll('input, textarea, button').forEach((el) => {
+      const type = (el.getAttribute('type') || '').toLowerCase();
+      const name = el.getAttribute('name') || '';
+      // hidden tracking fields and the captcha are not authorable content
+      if (type === 'hidden' || /recaptcha/i.test(name)) return;
+
+      if (el.tagName === 'BUTTON' || type === 'submit') {
+        rows.push(['submit', el.textContent.trim() || 'Submit', '', 'full']);
+        return;
+      }
+      const label = el.getAttribute('placeholder') || el.getAttribute('aria-label') || name;
+      const kind = el.tagName === 'TEXTAREA' ? 'textarea' : (type || 'text');
+      // the source pairs name/surname and phone/zip on one line
+      const half = /^(firstname|lastname|phone|postalcode|zip)$/i.test(name) ? 'half' : 'full';
+      rows.push([kind, label, name, half]);
+    });
+
+    const table = WebImporter.DOMUtils.createTable(rows, document);
+    band.replaceWith(table);
+    sectionStyle(table, document, bandStyle(band) || 'grey');
+  });
+};
+
+/* no-image-hero -> default content on a centred band ----------------------- */
+
+const transformJacksonHero = (main, document) => {
+  main.querySelectorAll('.no-image-hero').forEach((hero) => {
+    const nodes = copyNodes(document, hero, 'h1');
+    if (!nodes.length) return;
+    const wrap = cell(document, nodes);
+    hero.replaceWith(wrap);
+    sectionStyle(wrap, document, 'grey, centered');
+  });
+};
+
+/* full-width-image-buffer -> a full-width image section -------------------- */
+
+const transformJacksonBuffer = (main, document) => {
+  main.querySelectorAll('.full-width-image-buffer').forEach((buffer) => {
+    // the image is a CSS background declared in an inline <style>, not an <img>
+    const css = buffer.querySelector('style')?.textContent || '';
+    const match = css.match(/url\((["']?)([^"')]+)\1\)/);
+    if (!match) { buffer.remove(); return; }
+    const [, , url] = match;
+
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = '';
+    const p = document.createElement('p');
+    p.append(img);
+    buffer.replaceWith(p);
+    sectionStyle(p, document, 'full-width-image');
+  });
+};
+
+/* text-block -> default content, disclosure bands keep their style --------- */
+
+const transformJacksonTextBlock = (main, document) => {
+  main.querySelectorAll('.text-block').forEach((block) => {
+    const inner = block.querySelector('[class*="__block"]') || block;
+    const isDisclosure = inner.className.includes('disclosure');
+    const nodes = [...inner.querySelectorAll('p, h1, h2, h3, h4, ul, ol')]
+      .filter((n) => n.textContent.trim() && !n.closest('table'));
+    if (!nodes.length) { block.remove(); return; }
+
+    const wrap = cell(document, nodes);
+    block.replaceWith(wrap);
+    if (isDisclosure) sectionStyle(wrap, document, 'disclosure');
+  });
+};
+
+/** True when this document is a Jackson fp-site page rather than Commonwealth. */
+const isJackson = (document) => !!document.querySelector(
+  '.feature-50-50, .icon-card, .carousel-card-container, .masthead',
+);
 
 /* -------------------------------------------------------------------------- */
 
@@ -203,8 +458,44 @@ export default {
 
     const main = document.querySelector('main') || document.body;
 
-    transformBanner(main, document);
-    transformStatement(main, document);
+    if (isJackson(document)) {
+      // order matters: the icon-card grid and the icon-feature pair share the
+      // `.card-container` wrapper, so the more specific one runs first
+      transformJacksonHero(main, document);
+      transformJacksonIconCards(main, document);
+      transformJacksonIconFeature(main, document);
+      transformJacksonFeature(main, document);
+      transformJacksonCarousel(main, document);
+      transformJacksonForm(main, document);
+      transformJacksonBuffer(main, document);
+      transformJacksonTextBlock(main, document);
+    } else {
+      transformBanner(main, document);
+      transformStatement(main, document);
+    }
+
+    if (isJackson(document)) {
+      /*
+       * Jackson renders no <main>, <header> or <footer> element, so the
+       * generic chrome removals below match nothing and the masthead would
+       * survive into the imported page. Remove its chrome by component.
+       *
+       * nav and footer are `defer` in the approved mapping (shared Experience
+       * Fragments), so they are stripped rather than emitted as documents.
+       */
+      WebImporter.DOMUtils.remove(main, [
+        '.masthead',
+        '.site-selector-bar',
+        '.global-footer',
+        '.breadcrumb',
+        '.experiencefragment:not(:has(table))',
+        // non-content overlays: their copy would otherwise land in the import
+        '.session-timeout-dialog__panel',
+        '#QSIFeedbackButton-btn',
+        '[id^="QSIFeedbackButton"]',
+        '.modal',
+      ]);
+    }
 
     WebImporter.DOMUtils.remove(main, [
       // chrome that now lives in /nav and /footer
@@ -215,6 +506,9 @@ export default {
       // consent SDK, Drupal a11y helpers and other non-content noise
       '#onetrust-consent-sdk',
       '#onetrust-banner-sdk',
+      '#onetrust-pc-sdk',
+      '.ot-sdk-container',
+      '#QSIFeedbackButton-btn',
       '#drupal-live-announce',
       '.skip-link',
       '.visually-hidden',

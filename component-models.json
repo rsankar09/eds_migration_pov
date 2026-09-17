@@ -189,6 +189,70 @@
     ]
   },
   {
+    "id": "carousel-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "description": "Cropped to a 3/2 strip so every card matches."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt Text",
+        "value": "",
+        "description": "Describe the image. Leave empty only if it is purely decorative."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_heading",
+        "label": "Heading",
+        "required": true
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "copy_headingType",
+        "label": "Heading Type",
+        "value": "h3",
+        "options": [
+          {
+            "name": "H3",
+            "value": "h3"
+          },
+          {
+            "name": "H4",
+            "value": "h4"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "copy_description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "copy_cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_ctaText",
+        "label": "CTA Label"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
@@ -287,6 +351,19 @@
         ]
       },
       {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "copy_cta2",
+        "label": "Second CTA Link",
+        "description": "Optional. A second button beside the first."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "copy_cta2Text",
+        "label": "Second CTA Label"
+      },
+      {
         "component": "select",
         "valueType": "string",
         "name": "classes",
@@ -301,6 +378,93 @@
           {
             "name": "Image Left",
             "value": "image-left"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "form-intro",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "heading",
+        "label": "Heading"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "form-field",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "type",
+        "label": "Field Type",
+        "value": "text",
+        "options": [
+          {
+            "name": "Text",
+            "value": "text"
+          },
+          {
+            "name": "Email",
+            "value": "email"
+          },
+          {
+            "name": "Phone",
+            "value": "tel"
+          },
+          {
+            "name": "Number",
+            "value": "number"
+          },
+          {
+            "name": "Message",
+            "value": "textarea"
+          },
+          {
+            "name": "Submit Button",
+            "value": "submit"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "description": "Shown as the placeholder, and kept as a visually hidden label for assistive technology."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "name",
+        "label": "Field Name",
+        "description": "The name submitted with the form."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "width",
+        "label": "Width",
+        "value": "full",
+        "options": [
+          {
+            "name": "Full",
+            "value": "full"
+          },
+          {
+            "name": "Half",
+            "value": "half"
           }
         ]
       }
@@ -356,6 +520,29 @@
     ]
   },
   {
+    "id": "icon-feature",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Layout",
+        "value": "",
+        "description": "Columns: icon-led text separated by a rule. Cards: gradient-filled cards, up to 4 across.",
+        "options": [
+          {
+            "name": "Columns",
+            "value": ""
+          },
+          {
+            "name": "Cards",
+            "value": "cards"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "icon-feature-item",
     "fields": [
       {
@@ -363,7 +550,7 @@
         "valueType": "string",
         "name": "icon",
         "label": "Icon",
-        "description": "Icons are served from /icons. Add a new SVG there before extending this list.",
+        "description": "Icons are served from /icons and named after the source design system's Line Awesome tokens (la-chart-bar -> chart-bar), so an importer can derive them mechanically. Add a new SVG there before extending this list.",
         "options": [
           {
             "name": "Map Marker",
@@ -372,6 +559,30 @@
           {
             "name": "User Plus",
             "value": "user-plus"
+          },
+          {
+            "name": "Check Circle",
+            "value": "check-circle"
+          },
+          {
+            "name": "Toolbox",
+            "value": "toolbox"
+          },
+          {
+            "name": "Calculator",
+            "value": "calculator"
+          },
+          {
+            "name": "Chart Bar",
+            "value": "chart-bar"
+          },
+          {
+            "name": "Chart Pie",
+            "value": "chart-pie"
+          },
+          {
+            "name": "Chess Knight",
+            "value": "chess-knight"
           }
         ]
       },

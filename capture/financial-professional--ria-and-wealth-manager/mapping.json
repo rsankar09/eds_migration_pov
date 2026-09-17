@@ -1,0 +1,161 @@
+[
+  {
+    "component_id": "cmp-002",
+    "verdict": "reuse",
+    "candidates": [
+      {
+        "block_name": "section style `grey, centered` + default content",
+        "source": "internal",
+        "score": 0.9,
+        "rationale": "Band is #EBEBEB (=--band-grey) with 80px/48px padding and centred text; title, 605px-wide description and one CTA are plain default content. Identical treatment to credit-union cmp-002 \u2014 no block needed."
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-003",
+    "verdict": "extend",
+    "candidates": [
+      {
+        "block_name": "icon-feature",
+        "source": "internal",
+        "score": 0.74,
+        "rationale": "The source child is `icon-card`: icon + title + description + link \u2014 the same content model icon-feature already has (icon, copy_heading, copy_description, copy_cta). Difference is presentational only: a gradient-filled card instead of a bare column with a divider.",
+        "gaps": [
+          "`card` variant: gradient background per card, padding, white ink",
+          "4-up column count (columnsFor currently prefers 3)",
+          "suppress the divider rule in card mode",
+          "heading-as-link (card 4) rather than a pill CTA"
+        ]
+      },
+      {
+        "block_name": "product-cards",
+        "source": "internal",
+        "score": 0.5,
+        "rationale": "Also a card grid with an accent colour, but its contract is image-strip + eyebrow + title + body + links row \u2014 this component has no image and no links row.",
+        "gaps": [
+          "remove image requirement",
+          "gradient fill instead of accent bar"
+        ]
+      },
+      {
+        "block_name": "new block `icon-card`",
+        "source": "internal",
+        "score": 0.45,
+        "rationale": "Justified only if the card treatment diverges further from icon-feature later."
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-004",
+    "verdict": "reuse",
+    "candidates": [
+      {
+        "block_name": "section style `disclosure`",
+        "source": "internal",
+        "score": 0.9,
+        "rationale": "Legal/annuity disclaimer copy, same as credit-union cmp-009/012."
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-005",
+    "verdict": "reuse",
+    "candidates": [
+      {
+        "block_name": "feature",
+        "source": "internal",
+        "score": 0.95,
+        "rationale": "feature-50-50, image left, one CTA. Source geometry matches the block's verified numbers exactly: 1440 band 607 / pane 720x607, 375 pane 375x313, 768 pane 768x640."
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-006",
+    "verdict": "extend",
+    "candidates": [
+      {
+        "block_name": "feature",
+        "source": "internal",
+        "score": 0.85,
+        "rationale": "Same band, image right \u2014 but TWO CTAs ('Schedule an assessment', 'View our brochure'). The model has a single copy_cta/copy_ctaText/copy_ctaType, and decorateCta() buttonises the LAST link only, so the first would render as a plain inline link.",
+        "gaps": [
+          "second CTA: copy_cta2 / copy_cta2Text (+ type), mirroring product-cards' links_cta2 naming",
+          "decorateCta() to handle a pair rather than [...].pop()",
+          "CSS for two adjacent pills incl. wrap at 375"
+        ]
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-007",
+    "verdict": "new",
+    "candidates": [
+      {
+        "block_name": "(public) block-collection carousel",
+        "source": "public",
+        "score": null,
+        "rationale": "NOT VERIFIED \u2014 no public index was built in this run. Adobe's block-collection is the obvious first place to look before writing one. Run block-collection-and-party for this component."
+      },
+      {
+        "block_name": "product-cards",
+        "source": "internal",
+        "score": 0.42,
+        "rationale": "Card shape is close (image top, dark panel, title, body, circled-arrow link \u2014 that arrow is already drawn in product-cards.css) but there is no horizontal-scroll behaviour anywhere in the repo.",
+        "gaps": [
+          "horizontal scroll/snap track below the desktop breakpoint"
+        ]
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-008",
+    "verdict": "reuse",
+    "candidates": [
+      {
+        "block_name": "default content",
+        "source": "internal",
+        "score": 0.9,
+        "rationale": "Heading + intro paragraph above the icon-feature pair. No block."
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-009",
+    "verdict": "reuse",
+    "candidates": [
+      {
+        "block_name": "icon-feature",
+        "source": "internal",
+        "score": 0.9,
+        "rationale": "card-container two-column + 2x icon-feature \u2014 the exact pattern credit-union cmp-011 became. Confirmed visually: icon, plum serif heading, body, ghost pill, vertical rule at desktop flipping to a top border at 375.",
+        "gaps": [
+          "two new icons: pie-chart, chess-knight (24px stroke, colour baked in \u2014 decorateIcons injects an <img>)"
+        ]
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-011",
+    "verdict": "reuse",
+    "candidates": [
+      {
+        "block_name": "section style `full-width-image`",
+        "source": "internal",
+        "score": 0.9,
+        "rationale": "Decorative full-bleed strip; credit-union cmp-007 precedent."
+      }
+    ]
+  },
+  {
+    "component_id": "cmp-012",
+    "verdict": "reuse",
+    "candidates": [
+      {
+        "block_name": "section style `disclosure`",
+        "source": "internal",
+        "score": 0.9,
+        "rationale": "Footnotes + legal disclosure."
+      }
+    ]
+  }
+]

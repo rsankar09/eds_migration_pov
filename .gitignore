@@ -3,6 +3,12 @@ coverage/*
 logs/*
 node_modules/*
 
+# secrets — AEM_IMPORT_API_KEY, AEM tokens
+.env
+.env.*
+!.env.example
+*.token
+
 helix-importer-ui
 .DS_Store
 *.bak
