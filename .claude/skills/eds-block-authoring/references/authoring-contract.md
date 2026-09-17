@@ -171,3 +171,32 @@ decision, not a defect, but it is only defensible if it is written down.
 List in the handoff, per component: which properties the author edits on the
 block, and which on the parent section. If a property that visually belongs to
 the block is modelled on the section, say why.
+
+## 10. A container block needs its own model, even with no properties
+
+`template.model` must resolve for **every** block, container or not. The xwalk
+importer looks the model up and reads `.fields` off it, so a container whose
+definition declares only a `filter` fails with:
+
+```
+Cannot read properties of undefined (reading 'fields')
+```
+
+It fails the *first time that block is actually emitted*, which is why it hides
+for so long: a block that has never been imported, or whose content was
+falling through to default content, never triggers the lookup.
+
+Where the container genuinely has no authorable properties of its own — the
+items carry them — declare the model anyway with an empty field list:
+
+```json
+{ "id": "product-cards", "fields": [] }
+```
+
+Assert it rather than eyeballing the partial, because the definition and the
+model live in different files and are aggregated separately:
+
+```sh
+# every template.model must appear in component-models.json
+jq -r '..|objects|select(.template?)|.template.model' component-definition.json
+```

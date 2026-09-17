@@ -8,6 +8,8 @@
           "page": {
             "resourceType": "core/franklin/components/columns/v1/columns",
             "template": {
+              "model": "columns",
+              "filter": "columns",
               "columns": "2",
               "rows": "1"
             }

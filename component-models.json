@@ -170,6 +170,10 @@
     ]
   },
   {
+    "id": "cards",
+    "fields": []
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -187,6 +191,10 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "carousel",
+    "fields": []
   },
   {
     "id": "carousel-card",
@@ -382,6 +390,10 @@
         ]
       }
     ]
+  },
+  {
+    "id": "form",
+    "fields": []
   },
   {
     "id": "form-intro",
@@ -634,6 +646,10 @@
         "label": "CTA Label"
       }
     ]
+  },
+  {
+    "id": "product-cards",
+    "fields": []
   },
   {
     "id": "product-card",
