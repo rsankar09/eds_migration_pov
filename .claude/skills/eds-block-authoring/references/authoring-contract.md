@@ -121,3 +121,21 @@ against the things that actually break pages:
 So compose the page — every approved component in source order, plus header
 and footer — and verify it as a page. That is `eds-page-assemble`, and it runs
 before anything is uploaded anywhere.
+
+## 7. Importing is a third shape — mirror the model, not the document
+
+Rules 1–2 cover what `decorate()` *receives*. An xwalk import is the reverse
+direction, and its table must mirror the **model**:
+
+- **Simple block**: one row per property/group, a single cell each, in model
+  order. `image` then a `copy_*` group = two rows of one cell.
+- **Container block**: one row per child item; that item's properties/groups
+  are its cells.
+- **Every row is emitted even when empty**, or later properties shift up by
+  one and the copy silently becomes the image.
+
+A transform that emits the document shape (one row, many columns) for a simple
+block still renders correctly in a browser, because `decorate()` classifies
+cells by content. It fails only in the editor, where the properties are wrong
+— so browser verification cannot catch it. Assert the emitted row/cell counts
+against the model's property list instead.

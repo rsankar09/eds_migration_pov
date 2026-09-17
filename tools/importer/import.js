@@ -51,9 +51,17 @@ const transformBanner = (main, document) => {
       if (node.tagName === 'P' || node.tagName === 'UL') panelParts.push(node);
     });
 
-    const rows = [['Hero (panel)']];
-    if (panelParts.length) rows.push([cell(document, panelParts)]);
-    if (img) rows.push([img]);
+    /*
+     * Model order is `image` (+imageAlt) then `text`, one row of one cell
+     * each — so the image row comes FIRST, and both rows are always emitted.
+     * Pushing the copy first mapped it into the image property; skipping an
+     * absent row shifted every later property up by one.
+     */
+    const rows = [
+      ['Hero (panel)'],
+      [img || ''],
+      [panelParts.length ? cell(document, panelParts) : ''],
+    ];
 
     banner.replaceWith(WebImporter.DOMUtils.createTable(rows, document));
   });
@@ -297,7 +305,23 @@ const transformJacksonFeature = (main, document) => {
 
     const variant = content && content.classList.contains('image-left') ? 'image-left' : 'image-right';
     const style = bandStyle(band);
-    const rows = [[`Feature (${variant})`], [img || '', cell(document, copyNodes(document, card, 'h2'))]];
+
+    /*
+     * A simple (non-container) block maps ONE ROW PER PROPERTY OR GROUP, each
+     * with a single cell — not one row of many columns. `feature`'s model is
+     * `image` (+imageAlt, collapsed) then the `copy_*` group, so it is two
+     * rows of one cell, in that order. Emitting [img, copy] as a single
+     * two-column row is the *document authoring* shape: the importer then has
+     * nothing in row 2 and the copy lands in the image property.
+     *
+     * The image row is emitted even when empty, so an imageless band does not
+     * shift its copy up into the image property.
+     */
+    const rows = [
+      [`Feature (${variant})`],
+      [img || ''],
+      [cell(document, copyNodes(document, card, 'h2'))],
+    ];
     const table = WebImporter.DOMUtils.createTable(rows, document);
     band.replaceWith(table);
     sectionStyle(table, document, style);
@@ -370,7 +394,15 @@ const transformJacksonForm = (main, document) => {
     // wrapper; the copy is a `flexible-content-area` in the first column
     const intro = band.querySelector('.flexible-content-area');
     if (intro && intro.textContent.trim()) {
-      rows.push([cell(document, copyNodes(document, intro, 'h2'))]);
+      // the form-intro item has two ungrouped properties (heading,
+      // description), so they are two cells of one row
+      const title = intro.querySelector('[class*="__title"]');
+      const body = [...intro.querySelectorAll('[class*="__description"] > *')]
+        .filter((n) => n.textContent.trim());
+      rows.push([
+        retag(document, title, 'h2') || '',
+        body.length ? cell(document, body) : '',
+      ]);
     }
 
     form.querySelectorAll('input, textarea, button').forEach((el) => {

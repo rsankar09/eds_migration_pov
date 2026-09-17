@@ -17,13 +17,27 @@ migrated component into the correct block markup.
   block's own example markup/docs. For extend/new blocks, this comes from
   `eds-block-authoring`'s output.
 
-  Note that the import output is only *one* of the shapes a block must accept:
-  the importer emits document-shaped markup (columns in a single row), while
-  Universal Editor emits one row per model field group for the same block. So
-  match the contract as the block documents it for imported content, and if a
-  block turns out to only tolerate the shape you emit, that is a bug in the
-  block — hand it back to `eds-block-authoring` rather than shaping the
-  transform around it.
+  **For an xwalk import the table must mirror the MODEL, not the document
+  shape.** This is the single most expensive mistake available here, because
+  the page still renders locally while every field lands in the wrong
+  property:
+
+  - A **simple block**: one row per property *or* group of properties, each
+    with a **single cell**, in model order. A model of `image` (+`imageAlt`,
+    collapsed) then a `copy_*` group is therefore two rows of one cell — NOT
+    one row of two columns. One row of two columns is the *document
+    authoring* shape; the importer finds nothing in row 2 and maps the copy
+    into the image property.
+  - A **container block**: each child item is a row, and that item's
+    properties/groups are its **cells**.
+  - **Emit every row, even when empty.** Skipping an absent image row shifts
+    every later property up by one, so the copy silently becomes the image.
+  - **Order follows the model file**, not the visual order on the page.
+
+  Read the model partial and list its properties/groups before writing the
+  transform, then assert the emitted row and cell counts against that list.
+  Companion suffixes (`Alt`, `Text`, `Type`, `Title`, `MimeType`) collapse
+  into their base property and do not get their own row or cell.
 - The original page HTML (from the capture bundle) for each component.
 
 ## Process
