@@ -251,7 +251,29 @@ const JACKSON_GRADIENTS = {
  */
 const sectionStyle = (target, document, style) => {
   if (!style) return;
-  const table = WebImporter.DOMUtils.createTable([['Section Metadata'], ['Style', style]], document);
+
+  /*
+   * The section model's `style` is a `multiselect`, so the JCR property has to
+   * be a multi-valued attribute (String[]) — a single comma-joined string is
+   * imported as one value that matches no CSS class, which is why bands came
+   * through with no background at all.
+   *
+   * The encoding that produces an array is one <p> per value in the cell:
+   * readBlockConfig() returns `ps.map(p => p.textContent)` for a cell holding
+   * several paragraphs, and a plain string for one. So each style token gets
+   * its own paragraph rather than being joined with commas.
+   */
+  const values = String(style).split(',').map((v) => v.trim()).filter(Boolean);
+  if (!values.length) return;
+
+  const valueCell = document.createElement('div');
+  values.forEach((v) => {
+    const para = document.createElement('p');
+    para.textContent = v;
+    valueCell.append(para);
+  });
+
+  const table = WebImporter.DOMUtils.createTable([['Section Metadata'], ['Style', valueCell]], document);
   target.after(table);
   table.after(document.createElement('hr'));
 };
