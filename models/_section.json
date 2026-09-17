@@ -81,7 +81,9 @@
         "fragment",
         "feature",
         "product-cards",
-        "icon-feature"
+        "icon-feature",
+        "carousel",
+        "form"
       ]
     }
   ]
