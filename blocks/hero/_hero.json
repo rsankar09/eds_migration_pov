@@ -46,11 +46,15 @@
           "valueType": "string[]",
           "name": "classes",
           "label": "Style",
-          "description": "Panel renders the text as a call-to-action aside beside a contained banner image.",
+          "description": "Panel renders the text as a call-to-action aside beside a contained banner image. No Image renders a centred title, capped description and CTA on a band, for a hero with no image at all \u2014 the default hero draws its text over the image, so without one the copy would be white on the band.",
           "options": [
             {
               "name": "Panel",
               "value": "panel"
+            },
+            {
+              "name": "No Image",
+              "value": "no-image"
             }
           ]
         }

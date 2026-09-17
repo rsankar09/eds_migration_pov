@@ -38,7 +38,13 @@ const retag = (document, source, tag) => {
    */
   const only = source.children.length === 1 ? source.firstElementChild : null;
   const inner = only && /^(P|DIV|SPAN)$/.test(only.tagName) ? only : source;
-  el.innerHTML = inner.innerHTML.trim();
+  /*
+   * A <br> inside a heading fuses the words around it: the target property is
+   * plain text, so markdown conversion drops the tag and the adjoining
+   * whitespace with it ("referrals?<br> We can help." -> "referrals?We can
+   * help."). Turn the break into a space before it is lost.
+   */
+  el.innerHTML = inner.innerHTML.replace(/<br\s*\/?>/gi, ' ').replace(/\s+/g, ' ').trim();
   return el;
 };
 
@@ -322,7 +328,12 @@ const iconToken = (scope) => {
 };
 
 /** Collects a component's copy nodes: heading, body, then each CTA. */
-const copyNodes = (document, scope, headingTag, { strongCta = false } = {}) => {
+const copyNodes = (
+  document,
+  scope,
+  headingTag,
+  { strongCta = false, wrapDescription = false } = {},
+) => {
   const nodes = [];
   // several components title themselves with `<p class="…__title">` rather
   // than a heading tag, so fall back to the class before giving up
@@ -338,9 +349,30 @@ const copyNodes = (document, scope, headingTag, { strongCta = false } = {}) => {
    */
   const descriptions = [...scope.querySelectorAll('[class*="__description"], [class*="__text"]')]
     .filter((d) => !d.querySelector('[class*="__description"], [class*="__text"]'));
+
+  const bodyNodes = [];
   descriptions.forEach((d) => {
-    [...d.children].forEach((n) => { if (n.textContent.trim()) nodes.push(n); });
+    [...d.children].forEach((n) => { if (n.textContent.trim()) bodyNodes.push(n); });
   });
+
+  /*
+   * Wrap the body in its own <div> for block cells.
+   *
+   * This is how AEM itself renders the group — the richtext property comes
+   * back as `<div data-aue-prop="copy_description">…</div>` with the CTA as a
+   * *sibling* `<p><a>`. Emitting the body as bare paragraphs leaves the
+   * richtext field with no boundary, so on import it greedily absorbs the CTA
+   * paragraph as well: copy_description ends up holding the link and
+   * copy_cta / copy_ctaText are left empty.
+   *
+   * Default content has no model and therefore no boundary to mark, so it
+   * keeps its paragraphs at the top level rather than gaining a stray div.
+   */
+  if (wrapDescription && bodyNodes.length) {
+    nodes.push(cell(document, bodyNodes));
+  } else {
+    bodyNodes.forEach((n) => nodes.push(n));
+  }
 
   /*
    * Only links that are a CTA in their own right. A link written inside body
@@ -400,7 +432,7 @@ const transformJacksonFeature = (main, document) => {
     const rows = [
       [`Feature (${variant})`],
       [img || ''],
-      [cell(document, copyNodes(document, card, 'h2'))],
+      [copyNodes(document, card, 'h2', { wrapDescription: true })],
     ];
     const table = WebImporter.DOMUtils.createTable(rows, document);
     band.replaceWith(table);
@@ -418,7 +450,7 @@ const transformJacksonIconCards = (main, document) => {
     const heading = band.querySelector('[class*="__title"]');
     const rows = [['Icon Feature (cards)']];
     cards.forEach((c) => {
-      rows.push([iconToken(c), cell(document, copyNodes(document, c, 'h3'))]);
+      rows.push([iconToken(c), copyNodes(document, c, 'h3', { wrapDescription: true })]);
     });
 
     const table = WebImporter.DOMUtils.createTable(rows, document);
@@ -437,8 +469,69 @@ const transformJacksonIconFeature = (main, document) => {
     if (!items.length) return;
 
     const rows = [['Icon Feature']];
-    items.forEach((it) => rows.push([iconToken(it), cell(document, copyNodes(document, it, 'h3'))]));
+    items.forEach((it) => rows.push([iconToken(it), copyNodes(document, it, 'h3', { wrapDescription: true })]));
     band.replaceWith(WebImporter.DOMUtils.createTable(rows, document));
+  });
+};
+
+/* card-container + product-card -> Product Cards --------------------------- */
+
+/** Source accent colour -> the block's accent class. */
+const JACKSON_ACCENTS = {
+  '#995d7a': 'accent-plum',
+  '#fa9e73': 'accent-coral',
+  '#474546': 'accent-charcoal',
+  '#d4b5a3': 'accent-tan',
+};
+
+const transformJacksonProductCards = (main, document) => {
+  main.querySelectorAll('.card-container').forEach((band) => {
+    const cards = [...band.querySelectorAll('.product-card')];
+    if (!cards.length) return;
+
+    const heading = band.querySelector('[class*="__title"]');
+    const rows = [['Product Cards']];
+
+    cards.forEach((card) => {
+      // one cell per property group, in model order:
+      // image | copy_* | links_* | classes
+      const img = card.querySelector('img');
+
+      const copyParts = [];
+      const eyebrow = card.querySelector('[class*="__product-line"]');
+      if (eyebrow && eyebrow.textContent.trim()) copyParts.push(retag(document, eyebrow, 'p'));
+      const name = card.querySelector('[class*="__product-name"]');
+      if (name) copyParts.push(retag(document, name, 'h4'));
+      card.querySelectorAll('[class*="__product-description"] > *').forEach((n) => {
+        if (n.textContent.trim()) copyParts.push(n);
+      });
+
+      const links = [];
+      card.querySelectorAll('[class*="__link"] a[href]').forEach((a) => {
+        const label = a.textContent.replace(/\s+/g, ' ').trim();
+        if (!label) return;
+        a.textContent = label;
+        const para = document.createElement('p');
+        para.append(a);
+        links.push(para);
+      });
+
+      const accentHex = (card.querySelector('[class*="__block"]')?.getAttribute('style') || '')
+        .match(/--accent-color:\s*(#[0-9a-f]{6})/i);
+      const accent = accentHex ? (JACKSON_ACCENTS[accentHex[1].toLowerCase()] || '') : '';
+
+      rows.push([
+        img || '',
+        copyParts.length ? copyParts : '',
+        links.length ? links : '',
+        accent,
+      ]);
+    });
+
+    const table = WebImporter.DOMUtils.createTable(rows, document);
+    band.replaceWith(table);
+    if (heading) table.before(retag(document, heading, 'h3'));
+    sectionStyle(table, document, bandStyle(band) || '');
   });
 };
 
@@ -454,7 +547,7 @@ const transformJacksonCarousel = (main, document) => {
 
     const heading = band.querySelector('[class*="__title"]');
     const rows = [['Carousel']];
-    cards.forEach((c) => rows.push([c.querySelector('img'), cell(document, copyNodes(document, c, 'h3'))]));
+    cards.forEach((c) => rows.push([c.querySelector('img'), copyNodes(document, c, 'h3', { wrapDescription: true })]));
 
     const table = WebImporter.DOMUtils.createTable(rows, document);
     band.replaceWith(table);
@@ -514,15 +607,38 @@ const transformJacksonHero = (main, document) => {
   main.querySelectorAll('.no-image-hero').forEach((hero) => {
     const nodes = copyNodes(document, hero, 'h1', { strongCta: true });
     if (!nodes.length) return;
-    const wrap = cell(document, nodes);
-    hero.replaceWith(wrap);
 
-    // read the band rather than assuming grey: a hero on the default white
-    // band would otherwise be imported onto a grey one
-    const content = hero.querySelector('[class*="__content"]');
-    const centred = !content || !/left-align|right-align/.test(content.className);
-    const band = bandStyle(hero);
-    sectionStyle(wrap, document, [band, centred ? 'centered' : ''].filter(Boolean).join(', '));
+    /*
+     * A hero is a block, not loose default content. Emitting the title and
+     * copy as bare elements imported them as separate `title` and `text`
+     * components, which renders the same but loses the component: an author
+     * gets three unrelated pieces instead of one editable hero.
+     *
+     * `hero` is a simple block, so one row per property/group with a single
+     * cell — `image` (+imageAlt) then `text`. The image row is emitted empty
+     * rather than skipped: dropping it shifts the copy into the image
+     * property. The `no-image` variant is what makes an imageless hero
+     * legible; the default hero draws its text over the picture.
+     */
+    /*
+     * The nodes go straight into the cell rather than inside a wrapper div.
+     * `hero`'s model has a single richtext property (`text`), so there is no
+     * second property to delimit — and a lone <div> child makes aem.js's
+     * wrapTextNodes() wrap the cell in <p> (DIV is not in its validWrappers),
+     * which nested the h1 inside a paragraph and applied the description's
+     * 605px cap to the title.
+     */
+    const rows = [
+      ['Hero (no-image)'],
+      [''],
+      [nodes],
+    ];
+    const table = WebImporter.DOMUtils.createTable(rows, document);
+    hero.replaceWith(table);
+
+    // the band stays a section style; the variant owns the centring, so no
+    // `centered` style is needed and this section is single-valued
+    sectionStyle(table, document, bandStyle(hero) || '');
   });
 };
 
@@ -580,6 +696,7 @@ export default {
       // order matters: the icon-card grid and the icon-feature pair share the
       // `.card-container` wrapper, so the more specific one runs first
       transformJacksonHero(main, document);
+      transformJacksonProductCards(main, document);
       transformJacksonIconCards(main, document);
       transformJacksonIconFeature(main, document);
       transformJacksonFeature(main, document);
