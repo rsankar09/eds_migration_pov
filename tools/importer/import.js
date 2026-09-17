@@ -31,7 +31,14 @@ const cell = (document, nodes) => {
 const retag = (document, source, tag) => {
   if (!source) return null;
   const el = document.createElement(tag);
-  el.innerHTML = source.innerHTML.trim();
+  /*
+   * Jackson titles their headings as `<h3 class="…__title"><p>text</p></h3>`,
+   * so copying innerHTML verbatim produces `<h3><p>…</p></h3>` — invalid
+   * nesting that survives into the import. Unwrap a lone block child.
+   */
+  const only = source.children.length === 1 ? source.firstElementChild : null;
+  const inner = only && /^(P|DIV|SPAN)$/.test(only.tagName) ? only : source;
+  el.innerHTML = inner.innerHTML.trim();
   return el;
 };
 
@@ -224,8 +231,15 @@ const addSectionBreaks = (main, document) => {
 const JACKSON_BANDS = {
   '#d4b5a3': 'tan',
   '#ebebeb': 'grey',
-  '#f5f3f0': 'stone',
-  // #ffffff is the default band and needs no section style
+  '#dbcfc7': 'stone',
+  // #ffffff is the default band and needs no section style.
+  // #474546 is the carousel card's own panel, not a band — it is styled by
+  // the block's CSS (--card-charcoal) and must not become a section style.
+};
+
+/** Gradient classes the source puts on a band wrapper. */
+const JACKSON_GRADIENTS = {
+  'color-grad-red-plum-diag': 'brand-gradient',
 };
 
 /**
@@ -254,6 +268,18 @@ const bandStyle = (el) => {
   // `[class$=]` would miss it: the source emits `class="…__wrapper "` with a
   // trailing space, so the attribute does not end with the suffix
   const wrapper = el.querySelector('[class*="__wrapper"]') || el;
+
+  /*
+   * The source encodes a band colour two different ways, and reading only one
+   * silently drops every band that uses the other:
+   *   - solid colours as a custom property: style="--bg-color: #d4b5a3"
+   *   - gradients as a class:               class="… color-grad-red-plum-diag"
+   * The gradient form is what the credit-union feature band uses, so matching
+   * only --bg-color left that band with no section style at all.
+   */
+  const grad = [...wrapper.classList].find((c) => c.startsWith('color-grad-'));
+  if (grad) return JACKSON_GRADIENTS[grad] || 'brand-gradient';
+
   const bg = (wrapper.getAttribute('style') || '').match(/--bg-color:\s*(#[0-9a-f]{3,8})/i);
   return bg ? JACKSON_BANDS[bg[1].toLowerCase()] : null;
 };
@@ -274,21 +300,53 @@ const iconToken = (scope) => {
 };
 
 /** Collects a component's copy nodes: heading, body, then each CTA. */
-const copyNodes = (document, scope, headingTag) => {
+const copyNodes = (document, scope, headingTag, { strongCta = false } = {}) => {
   const nodes = [];
   // several components title themselves with `<p class="…__title">` rather
   // than a heading tag, so fall back to the class before giving up
   const heading = scope.querySelector('h1, h2, h3, h4, h5, h6')
     || scope.querySelector('[class*="__title"]');
   if (heading) nodes.push(retag(document, heading, headingTag));
-  scope.querySelectorAll('[class*="__description"] > *, [class*="__text"] > p').forEach((n) => {
-    if (n.textContent.trim()) nodes.push(n);
+  /*
+   * Take the *innermost* description container only. The source nests
+   * `__description-wrapper > __description > p`, and `[class*="__description"]`
+   * matches both levels: appending the children of each moved the <p> out of
+   * the inner div and then appended that now-empty div too, leaving a stray
+   * `<div class="no-image-hero__description"></div>` in the imported content.
+   */
+  const descriptions = [...scope.querySelectorAll('[class*="__description"], [class*="__text"]')]
+    .filter((d) => !d.querySelector('[class*="__description"], [class*="__text"]'));
+  descriptions.forEach((d) => {
+    [...d.children].forEach((n) => { if (n.textContent.trim()) nodes.push(n); });
   });
+
+  /*
+   * Only links that are a CTA in their own right. A link written inside body
+   * copy is already inside a description node above, so harvesting every
+   * `a[href]` in scope would emit it a second time as a standalone CTA.
+   */
   scope.querySelectorAll('a[href]').forEach((a) => {
-    // a CTA is its own paragraph so decorateCta() sees it as standalone
-    if (!a.textContent.trim()) return;
+    const label = a.textContent.replace(/\s+/g, ' ').trim();
+    if (!label) return;
+    if (descriptions.some((d) => d.contains(a))) return;
+    a.textContent = label;
     const p = document.createElement('p');
-    p.append(a);
+    /*
+     * Default content needs the CTA wrapped in <strong>: the project's global
+     * decorateButtons() only buttonises emphasised links, so a bare link
+     * imports as plain inline text where the source had a pill.
+     *
+     * Block CTAs are left bare — their blocks call decorateCta(), which
+     * buttonises a standalone link on its own, and the importer maps the bare
+     * <a> onto the model's link property.
+     */
+    if (strongCta) {
+      const strong = document.createElement('strong');
+      strong.append(a);
+      p.append(strong);
+    } else {
+      p.append(a);
+    }
     nodes.push(p);
   });
   return nodes;
@@ -432,11 +490,17 @@ const transformJacksonForm = (main, document) => {
 
 const transformJacksonHero = (main, document) => {
   main.querySelectorAll('.no-image-hero').forEach((hero) => {
-    const nodes = copyNodes(document, hero, 'h1');
+    const nodes = copyNodes(document, hero, 'h1', { strongCta: true });
     if (!nodes.length) return;
     const wrap = cell(document, nodes);
     hero.replaceWith(wrap);
-    sectionStyle(wrap, document, 'grey, centered');
+
+    // read the band rather than assuming grey: a hero on the default white
+    // band would otherwise be imported onto a grey one
+    const content = hero.querySelector('[class*="__content"]');
+    const centred = !content || !/left-align|right-align/.test(content.className);
+    const band = bandStyle(hero);
+    sectionStyle(wrap, document, [band, centred ? 'centered' : ''].filter(Boolean).join(', '));
   });
 };
 

@@ -139,3 +139,35 @@ block still renders correctly in a browser, because `decorate()` classifies
 cells by content. It fails only in the editor, where the properties are wrong
 — so browser verification cannot catch it. Assert the emitted row/cell counts
 against the model's property list instead.
+
+## 8. Reachability: a block is authorable only if it is registered twice
+
+Two separate registrations, and missing either one leaves the block
+unreachable while the code looks perfect and renders fine locally:
+
+1. `_<block>.json` — the model partial, aggregated into the project's
+   `component-models/definition/filters` JSON.
+2. The **section filter** (commonly `models/_section.json`) — a block absent
+   from `filters[id=section].components` cannot be inserted into a section.
+
+A container block needs its *own* filter for its child items *and* an entry in
+the section filter for itself. Having the former is easy to mistake for being
+done.
+
+Assert both after aggregating, rather than trusting that the files were
+written:
+
+```sh
+jq -r '.filters[] | select(.id=="section") | .components' component-filters.json
+```
+
+## 9. Say which model owns each authored property
+
+When a property lives on the section rather than the block — a band
+background, a centred layout — an author opening the block's dialog will not
+find it and will reasonably conclude it is missing. That is a modelling
+decision, not a defect, but it is only defensible if it is written down.
+
+List in the handoff, per component: which properties the author edits on the
+block, and which on the parent section. If a property that visually belongs to
+the block is modelled on the section, say why.

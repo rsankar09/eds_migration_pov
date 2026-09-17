@@ -75,6 +75,18 @@ run the repo's JSON aggregation step (commonly `npm run build:json`). A block
 without a model partial is invisible to authors in Universal Editor — it is
 not optional.
 
+**Registering the model is only half of it: add the block to the section
+filter too** (commonly `models/_section.json`'s `filters` entry). A block with
+a perfect partial that is not listed there cannot be inserted into a section
+at all — it is just as unreachable as one with no partial, and it fails the
+same silent way: the code is right, renders fine in a local draft, and the
+author simply has no way to place it. Assert it after aggregating:
+
+```sh
+# the block must appear in the section filter's components
+jq -r '.filters[] | select(.id=="section") | .components' component-filters.json
+```
+
 - `decorate(block)` restructures the authored markup into the final DOM (see
   repo conventions from step 2 — don't reinvent the pattern).
 - CSS uses the normalized tokens from step 1.
