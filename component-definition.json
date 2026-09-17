@@ -91,7 +91,8 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Cards",
-                  "filter": "cards"
+                  "filter": "cards",
+                  "model": "cards"
                 }
               }
             }
@@ -121,7 +122,8 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Carousel",
-                  "filter": "carousel"
+                  "filter": "carousel",
+                  "model": "carousel"
                 }
               }
             }
@@ -151,6 +153,8 @@
               "page": {
                 "resourceType": "core/franklin/components/columns/v1/columns",
                 "template": {
+                  "model": "columns",
+                  "filter": "columns",
                   "columns": "2",
                   "rows": "1"
                 }
@@ -185,7 +189,8 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Form",
-                  "filter": "form"
+                  "filter": "form",
+                  "model": "form"
                 }
               }
             }
@@ -295,7 +300,8 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Product Cards",
-                  "filter": "product-cards"
+                  "filter": "product-cards",
+                  "model": "product-cards"
                 }
               }
             }
