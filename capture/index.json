@@ -1,0 +1,22 @@
+{
+  "crawled_at": "2026-09-17T01:18:43.599Z",
+  "output": "./capture",
+  "pages": [
+    {
+      "url": "https://www.jackson.com/financial-professional/ria-and-wealth-manager.html",
+      "slug": "financial-professional--ria-and-wealth-manager",
+      "crawled_at": "2026-09-17T01:18:43.570Z",
+      "breakpoints": [
+        375,
+        768,
+        1440
+      ],
+      "page_title": "RIA and wealth manager | Jackson",
+      "consent_dismissed": "#onetrust-accept-btn-handler",
+      "truncated": false,
+      "section_count": 160,
+      "notes": []
+    }
+  ],
+  "failures": []
+}

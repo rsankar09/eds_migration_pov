@@ -1,0 +1,51 @@
+{
+  "definitions": [
+    {
+      "title": "Form",
+      "id": "form",
+      "plugins": { "xwalk": { "page": {
+        "resourceType": "core/franklin/components/block/v1/block",
+        "template": { "name": "Form", "filter": "form" } } } }
+    },
+    {
+      "title": "Form Intro",
+      "id": "form-intro",
+      "plugins": { "xwalk": { "page": {
+        "resourceType": "core/franklin/components/block/v1/block/item",
+        "template": { "name": "Form Intro", "model": "form-intro" } } } }
+    },
+    {
+      "title": "Form Field",
+      "id": "form-field",
+      "plugins": { "xwalk": { "page": {
+        "resourceType": "core/franklin/components/block/v1/block/item",
+        "template": { "name": "Form Field", "model": "form-field", "type": "text", "width": "full" } } } }
+    }
+  ],
+  "models": [
+    {
+      "id": "form-intro",
+      "fields": [
+        { "component": "text", "valueType": "string", "name": "heading", "label": "Heading" },
+        { "component": "richtext", "valueType": "string", "name": "description", "label": "Description", "value": "" }
+      ]
+    },
+    {
+      "id": "form-field",
+      "fields": [
+        { "component": "select", "valueType": "string", "name": "type", "label": "Field Type", "value": "text",
+          "options": [
+            { "name": "Text", "value": "text" }, { "name": "Email", "value": "email" },
+            { "name": "Phone", "value": "tel" }, { "name": "Number", "value": "number" },
+            { "name": "Message", "value": "textarea" }, { "name": "Submit Button", "value": "submit" }] },
+        { "component": "text", "valueType": "string", "name": "label", "label": "Label", "description": "Shown as the placeholder, and kept as a visually hidden label for assistive technology." },
+        { "component": "text", "valueType": "string", "name": "name", "label": "Field Name", "description": "The name submitted with the form." },
+        { "component": "select", "valueType": "string", "name": "width", "label": "Width", "value": "full",
+          "options": [{ "name": "Full", "value": "full" }, { "name": "Half", "value": "half" }] }
+      ]
+    }
+  ],
+  "filters": [
+    { "id": "form", "components": ["form-intro", "form-field"] }
+  ]
+}

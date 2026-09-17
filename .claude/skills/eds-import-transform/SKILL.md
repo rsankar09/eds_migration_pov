@@ -81,3 +81,13 @@ For each sample page:
 Present the QA report before recommending a bulk import run across the full
 site. Visual and content fidelity issues are expensive to catch after a
 large-scale import; a person should sign off on the sample results first.
+
+## Handoff
+
+The approved transform is not the end of the migration — it is a script that
+has not been run against anything but samples. Hand off to
+`eds-author-upload`, which runs the import with the aggregated component
+models, installs the content package into AEM author, and verifies the page is
+editable in Universal Editor. Re-aggregate the model JSONs first if any block
+model changed: the importer derives cell structure from them, so a stale
+aggregate imports the old shape.

@@ -104,17 +104,17 @@ main .section > .icon-feature-wrapper {
    * draw down the first item of a wrapped row. 3 is the fallback if the block
    * renders without its JS.
    */
-  .icon-feature > ul {
+  .icon-feature:not(.cards) > ul {
     grid-template-columns: repeat(3, var(--icon-feature-track));
     justify-content: center;
     row-gap: 32px;
   }
 
-  .icon-feature[data-columns='1'] > ul {
+  .icon-feature:not(.cards)[data-columns='1'] > ul {
     grid-template-columns: var(--icon-feature-track);
   }
 
-  .icon-feature[data-columns='2'] > ul {
+  .icon-feature:not(.cards)[data-columns='2'] > ul {
     grid-template-columns: repeat(2, var(--icon-feature-track));
   }
 
@@ -132,7 +132,7 @@ main .section > .icon-feature-wrapper {
     padding: 104px 0;
   }
 
-  .icon-feature > ul > li {
+  .icon-feature:not(.cards) > ul > li {
     padding: 8px var(--icon-feature-gutter);
   }
 
@@ -142,7 +142,7 @@ main .section > .icon-feature-wrapper {
     height: 40px;
   }
 
-  .icon-feature > ul > li + li {
+  .icon-feature:not(.cards) > ul > li + li {
     border-top: 0;
     border-left: 1px solid var(--divider-color);
   }
@@ -153,9 +153,9 @@ main .section > .icon-feature-wrapper {
    * source's first column starts at x=163, which is its track edge plus the
    * 125px half-gutter, not flush to it.
    */
-  .icon-feature > ul > li:first-child,
-  .icon-feature[data-columns='2'] > ul > li:nth-child(2n + 1),
-  .icon-feature[data-columns='3'] > ul > li:nth-child(3n + 1) {
+  .icon-feature:not(.cards) > ul > li:first-child,
+  .icon-feature:not(.cards)[data-columns='2'] > ul > li:nth-child(2n + 1),
+  .icon-feature:not(.cards)[data-columns='3'] > ul > li:nth-child(3n + 1) {
     border-left: 0;
   }
 }
@@ -180,5 +180,92 @@ main .section > .icon-feature-wrapper {
   .icon-feature {
     --icon-feature-track: minmax(0, 682px);
     --icon-feature-gutter: 125px;
+  }
+}
+
+/*
+ * `cards` variant — the same content (icon, heading, description, optional
+ * link) rendered as gradient-filled cards instead of ruled columns.
+ *
+ * Measured from the RIA page's `icon-card` at 1440: cards are 318 wide with a
+ * 24px gap, so four of them plus three gaps make exactly the 1344 content
+ * column. Card padding is 40px (ink starts at x=40, y=45), the icon is 40px
+ * at the top, and the text block sits at the bottom of a 392px card — a 105px
+ * gap opens between icon and title, which is the icon staying put while the
+ * copy is pushed down, not a fixed margin.
+ *
+ * The card width is fixed rather than fractional because the source keeps it
+ * at 318 on every breakpoint, centring one card per row at 375 and 768.
+ * auto-fit is safe here where it was not for the ruled layout: that needed a
+ * known column count so `:nth-child()` could find row starts for the divider,
+ * and cards have no divider.
+ */
+.icon-feature.cards {
+  --icon-card-width: 318px;
+  --icon-card-min-height: 392px;
+  --icon-card-padding: 40px;
+
+  /* measured title pitch is 32px over a ~24px face (card 1 ink bands at
+     y=187..213 and 219..239); --card-title-size is 22px and would land at 29 */
+  --icon-card-title-size: 24px;
+}
+
+.icon-feature.cards > ul {
+  grid-template-columns: repeat(auto-fit, var(--icon-card-width));
+  justify-content: center;
+  gap: 24px;
+}
+
+.icon-feature.cards > ul > li {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--icon-card-min-height);
+  padding: var(--icon-card-padding);
+
+  /* the source's per-card diagonal red→plum, already a global token */
+  background: var(--brand-gradient);
+  border: 0;
+  color: var(--background-color);
+}
+
+/* the icon holds the top; the copy is pushed to the foot of the card */
+.icon-feature.cards .icon-feature-copy {
+  margin-top: auto;
+}
+
+/*
+ * decorateIcons() injects an <img>, so `currentColor` cannot reach the glyph
+ * and the stroke colour is baked into the SVG. Inverting to white here keeps
+ * one asset per icon serving both the light columns and the gradient cards.
+ */
+.icon-feature.cards .icon-feature-icon .icon img {
+  filter: brightness(0) invert(1);
+}
+
+.icon-feature.cards .icon-feature-copy :is(h3, h4) {
+  margin: 0 0 10px;
+  font-family: var(--body-font-family);
+  font-size: var(--icon-card-title-size);
+  line-height: 1.333;
+  color: var(--background-color);
+}
+
+.icon-feature.cards .icon-feature-copy p {
+  color: var(--background-color);
+}
+
+/* card 4 in the source links from its heading rather than a pill */
+.icon-feature.cards .icon-feature-copy :is(h3, h4) a:any-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (width >= 900px) {
+  /* the icon steps up with the heading in the ruled layout; cards keep 40px */
+  .icon-feature.cards .icon-feature-icon .icon {
+    width: 40px;
+    height: 40px;
   }
 }

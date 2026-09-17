@@ -147,8 +147,22 @@ main .section.brand-gradient .feature {
   line-height: 0;
 }
 
+/*
+ * Measured CTA rhythm: 45px from the body copy to the first pill, 32px
+ * between stacked pills (RIA page, cmp-006 at 1440 — body ends y=411, pills
+ * at 456..510 and 543..597). The previous 20px was never measured against a
+ * source number, and accounts for most of the 30px shortfall recorded for the
+ * credit-union copy column (343 rendered against 373 measured).
+ *
+ * A second CTA stacks rather than sitting inline: the source renders both
+ * pills left-aligned, one under the other, at every breakpoint.
+ */
 .feature .feature-copy .button-wrapper {
-  margin: 20px 0 0;
+  margin: 45px 0 0;
+}
+
+.feature .feature-copy .button-wrapper + .button-wrapper {
+  margin-top: 32px;
 }
 
 /*

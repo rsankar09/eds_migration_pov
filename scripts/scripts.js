@@ -101,20 +101,42 @@ export function decorateCta(container, defaultType = 'primary') {
     }
   });
 
-  const link = [...container.querySelectorAll('a[href]')].pop();
-  if (!link) return undefined;
+  /*
+   * Every standalone link becomes a button, not just the last one. A block
+   * whose model offers a second CTA (`*_cta2`) delivers both in the same cell,
+   * and taking only the last left the first rendering as plain inline text —
+   * styled as body copy, in a block that had clearly authored two buttons.
+   *
+   * "Standalone" is the guard that keeps this safe: a link is only buttonised
+   * when it is the entire text of its wrapping paragraph, so links written
+   * inside a sentence stay inline. Blocks authoring a single CTA are therefore
+   * unaffected — they resolve to exactly the same one link as before.
+   */
+  const links = [...container.querySelectorAll('a[href]')].filter((a) => {
+    const label = a.textContent.trim();
+    // an unlabelled link (an icon link, or an empty authored field) would
+    // otherwise match the standalone test as '' === '' and render as an
+    // empty button
+    if (!label) return false;
+    const wrapper = a.closest('p') || a.parentElement;
+    return wrapper && wrapper.textContent.trim() === label;
+  });
+  if (!links.length) return undefined;
 
-  const wrapper = link.closest('p') || link.parentElement;
-  if (wrapper && wrapper.textContent.trim() === link.textContent.trim()) {
-    wrapper.className = 'button-wrapper';
-    // unwrap authored emphasis so the label isn't nested inside the button
-    const emphasis = link.closest('strong, em');
-    if (emphasis) emphasis.replaceWith(link);
-  }
+  links.forEach((link) => {
+    const wrapper = link.closest('p') || link.parentElement;
+    if (wrapper) {
+      wrapper.className = 'button-wrapper';
+      // unwrap authored emphasis so the label isn't nested inside the button
+      const emphasis = link.closest('strong, em');
+      if (emphasis) emphasis.replaceWith(link);
+    }
+    if (!link.classList.contains('button')) link.classList.add('button', type);
+    link.title = link.title || link.textContent.trim();
+  });
 
-  if (!link.classList.contains('button')) link.classList.add('button', type);
-  link.title = link.title || link.textContent.trim();
-  return link;
+  // the last link stays the return value, as the single-CTA callers expect
+  return links[links.length - 1];
 }
 
 /**

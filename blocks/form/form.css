@@ -1,0 +1,105 @@
+/*
+ * form — intro copy beside a field grid.
+ *
+ * Measured from the source at 1440: the band is #EBEBEB (the `grey` section
+ * style) with 104px vertical padding, split fifty-fifty — copy left, fields
+ * right — with First/Last, Phone/Zip paired on one line and the rest full
+ * width.
+ */
+.form {
+  --form-gap: 16px;
+}
+
+.form .form-intro :is(h2, h3) {
+  margin: 0 0 16px;
+  font-family: var(--display-font-family);
+  font-size: var(--band-heading-size);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--plum);
+}
+
+.form .form-intro p {
+  margin: 0 0 16px;
+  font-size: var(--band-body-size);
+  line-height: 1.5;
+}
+
+.form .form-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--form-gap);
+}
+
+.form .form-field {
+  flex: 1 1 100%;
+}
+
+/* a visually hidden label: the design shows only placeholders */
+.form .form-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.form .form-fields :is(input, textarea) {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #b5b5b5;
+  border-radius: 999px;
+  padding: 0 20px;
+  font-family: var(--body-font-family);
+  font-size: var(--band-body-size);
+  line-height: 46px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.form .form-fields textarea {
+  border-radius: 24px;
+  padding: 14px 20px;
+  line-height: 1.5;
+  min-height: 92px;
+  resize: vertical;
+}
+
+.form .form-fields :is(input, textarea):focus-visible {
+  outline: 2px solid var(--plum);
+  outline-offset: 1px;
+}
+
+.form .form-fields button.button {
+  border-radius: 999px;
+  border: 1px solid var(--text-color);
+  background-color: transparent;
+  padding: 0 var(--pill-padding-x);
+  font-family: var(--body-font-family);
+  font-size: var(--pill-font-size);
+  font-weight: 700;
+  line-height: var(--pill-height);
+  color: var(--text-color);
+}
+
+.form .form-fields button.button:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+@media (width >= 900px) {
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* pairs sit on one line; everything else spans the field column */
+  .form .form-field-half {
+    flex: 1 1 calc(50% - (var(--form-gap) / 2));
+  }
+}

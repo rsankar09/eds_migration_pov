@@ -15,6 +15,12 @@ against the original design.
 - The capture bundle's `styles.json` and `screenshots/*.png` for the
   corresponding component.
 - Target EDS repo (write access, ideally on a feature branch).
+- **Which authoring surfaces the project targets.** Establish this before
+  writing code, not after: it determines the markup `decorate()` receives
+  (step 3). A `scripts/editor-support.js`, a `component-models.json`, or
+  `_<block>.json` partials all mean Universal Editor is live and is probably
+  the primary surface — in which case local document-shaped drafts are a test
+  harness, not the contract.
 
 ## Process
 
@@ -35,7 +41,34 @@ local conventions: how `decorate()` is typically structured, naming patterns,
 how CSS files reference tokens, and how variants are usually expressed (extra
 class on the block wrapper is the common EDS pattern).
 
-### 3a. New block
+### 3. Derive the markup contract from the model, before writing any JS
+
+`decorate()`'s input is not a free choice — it is produced by the model
+partial's field groups, and it differs per authoring surface. Work that out
+first and write it down, because the alternative is discovering it from
+whichever test content happens to exist, which is how a block ends up handling
+exactly one of the two shapes.
+
+**Read [references/authoring-contract.md](references/authoring-contract.md)
+now.** It is the normative source for the grouping rules, the two DOM shapes,
+and the verification gates — this skill points there rather than restating
+them, so there is one copy to keep true. A repo hook also injects it when
+block-authoring skills are invoked, including Adobe's `building-blocks`, so
+the rules apply whichever entry point is used.
+
+Then, for this component: design the model partial's fields (or read the
+existing one for an `extend`), sketch the literal DOM each surface will
+deliver, and write `decorate()` against **whichever parts are common to both**
+— usually the cells — rather than against either shape's row structure.
+
+Record the sketch in the handoff. It is the block's actual contract, and the
+thing a reviewer needs in order to tell correct from accidentally-working.
+
+Produce the editor-shaped fixture here too, while the model is in front of
+you — step 6 needs it, and writing it now is what forces the contract to be
+concrete rather than assumed.
+
+### 4a. New block
 
 Scaffold `/blocks/<name>/<name>.js`, `<name>.css`, and `_<name>.json`, then
 run the repo's JSON aggregation step (commonly `npm run build:json`). A block
@@ -45,23 +78,17 @@ not optional.
 - `decorate(block)` restructures the authored markup into the final DOM (see
   repo conventions from step 2 — don't reinvent the pattern).
 - CSS uses the normalized tokens from step 1.
-- Match the component's responsive behavior across the breakpoints captured.
+- Match the component's responsive behavior across the **union** of the
+  captured breakpoints and the project's own CSS breakpoints — see the
+  contract; they are usually disjoint sets, and the project's are where this
+  repo's layout actually switches.
 
-**Write `decorate()` against cells, not rows.** The row structure is not a
-fixed contract — it differs by authoring surface for the same block:
-
-- Universal Editor renders **one row per field group** in the model partial.
-  Fields sharing a `prefix_` (e.g. `copy_heading`, `copy_description`,
-  `copy_cta`) collapse into one cell in one row; a separate field group
-  becomes its own row.
-- Document authoring puts the author's columns in a **single row**.
-
-So a two-field-group model delivers 2 rows × 1 cell from the editor and
-1 row × 2 cells from a document. Anything anchored to `block.firstElementChild`
-or `[...row.children]` silently processes half the block on one of the two
-surfaces — the unclassified half keeps its authored markup, so every CSS rule
-scoped to the class you meant to add is dead and the block looks unstyled
-rather than throwing an error.
+**Implement the step 3 contract: read cells, not rows.** Anything anchored to
+`block.firstElementChild` or `[...row.children]` silently processes half the
+block on one of the two surfaces — and the failure is quiet. The unclassified
+half keeps its authored markup, so every CSS rule scoped to the class you
+meant to add is simply dead: the block renders unstyled rather than throwing,
+and a console check finds nothing.
 
 Read cells directly and normalize:
 
@@ -71,6 +98,14 @@ const row = document.createElement('div');
 cells.forEach((cell) => { /* classify, then row.append(cell) */ });
 block.replaceChildren(row);
 ```
+
+Normalize to the shape the CSS needs, which is not always a single row. If the
+block itself is the flex/grid container, its panes have to stay *its own
+children* — collapsing them into one row gives the container a single child
+and the layout dies. Check two things before choosing where a class lands:
+which element the layout container's children are, and whether any selector
+reaches *through* that element (a `.pane > div` padding rule breaks silently
+if you move the class from the wrapper onto the cell it used to contain).
 
 Two consequences to handle while you're there:
 
@@ -96,7 +131,7 @@ platform's image helpers typically copy only `src` and `alt`, so carry
 `width`/`height` across onto the optimized image, and publish the real ratio
 to CSS as a custom property with the measured design ratio as the fallback.
 
-### 3b. Extend existing block
+### 4b. Extend existing block
 
 - Add a variant class (e.g. `cards.horizontal`) rather than branching the
   base `decorate()` logic, unless the gap requires new DOM structure the
@@ -104,14 +139,15 @@ to CSS as a custom property with the measured design ratio as the fallback.
 - Confirm the change doesn't alter output for existing usages of the block —
   check other pages/blocks that already reference it if you can find them.
 
-### 4. Verify numerically, then visually
+### 5. Verify numerically, then visually
 
 Screenshot comparison alone is not enough — a side-by-side at a glance hides
 exactly the errors this step exists to catch. Measure first.
 
 Render the block (local EDS dev server, or an equivalent minimal harness) and
 read back `getBoundingClientRect()` plus the computed styles you care about at
-the same breakpoints as the capture. Compare against the measured rects in the
+every breakpoint in the union set (captured ∪ the project's own `@media`
+widths). Compare against the measured rects in the
 capture bundle, not against your reading of the screenshot.
 
 **Report both axes for every element you check.** A verification table with
@@ -144,10 +180,10 @@ Then screenshot at each breakpoint and diff against the original crop, and
 confirm no horizontal overflow (`documentElement.scrollWidth` equals the
 viewport at every breakpoint).
 
-### 5. Verify on both authoring surfaces
+### 6. Verify on both authoring surfaces
 
 Geometry verified on one surface tells you nothing about the other, because
-the delivered row structure differs (see 3a). Before calling the block done,
+the delivered row structure differs (see step 3). Before calling the block done,
 render it **both** ways and confirm the measurements are identical:
 
 1. The document-authored shape (a local drafts page, or real content).
@@ -159,12 +195,12 @@ it as a regression page if the repo has somewhere sensible to put it: this bug
 class is invisible without one, and it does not announce itself as an error.
 
 Confirm on both: the expected classes are actually applied to every cell, the
-CTA/button decoration ran, and the geometry matches the numbers from step 4.
+CTA/button decoration ran, and the geometry matches the numbers from step 5.
 
-### 6. Lint/build
+### 7. Lint/build
 
 Run whatever lint/build step the repo defines before considering the block
-done, including the model-partial aggregation step from 3a. Delete any
+done, including the model-partial aggregation step from 4a. Delete any
 throwaway verification scripts first — a linter that reports the repo as dirty
 because of your own scratch files buries real findings.
 
@@ -174,9 +210,9 @@ A branch/diff containing the new or modified block files and model partial,
 plus a verification report attached to the same component id from
 `mapping.json`, containing:
 
-- The numeric table from step 4 (`x, y, w, h` per element, per breakpoint,
+- The numeric table from step 5 (`x, y, w, h` per element, per breakpoint,
   source beside rendered).
-- Confirmation that both authoring surfaces were measured (step 5).
+- Confirmation that both authoring surfaces were measured (step 6).
 - Before/after screenshots.
 - Remaining gaps, stated as gaps.
 

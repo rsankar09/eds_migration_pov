@@ -9,7 +9,9 @@
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
               "name": "Icon Feature",
-              "filter": "icon-feature"
+              "filter": "icon-feature",
+              "model": "icon-feature",
+              "classes": ""
             }
           }
         }
@@ -34,6 +36,29 @@
   ],
   "models": [
     {
+      "id": "icon-feature",
+      "fields": [
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Layout",
+          "value": "",
+          "description": "Columns: icon-led text separated by a rule. Cards: gradient-filled cards, up to 4 across.",
+          "options": [
+            {
+              "name": "Columns",
+              "value": ""
+            },
+            {
+              "name": "Cards",
+              "value": "cards"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "icon-feature-item",
       "fields": [
         {
@@ -41,7 +66,7 @@
           "valueType": "string",
           "name": "icon",
           "label": "Icon",
-          "description": "Icons are served from /icons. Add a new SVG there before extending this list.",
+          "description": "Icons are served from /icons and named after the source design system's Line Awesome tokens (la-chart-bar -> chart-bar), so an importer can derive them mechanically. Add a new SVG there before extending this list.",
           "options": [
             {
               "name": "Map Marker",
@@ -50,6 +75,30 @@
             {
               "name": "User Plus",
               "value": "user-plus"
+            },
+            {
+              "name": "Check Circle",
+              "value": "check-circle"
+            },
+            {
+              "name": "Toolbox",
+              "value": "toolbox"
+            },
+            {
+              "name": "Calculator",
+              "value": "calculator"
+            },
+            {
+              "name": "Chart Bar",
+              "value": "chart-bar"
+            },
+            {
+              "name": "Chart Pie",
+              "value": "chart-pie"
+            },
+            {
+              "name": "Chess Knight",
+              "value": "chess-knight"
             }
           ]
         },

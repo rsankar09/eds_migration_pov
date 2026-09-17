@@ -1,0 +1,288 @@
+[
+  {
+    "id": "cmp-001",
+    "type_guess": "nav",
+    "confidence": 0.92,
+    "needs_review": false,
+    "source_component": "masthead + site-selector-bar (Experience Fragment)",
+    "html_snippet": "<div class=\"masthead v1 aem-GridColumn aem-GridColumn--default--12\"> <div class=\"masthead__block js-masthead\"> <div class=\"masthead__site-selector-bar\" data-analytics-region=\"masthead-site-selector-bar\"> <div class=\"site-selector-bar v1\"> <link rel=\"stylesheet\" href=\"/etc.clientlibs/jackson-commons/\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 199
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-001.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "Contains 2 Cludo site-search <form>s and 3 <nav> elements. Shared Experience Fragment \u2014 same masthead as credit-union (deferred there).",
+    "disposition": "defer"
+  },
+  {
+    "id": "cmp-002",
+    "type_guess": "hero",
+    "confidence": 0.85,
+    "needs_review": false,
+    "source_component": "no-image-hero (title + copy + CTA, no image)",
+    "html_snippet": "<div class=\"no-image-hero v1\"> <div class=\"no-image-hero__wrapper \" style=\"--bg-color: #ebebeb;\"> <div class=\"no-image-hero__block\" data-analytics-region=\"no-image-hero\"> <div class=\"no-image-hero__content\"> <h1 class=\"no-image-hero__title\"> RIA &amp; Wealth Manager </h1> <div class=\"no-image-hero__\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 199,
+      "w": 1440,
+      "h": 389
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-002.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-003",
+    "type_guess": "card-grid",
+    "confidence": 0.88,
+    "needs_review": false,
+    "source_component": "card-container four-column + 4x gradient icon card",
+    "html_snippet": "<div class=\"card-container v1\"> <div class=\"card-container__wrapper \" style=\"--bg-color: #ffffff;\"> <div class=\"card-container__block\"> <div class=\"card-container__content\"> <div class=\"card-container__text center-align\"> <h3 class=\"card-container__title\">Strategies designed to enhance your RIA prac\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 588,
+      "w": 1440,
+      "h": 694
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-003.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "Four gradient cards, each icon + heading + body; card 4's heading is a link. Visually unlike the existing product-cards (white, image strip, accent bar, eyebrow).",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-004",
+    "type_guess": "other",
+    "confidence": 0.9,
+    "needs_review": false,
+    "source_component": "text-block (annuity disclaimer)",
+    "html_snippet": "<div class=\"text-block v1\"> <div class=\"text-block__wrapper \" style=\"--bg-color: #ffffff;\"> <div class=\"text-block__block disclosure-padding\" data-analytics-region=\"text-block\"> <div class=\"cmp-text\"> <p>Annuities are long-term, tax-deferred vehicles designed for retirement. Variable annuities and r\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 1282,
+      "w": 1440,
+      "h": 256
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-004.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-005",
+    "type_guess": "other",
+    "confidence": 0.8,
+    "needs_review": false,
+    "source_component": "feature-50-50 (tan, image left)",
+    "html_snippet": "<div class=\"feature-50-50 v1\"> <div class=\"feature-50-50__wrapper \" style=\"--bg-color: #d4b5a3;\"> <div class=\"feature-50-50__block\" data-analytics-region=\"feature-50-50\"> <div class=\"feature-50-50__content image-left animation-disabled\"> <div class=\"feature-50-50__image animation animation--static\">\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 1538,
+      "w": 1440,
+      "h": 607
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-005.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-006",
+    "type_guess": "other",
+    "confidence": 0.8,
+    "needs_review": false,
+    "source_component": "feature-50-50 (white, image right, two CTAs)",
+    "html_snippet": "<div class=\"feature-50-50 v1\"> <div class=\"feature-50-50__wrapper \" style=\"--bg-color: #d4b5a3;\"> <div class=\"feature-50-50__block\" data-analytics-region=\"feature-50-50\"> <div class=\"feature-50-50__content image-left animation-disabled\"> <div class=\"feature-50-50__image animation animation--static\">\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 2145,
+      "w": 1440,
+      "h": 646
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-006.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-007",
+    "type_guess": "carousel",
+    "confidence": 0.8,
+    "needs_review": false,
+    "source_component": "carousel-card-container + 2 image cards (renders as a grid at 1440; slide count/behaviour unverified)",
+    "html_snippet": "<div class=\"carousel-card-container v1\"> <div class=\"carousel-card-container__wrapper \" style=\"--bg-color: #ffffff;\"> <div class=\"carousel-card-container__block\"> <div class=\"carousel-card-container__content\"> <div class=\"carousel-card-container__text left-align\"> <h3 class=\"carousel-card-container_\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 2791,
+      "w": 1440,
+      "h": 874
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-007.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "Verified across breakpoints, not from the class name alone. At 1440 it renders as a static 2-card grid and the DOM carries NO carousel controls (no arrows, dots, slick/glide/splide, aria-roledescription). At 375 the first card fills the viewport with the second peeking in at the right edge, i.e. the track overflows horizontally. So: carousel behaviour at mobile, plain grid at desktop. Open for mapping: whether EDS needs a real carousel block or a scroll-snap row is enough, given there are only 2 slides and no controls.",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-008",
+    "type_guess": "other",
+    "confidence": 0.9,
+    "needs_review": false,
+    "source_component": "text-block (intro copy under heading)",
+    "html_snippet": "<div class=\"text-block v1\"> <div class=\"text-block__wrapper \" style=\"--bg-color: #ffffff;\"> <div class=\"text-block__block disclosure-padding\" data-analytics-region=\"text-block\"> <div class=\"cmp-text\"> <p>Annuities are long-term, tax-deferred vehicles designed for retirement. Variable annuities and r\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 3665,
+      "w": 1440,
+      "h": 102
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-008.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-009",
+    "type_guess": "card-grid",
+    "confidence": 0.62,
+    "needs_review": false,
+    "source_component": "card-container two-column + 2x icon-feature",
+    "html_snippet": "<div class=\"card-container v1\"> <div class=\"card-container__wrapper \" style=\"--bg-color: #ffffff;\"> <div class=\"card-container__block\"> <div class=\"card-container__content\"> <div class=\"card-container__text center-align\"> <h3 class=\"card-container__title\">Strategies designed to enhance your RIA prac\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 3767,
+      "w": 1440,
+      "h": 534
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-009.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "card-container two-column + 2x icon-feature \u2014 same source pattern as credit-union cmp-011, which became the icon-feature block.",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-010",
+    "type_guess": "form",
+    "confidence": 0.9,
+    "needs_review": false,
+    "source_component": "flexible-width-container fifty-fifty (Experience Fragment) wrapping a Marketo form",
+    "html_snippet": "<div class=\"flexible-width-container v1 aem-GridColumn aem-GridColumn--default--12\"> <div class=\"flexible-width-container__wrapper \" style=\"--bg-color: #ebebeb;\"> <div class=\"flexible-width-container__block\"> <div class=\"flexible-width-container__content\"> </div> <div class=\"flexible-width-container\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 4301,
+      "w": 1440,
+      "h": 637
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-010.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "Marketo form (mktoForm_1658) inside an Experience Fragment, fifty-fifty columns: copy left, form right. Fields: FirstName, LastName, Email, Phone, PostalCode, Firm_Name__c, Message + hidden munchkinId/formid. Third-party embed \u2014 needs a decision on whether EDS re-implements the form or embeds Marketo. DEFERRED by human gate: shared Experience Fragment appearing across pages, so the embed-vs-rebuild decision is its own piece of work, not part of this page's migration. Do not map to a block.",
+    "disposition": "defer"
+  },
+  {
+    "id": "cmp-011",
+    "type_guess": "not-a-component",
+    "confidence": 0.45,
+    "needs_review": false,
+    "source_component": "full-width-image-buffer (decorative strip)",
+    "html_snippet": "<div class=\"full-width-image-buffer v1\">  <div class=\"full-width-image-buffer__image bg-image-bcafb764-c024-473a-93c2-3b7481b4fb02\" style=\"--bg-image-position: left;\"> </div> </div> <div class=\"text-block v1\"> <div class=\"text-block__wrapper \" style=\"--bg-color: #ffffff;\"> <div class=\"text-block__bl\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 4938,
+      "w": 1440,
+      "h": 200
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-011.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "Decorative full-bleed strip. Credit-union's equivalent (cmp-007) became the full-width-image section style, not a block.",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-012",
+    "type_guess": "other",
+    "confidence": 0.9,
+    "needs_review": false,
+    "source_component": "text-block (footnotes + legal disclosure)",
+    "html_snippet": "<div class=\"text-block v1\"> <div class=\"text-block__wrapper \" style=\"--bg-color: #ffffff;\"> <div class=\"text-block__block disclosure-padding\" data-analytics-region=\"text-block\"> <div class=\"cmp-text\"> <p>Annuities are long-term, tax-deferred vehicles designed for retirement. Variable annuities and r\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 5138,
+      "w": 1440,
+      "h": 898
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-012.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "",
+    "disposition": "map"
+  },
+  {
+    "id": "cmp-013",
+    "type_guess": "footer",
+    "confidence": 0.95,
+    "needs_review": false,
+    "source_component": "global-footer (Experience Fragment)",
+    "html_snippet": "<div class=\"global-footer v1 aem-GridColumn aem-GridColumn--default--12\"> <footer> <div class=\"sitemap\" data-analytics-region=\"footer-sitemap\"> <div class=\"sitemap__block\"> <div class=\"sitemap__links\"> <div class=\"column\"> <div class=\"cta-list v1\"> <div class=\"cta-list__header\"> <div class=\"header\">\u2026",
+    "bounding_rect": {
+      "x": 0,
+      "y": 6036,
+      "w": 1440,
+      "h": 755
+    },
+    "screenshot_crop": "capture/financial-professional--ria-and-wealth-manager/crops/cmp-013.png",
+    "breakpoint_variants": [
+      "375",
+      "768",
+      "1440"
+    ],
+    "notes": "",
+    "disposition": "defer"
+  }
+]

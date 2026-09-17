@@ -7,7 +7,7 @@
  *     [--breakpoints 375,768,1440] [--max N] [--full-scroll]
  *
  * Emits per page:
- *   <output>/<slug>/meta.json dom.json styles.json screenshots/<bp>.png
+ *   <output>/<slug>/meta.json dom.json styles.json styles-<bp>.json screenshots/<bp>.png
  */
 import { chromium } from 'playwright';
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
@@ -253,6 +253,23 @@ async function crawlPage(browser, url, args) {
       path: path.join(dir, 'screenshots', `${bp}.png`),
       fullPage: true,
     });
+
+    /*
+     * Computed styles and rects per breakpoint, not just at desktop.
+     *
+     * Downstream verification compares rendered geometry against the source on
+     * BOTH axes at every breakpoint. With desktop-only styles, that check can
+     * only be satisfied at one width, and responsive differences — band
+     * heights, stacked image ratios, column counts — have no source numbers to
+     * be measured against. The viewport is already set here for the
+     * screenshot, so this costs one extra evaluate per breakpoint.
+     *
+     * styles.json (desktop) is still written above for existing consumers.
+     */
+    // eslint-disable-next-line no-await-in-loop
+    const bpStyles = await page.evaluate(COLLECT_STYLES);
+    // eslint-disable-next-line no-await-in-loop
+    await writeFile(path.join(dir, `styles-${bp}.json`), JSON.stringify(bpStyles, null, 2));
   }
 
   const meta = {

@@ -28,6 +28,12 @@
     ]
   },
   {
+    "id": "carousel",
+    "components": [
+      "carousel-card"
+    ]
+  },
+  {
     "id": "columns",
     "components": [
       "column"
@@ -40,6 +46,13 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "form",
+    "components": [
+      "form-intro",
+      "form-field"
     ]
   },
   {
